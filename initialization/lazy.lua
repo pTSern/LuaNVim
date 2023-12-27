@@ -30,11 +30,11 @@ require("lazy").setup(
         "Xuyuanp/nerdtree-git-plugin",
         "voldikss/vim-floaterm",
         {"junegunn/fzf", build = "./install --bin"},
-        {"ibhagwan/fzf-lua", dependencies = { "nvim-tree/nvim-web-devicons" }, config = function() require("fzf-lua").setup({}) end},
+        --{"ibhagwan/fzf-lua", dependencies = { "nvim-tree/nvim-web-devicons" }, config = function() require("fzf-lua").setup({}) end},
         "jreybert/vimagit",
         "ryanoasis/vim-devicons",
         "nvim-tree/nvim-web-devicons",
         {'romgrk/barbar.nvim', dependencies = {'lewis6991/gitsigns.nvim', 'nvim-tree/nvim-web-devicons'}, init = function() vim.g.barbar_auto_setup = false end, opts = {}},
-        {"folke/which-key.nvim", event = "VeryLazy", init = function() vim.o.timeout = true vim.o.timeoutlen = 30 end, opts = {} }
+        {"folke/which-key.nvim", event = "VeryLazy", init = function() vim.o.timeout = true vim.o.timeoutlen = 30 end, opts = {} },
     }
 )
