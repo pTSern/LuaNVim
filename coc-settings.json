@@ -60,6 +60,11 @@
           "rootPatterns": ["compile_flags.txt", "compile_commands.json"],
           "filetypes": ["c", "cc", "cpp", "c++", "objc", "objcpp"]
         },
+        "csharp-ls": {
+          "command": "csharp-ls",
+          "filetypes": ["cs"],
+          "rootPatterns": ["*.csproj", ".vim/", ".git/", ".hg/"]
+        },
         "cmake": {
             "command": "cmake-language-server",
             "filetypes": ["cmake"],
@@ -69,6 +74,11 @@
             "initializationOptions": {
                 "buildDirectory": "build"
             }
+        },
+        "efm": {
+            "command": "efm-langserver",
+            "args": [],
+            "filetypes": ["vim", "eruby", "markdown", "yaml"]
         }
     },
     "clangd.path": "~\\AppData\\Local\\coc\\extensions\\coc-clangd-data\\install\\15.0.6\\clangd_15.0.6\\bin\\clangd.exe"

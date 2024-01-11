@@ -2,7 +2,7 @@
 g_global.interestingWordsDefaultMappings = 0
 
 g_keymap.set('n', '<M-k>', [[:call InterestingWords('n')<CR>]], g_default_opts)
-g_keymap.set('v', '<M-k>', [[:call InterestingWords('n')<CR>]], g_default_opts)
+g_keymap.set('v', '<M-k>', [[:call InterestingWords('v')<CR>]], g_default_opts)
 g_keymap.set('n', '<M-K>', [[:call UncolorAllWords()<CR>]], g_default_opts)
 
 g_keymap.set('n', '<M-l>', [[:call WordNavigation(1)<CR>]], g_default_opts)

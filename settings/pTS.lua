@@ -69,8 +69,8 @@ function toggle_cursor_column()
 end
 
 -- Create a key mapping to call the function when pressing <Leader>fc
-    
+
 g_keymap.set('n', '<Leader><Leader>c', [[:lua toggle(pTS.cursor.column, function() pTS.cursor.column = not pTS.cursor.column end, function() vim.wo.cursorcolumn = false notify('Cursor coloumn: OFF') end, function() vim.wo.cursorcolumn = true notify('Cursor coloumn: ON') end)<CR>]], g_default_opts)
-g_keymap.set('n', '<Leader><Leader>l', [[:lua toggle(pTS.cursor.line, function() pTS.cursor.line = not pTS.cursor.column end, function() vim.wo.cursorcolumn = false notify('Cursor line: OFF') end, function() vim.wo.cursorcolumn = true notify('Cursor line: ON') end)<CR>]], g_default_opts)
+g_keymap.set('n', '<Leader><Leader>l', [[:lua toggle(pTS.cursor.line, function() pTS.cursor.line = not pTS.cursor.line end, function() vim.wo.cursorline = false notify('Cursor line: OFF') end, function() vim.wo.cursorline = true notify('Cursor line: ON') end)<CR>]], g_default_opts)
 g_keymap.set('n', '<Leader><Leader>w', [[:lua toggle(pTS.wrap, function() pTS.wrap = not pTS.wrap end, function() g_opt.wrap = false notify('Wrap line mode: OFF') end, function() g_opt.wrap = true notify('Wrap line mode: ON') end)<CR>]], g_default_opts)
 

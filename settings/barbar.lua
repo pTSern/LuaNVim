@@ -44,10 +44,10 @@ require'barbar'.setup {
     button = '',
     -- Enables / disables diagnostic symbols
     diagnostics = {
-      [vim.diagnostic.severity.ERROR] = {enabled = true, icon = '⇲'},
+      [vim.diagnostic.severity.ERROR] = {enabled = false, icon = '⇲'},
       [vim.diagnostic.severity.WARN] = {enabled = false},
-      [vim.diagnostic.severity.INFO] = {enabled = true, icon = '♕'},
-      [vim.diagnostic.severity.HINT] = {enabled = true, icon = '✯'},
+      [vim.diagnostic.severity.INFO] = {enabled = false, icon = '♕'},
+      [vim.diagnostic.severity.HINT] = {enabled = false, icon = '✯'},
     },
     gitsigns = {
       added = {enabled = true, icon = '+'},
@@ -137,6 +137,7 @@ require'barbar'.setup {
 local map = g_keymap.set 
 
 -- Move to previous/next
+map('n', '<Tab>\\', "<C-w><C-w>", g_default_opts)
 map('n', '<Tab>j', ':w<CR><Cmd>BufferPrevious<CR>', g_default_opts)
 map('n', '<Tab>k', ':w<CR><Cmd>BufferNext<CR>', g_default_opts)
 -- map('n', '<Tab>k', ':bn<CR>', g_default_opts)
