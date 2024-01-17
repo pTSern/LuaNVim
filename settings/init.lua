@@ -6,6 +6,10 @@ dofile(root .. 'lsp.lua')
 dofile(root .. 'catppuccin.lua')
 dofile(root .. 'transparent.lua')
 dofile(root .. 'barbar.lua')
+
+dofile(root .. 'cs.lua')
+dofile(root .. 'ale.lua')
+
 --dofile(root .. 'fzf.lua')
 dofile(root .. 'telescope.lua')
 dofile(root .. 'highlight.lua')

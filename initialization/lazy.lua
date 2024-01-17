@@ -47,5 +47,7 @@ require("lazy").setup(
         "williamboman/mason-lspconfig.nvim",
         "neovim/nvim-lspconfig",
         {"iamcco/markdown-preview.nvim", cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" }, build = "cd app && yarn install", init = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }},
+        'OmniSharp/omnisharp-vim',
+        'dense-analysis/ale'
     }
 )
