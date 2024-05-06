@@ -1,0 +1,6 @@
+{
+  "Lua.diagnostics.globals": [
+    "g_keymap",
+    "g_font_size"
+  ]
+}

@@ -13,7 +13,7 @@ require'barbar'.setup {
   auto_hide = false,
 
   -- Enable/disable current/total tabpages indicator (top right corner)
-  tabpages = true,
+  tabpages = false,
 
   -- Enables/disable clickable tabs
   --  - left-click: go to buffer
@@ -28,13 +28,13 @@ require'barbar'.setup {
   -- hide = {extensions = true, inactive = true},
 
   -- Disable highlighting alternate buffers
-  highlight_alternate = true,
+  highlight_alternate = false,
 
   -- Disable highlighting file icons in inactive buffers
   highlight_inactive_file_icons = false,
 
   -- Enable highlighting visible buffers
-  highlight_visible = true,
+  highlight_visible = false,
 
   icons = {
     -- Configure the base icons on the bufferline.
@@ -57,7 +57,7 @@ require'barbar'.setup {
     filetype = {
       -- Sets the icon's highlight group.
       -- If false, will use nvim-web-devicons colors
-      custom_colors = false,
+      custom_colors = true,
 
       -- Requires `nvim-web-devicons` if `true`
       enabled = true,
@@ -180,3 +180,5 @@ map('n', '<Tab>bw', '<Cmd>BufferOrderByWindowNumber<CR>', g_default_opts)
 -- Other:
 -- :BarbarEnable - enables barbar (enabled by default)
 -- :BarbarDisable - very bad command, should never be used
+--
+
