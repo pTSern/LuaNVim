@@ -1,7 +1,7 @@
 local g = vim.g
 
-g['airline_powerline_fonts'] = 1                       -- Enable font for status bar
-vim.cmd('AirlineTheme onedark')                        -- Theme Onedark 
+g['airline_powerline_fonts'] = 1                        -- Enable font for status bar
+vim.cmd('AirlineTheme onedark')                          -- Theme Onedark 
 
 
 if not g.airline_symbols then

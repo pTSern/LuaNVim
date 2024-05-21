@@ -1,5 +1,5 @@
 vim.api.nvim_exec([[
-  autocmd FileType cs nmap <buffer> <leader>gd <Plug>(omnisharp_go_to_definition)
+  autocmd FileType cs nmap <buffer> gd <Plug>(omnisharp_go_to_definition)
 ]], false)
 
 vim.api.nvim_exec([[
