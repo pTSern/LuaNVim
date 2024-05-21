@@ -1,5 +1,5 @@
 {
-  "ale": { "branch": "master", "commit": "8922478a83cd06bfe5b82eb45279649adc4ec046" },
+  "ale": { "branch": "master", "commit": "9a23ec1f60ec85f6afb70870a1978141b321fb3c" },
   "auto-pairs": { "branch": "master", "commit": "c0423fb6965ff00e284abb849c6254f47c2f8439" },
   "barbar.nvim": { "branch": "master", "commit": "a8fe0abe538f15997a543e0f653993ef3727455f" },
   "catppuccin": { "branch": "main", "commit": "64dc309bc157779691be38bbfc5123584e0a4a85" },
@@ -18,7 +18,7 @@
   "nvim-web-devicons": { "branch": "master", "commit": "a1425903ab52a0a0460622519e827f224e5b4fee" },
   "omnisharp-vim": { "branch": "master", "commit": "f9c5d3e3375e8b5688a4506e813cb21bdc7329b1" },
   "plenary.nvim": { "branch": "master", "commit": "55d9fe89e33efd26f532ef20223e5f9430c8b0c0" },
-  "telescope.nvim": { "branch": "master", "commit": "9907deaed23e4db65eb7453bdb4b3c78acdc096e" },
+  "telescope.nvim": { "branch": "master", "commit": "aacaa9cd031da83ce08d8fa5f19083d731f7f62c" },
   "transparent.nvim": { "branch": "main", "commit": "fd35a46f4b7c1b244249266bdcb2da3814f01724" },
   "vim-airline": { "branch": "master", "commit": "3b9e149e19ed58dee66e4842626751e329e1bd96" },
   "vim-airline-themes": { "branch": "master", "commit": "dd81554c2231e438f6d0e8056ea38fd0e80ac02a" },
