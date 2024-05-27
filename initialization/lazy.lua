@@ -17,8 +17,33 @@ g_opt.rtp:prepend(lazypath)
 require("lazy").setup(
     {
         { "catppuccin/nvim", name = "catppuccin" },                                                                                                                                                                                                     -- Main theme
-        "xiyaowong/transparent.nvim",                                                                                                                                                                                                                   -- Transparent cilent
-        "navarasu/onedark.nvim",
+
+        { -- Collection of various small independent plugins/modules
+          'echasnovski/mini.nvim',
+          config = function()
+            -- Better Around/Inside textobjects
+            --
+            -- Examples:
+            --  - va)  - [V]isually select [A]round [)]paren
+            --  - yinq - [Y]ank [I]nside [N]ext [']quote
+            --  - ci'  - [C]hange [I]nside [']quote
+            require('mini.ai').setup { n_lines = 500 }
+
+            -- Add/delete/replace surroundings (brackets, quotes, etc.)
+            --
+            -- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
+            -- - sd'   - [S]urround [D]elete [']quotes
+            -- - sr)'  - [S]urround [R]eplace [)] [']
+            require('mini.surround').setup()
+
+            -- Simple and easy statusline.
+            --  You could remove this setup call if you don't like it,
+            --  and try some other statusline plugin
+
+            -- ... and there is more!
+            --  Check out: https://github.com/echasnovski/mini.nvim
+          end,
+        },
         --'tribela/vim-transparent',
         "preservim/nerdTree",                                                                                                                                                                                                                           -- File manager
         "vim-airline/vim-airline",                                                                                                                                                                                                                      -- Status bar
@@ -37,7 +62,13 @@ require("lazy").setup(
         "ryanoasis/vim-devicons",                                       -- Provide beauty icons
         "nvim-tree/nvim-web-devicons",                                  -- Other plugins for beauty icons
         {'romgrk/barbar.nvim', dependencies = {'lewis6991/gitsigns.nvim', 'nvim-tree/nvim-web-devicons'}, init = function() vim.g.barbar_auto_setup = false end, opts = {}},                                                                            -- Manager buffer tab
-        {"folke/which-key.nvim", event = "VeryLazy", init = function() vim.o.timeout = true vim.o.timeoutlen = 30 end, opts = {} },                                                                                                                     -- Display key mapping helper
+        {
+            "folke/which-key.nvim",
+            event = "VeryLazy",
+            init = function()
+                vim.o.timeout = true
+                vim.o.timeoutlen = 30
+            end, opts = {} },                                                                                                                                                    -- Display key mapping helper
         --"jinh0/eyeliner.nvim",
         --"puremourning/vimspector",
         "nvim-lua/plenary.nvim",
@@ -67,6 +98,10 @@ require("lazy").setup(
           },
         },
         'rcarriga/nvim-notify',
-        {'akinsho/git-conflict.nvim', version = "*", config = true}
+        {'akinsho/git-conflict.nvim', version = "*", config = true},
+
+        { 'j-hui/fidget.nvim', opts = {} },
+
+        { 'folke/neodev.nvim', opts = {} },
     }
 )

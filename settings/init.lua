@@ -3,7 +3,7 @@ local root = g_root .. 'settings/'
 dofile(root .. 'airline.lua')
 dofile(root .. 'coc.lua')
 dofile(root .. 'lsp.lua')
-dofile(root .. 'transparent.lua')
+--dofile(root .. 'transparent.lua')
 dofile(root .. 'barbar.lua')
 
 dofile(root .. 'cs.lua')
