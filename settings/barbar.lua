@@ -134,33 +134,34 @@ require'barbar'.setup {
 -----------------------
 -----------------------
 
-local map = g_keymap.set 
+local map = GKeymap.set
 
 -- Move to previous/next
-map('n', '<Tab>\\', "<C-w><C-w>", g_default_opts)
-map('n', '<Tab>j', ':w<CR><Cmd>BufferPrevious<CR>', g_default_opts)
-map('n', '<Tab>k', ':w<CR><Cmd>BufferNext<CR>', g_default_opts)
+map('n', '<Tab>\\', "<C-w><C-w>", GQuickOpt('[\\] Switching bar'))
+map('n', '<Tab>j', ':w<CR><Cmd>BufferPrevious<CR>', GQuickOpt('[j] Previous Buffer'))
+map('n', '<Tab>k', ':w<CR><Cmd>BufferNext<CR>', GQuickOpt('[k] Next Buffer'))
 -- map('n', '<Tab>k', ':bn<CR>', g_default_opts)
 -- map('n', '<Tab>j', ':bp<CR>', g_default_opts)
 
 -- Re-order to previous/next
-map('n', '<Tab>h', '<Cmd>BufferMovePrevious<CR>', g_default_opts)
-map('n', '<Tab>l', '<Cmd>BufferMoveNext<CR>', g_default_opts)
+map('n', '<Tab>h', '<Cmd>BufferMovePrevious<CR>', GQuickOpt('[h] Move Buffer to Left'))
+map('n', '<Tab>l', '<Cmd>BufferMoveNext<CR>', GQuickOpt('[l] Move Buffer to Right'))
 -- Goto buffer in position...
-map('n', '\\1', '<Cmd>BufferGoto 1<CR>', g_default_opts)
-map('n', '\\2', '<Cmd>BufferGoto 2<CR>', g_default_opts)
-map('n', '\\3', '<Cmd>BufferGoto 3<CR>', g_default_opts)
-map('n', '\\4', '<Cmd>BufferGoto 4<CR>', g_default_opts)
-map('n', '\\5', '<Cmd>BufferGoto 5<CR>', g_default_opts)
-map('n', '\\6', '<Cmd>BufferGoto 6<CR>', g_default_opts)
-map('n', '\\7', '<Cmd>BufferGoto 7<CR>', g_default_opts)
-map('n', '\\8', '<Cmd>BufferGoto 8<CR>', g_default_opts)
-map('n', '\\9', '<Cmd>BufferGoto 9<CR>', g_default_opts)
-map('n', '\\0', '<Cmd>BufferLast<CR>', g_default_opts)
+map('n', '\\1', '<Cmd>BufferGoto 1<CR>', GQuickOpt('Go to Buffer [1]'))
+map('n', '\\2', '<Cmd>BufferGoto 2<CR>', GQuickOpt('Go to Buffer [2]'))
+map('n', '\\3', '<Cmd>BufferGoto 3<CR>', GQuickOpt('Go to Buffer [3]'))
+map('n', '\\4', '<Cmd>BufferGoto 4<CR>', GQuickOpt('Go to Buffer [4]'))
+map('n', '\\5', '<Cmd>BufferGoto 5<CR>', GQuickOpt('Go to Buffer [5]'))
+map('n', '\\6', '<Cmd>BufferGoto 6<CR>', GQuickOpt('Go to Buffer [6]'))
+map('n', '\\7', '<Cmd>BufferGoto 7<CR>', GQuickOpt('Go to Buffer [7]'))
+map('n', '\\8', '<Cmd>BufferGoto 8<CR>', GQuickOpt('Go to Buffer [8]'))
+map('n', '\\9', '<Cmd>BufferGoto 9<CR>', GQuickOpt('Go to Buffer [9]'))
+map('n', '\\0', '<Cmd>BufferLast<CR>', GQuickOpt('Last Buffer [0]'))
+
 -- Pin/unpin buffer
-map('n', '<Leader><Tab>', '<Cmd>BufferPin<CR>', g_default_opts)
+map('n', '<Leader><Tab>', '<Cmd>BufferPin<CR>', GQuickOpt('[TAB] Pin this Buffer'))
 -- Close buffer
-map('n', '<Leader>d', '<Cmd>BufferClose<CR>', g_default_opts)
+map('n', '<Leader>d', '<Cmd>BufferClose<CR>', GQuickOpt('[D]elete this buffer'))
 -- Wipeout buffer
 --                 :BufferWipeout
 -- Close commands
@@ -170,12 +171,12 @@ map('n', '<Leader>d', '<Cmd>BufferClose<CR>', g_default_opts)
 --                 :BufferCloseBuffersLeft
 --                 :BufferCloseBuffersRight
 -- Magic buffer-picking mode
-map('n', '<C-p>', '<Cmd>BufferPick<CR>', g_default_opts)
+map('n', '<C-p>', '<Cmd>BufferPick<CR>', GDfgConfig)
 -- Sort automatically by...
-map('n', '<Tab>bb', '<Cmd>BufferOrderByBufferNumber<CR>', g_default_opts)
-map('n', '<Tab>bd', '<Cmd>BufferOrderByDirectory<CR>', g_default_opts)
-map('n', '<Tab>bl', '<Cmd>BufferOrderByLanguage<CR>', g_default_opts)
-map('n', '<Tab>bw', '<Cmd>BufferOrderByWindowNumber<CR>', g_default_opts)
+map('n', '<Tab>bn', '<Cmd>BufferOrderByBufferNumber<CR>', GQuickOpt('[B]uffer sort by [N]umber'))
+map('n', '<Tab>bd', '<Cmd>BufferOrderByDirectory<CR>', GQuickOpt('[B]uffer sort by [D]irectory'))
+map('n', '<Tab>bl', '<Cmd>BufferOrderByLanguage<CR>', GQuickOpt('[B]uffer sort by [L]anguage'))
+map('n', '<Tab>bw', '<Cmd>BufferOrderByWindowNumber<CR>', GQuickOpt('[B]uffer sort by [W]indow number'))
 
 -- Other:
 -- :BarbarEnable - enables barbar (enabled by default)

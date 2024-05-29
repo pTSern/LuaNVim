@@ -1,3 +1,3 @@
 
-g_keymap.set('n', '<Leader>lss', ":LiveServerStart<CR>", g_default_opts)
-g_keymap.set('n', '<Leader>lst', ":LiveServerStop<CR>", g_default_opts)
+GKeymap.set('n', '<Leader>lss', ":LiveServerStart<CR>", GQuickOpt('[L]ive [S]erver [S]tart'))
+GKeymap.set('n', '<Leader>lsq', ":LiveServerStop<CR>", GQuickOpt('[L]ive [S]erver [Q]uit'))

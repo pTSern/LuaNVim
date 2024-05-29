@@ -1,18 +1,18 @@
 
-g_global.NERDCreateDefaultMappings = 1
+GGlobal.NERDCreateDefaultMappings = 1
 
-g_global.NERDSpaceDelims = 1
+GGlobal.NERDSpaceDelims = 1
 
-g_global.NERDCompactSexyComs = 1
+GGlobal.NERDCompactSexyComs = 1
 
-g_global.NERDDefaultAlign = 'left'
+GGlobal.NERDDefaultAlign = 'left'
 
-g_global.NERDCommentEmptyLines = 1
+GGlobal.NERDCommentEmptyLines = 1
 
-g_global.NERDTrimTrailingWhitespace = 1
+GGlobal.NERDTrimTrailingWhitespace = 1
 
-g_global.NERDToggleCheckAllLines = 1
+GGlobal.NERDToggleCheckAllLines = 1
 
-g_keymap.set('n', '<Leader>cm', "V}:call nerdcommenter#Comment('x', 'toggle')<CR>", g_default_opts)
-g_keymap.set('n', '<Leader>cM', "V{:call nerdcommenter#Comment('x', 'toggle')<CR>", g_default_opts)
+GKeymap.set('n', '<Leader>cj', "V}:call nerdcommenter#Comment('x', 'toggle')<CR>", GQuickOpt('[C]ommenter [j] Down'))
+GKeymap.set('n', '<Leader>ck', "V{:call nerdcommenter#Comment('x', 'toggle')<CR>", GQuickOpt('[C]ommenter [k] Up'))
 

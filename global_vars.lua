@@ -1,13 +1,20 @@
+GOpts = vim.opt
+GKeymap = vim.keymap
+GGlobal = vim.g
+GCmd = vim.cmd
+GWo = vim.wo
 
-g_opt = vim.opt
-g_keymap = vim.keymap
-g_global = vim.g
-g_cmd = vim.cmd
-g_wo = vim.wo
-
-g_default_opts = {
+GDfgConfig = {
     noremap = true,
     silent = true
 }
 
-g_global.mapleader = ' '
+GGlobal.mapleader = ' '
+
+GQuickOpt = function (desc)
+    return {
+        noremap = true,
+        silent = true,
+        desc = desc
+    }
+end

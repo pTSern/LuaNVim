@@ -2,6 +2,8 @@ local keymap = vim.keymap
 
 keymap.set('n', '<M-1>', ':NERDTreeToggle<CR>', { silent = true })
 keymap.set('n', '<F1>', ':NERDTreeToggle<CR>', { silent = true })
+keymap.set('x', '<F1>', '<ESC>:NERDTreeToggle<CR>', { silent = true })
+keymap.set('i', '<F1>', '<ESC>:NERDTreeToggle<CR>', { silent = true })
 keymap.set('n', '<M-f>', ':NERDTreeFind<CR>', { silent = true })
 
 vim.g['NERDTreeDirArrowExpandable'] = '▸'

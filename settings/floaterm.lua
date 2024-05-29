@@ -1,9 +1,9 @@
 
-g_keymap.set('n', '<Leader><Leader>t', ":FloatermToggle<CR>", g_default_opts)
-g_keymap.set('t', '<Leader><Leader>t', "<C-\\><C-n>:FloatermToggle<CR>", g_default_opts)
+GKeymap.set('n', '<Leader><Leader>t', ":FloatermToggle<CR>", GQuickOpt('[ ] floaterm [T]oggle'))
+GKeymap.set('t', '<Leader><Leader>t', "<C-\\><C-n>:FloatermToggle<CR>", GQuickOpt('[ ] floaterm [T]oggle'))
 
-g_keymap.set('n', '<F8>', ":FloatermToggle<CR>", g_default_opts)
-g_keymap.set('t', '<F8>', "<C-\\><C-n>:FloatermToggle<CR>", g_default_opts)
+GKeymap.set('n', '<F8>', ":FloatermToggle<CR>", GDfgConfig)
+GKeymap.set('t', '<F8>', "<C-\\><C-n>:FloatermToggle<CR>", GDfgConfig)
 
 vim.g.floaterm_position = 'topright'
 vim.g.floaterm_width = 0.6

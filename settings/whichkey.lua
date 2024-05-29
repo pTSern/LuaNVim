@@ -26,17 +26,19 @@ wk.setup {
   key_labels = {
     -- override the label used to display some keys. It doesn't effect WK in any other way.
     -- For example:
-    -- ["<space>"] = "SPC",
-    -- ["<cr>"] = "RET",
-    -- ["<tab>"] = "TAB",
+    ["<space>"] = "[LEADER]",
+    ["<leader>"] = "[LEADER]",
+    ["<cr>"] = "[ENTER]",
+    ["<CR>"] = "[ENTER]",
+    ["<Tab>"] = "[TAB]",
   },
   motions = {
     count = true,
   },
   icons = {
-    breadcrumb = "» ", -- symbol used in the command line area that shows your active key combo
-    separator = "➜ ", -- symbol used between a key and it's label
-    group = "+ ", -- symbol prepended to a group
+    breadcrumb = " » ", -- symbol used in the command line area that shows your active key combo
+    separator = "| ", -- symbol used between a key and it's label
+    group = "╰┈➤ ", -- symbol prepended to a group
   },
   popup_mappings = {
     scroll_down = "<c-e>", -- binding to scroll down inside the popup
@@ -62,6 +64,7 @@ wk.setup {
   show_keys = true, -- show the currently pressed key and its label as a message in the command line
   triggers = {
       '<leader>',
+      'd',
       'g',
       'z',
       '\\',
@@ -96,3 +99,17 @@ wk.setup {
     filetypes = {},
   },
 }
+
+wk.register {
+  ['<leader>t'] = { name = '[T]abs Options', _ = 'which_key_ignore' },
+  ['<leader>/'] = { name = '[/] Quick Options', _ = 'which_key_ignore' },
+  ['<leader><leader>'] = { name = '[ ] More Options', _ = 'which_key_ignore' },
+  ['<leader>a'] = { name = 'Code [A]ctions', _ = 'which_key_ignore' },
+  ['<leader>b'] = { name = '[B]uffer Options', _ = 'which_key_ignore' },
+  ['<leader>c'] = { name = '[C]ode Options', _ = 'which_key_ignore' },
+  ['<leader>l'] = { name = '[L]ive Options', _ = 'which_key_ignore' },
+  ['<leader>q'] = { name = '[Q]uick Options', _ = 'which_key_ignore' },
+  ['<leader>s'] = { name = '[S]earch Options', _ = 'which_key_ignore' },
+  ['<leader>v'] = { name = '[V]isual Mode Options', _ = 'which_key_ignore' },
+}
+

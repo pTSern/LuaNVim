@@ -1,12 +1,12 @@
 
-g_opt.backup = false
-g_opt.writebackup = false
+GOpts.backup = false
+GOpts.writebackup = false
 
-g_opt.updatetime = 100
+GOpts.updatetime = 100
 
-g_opt.signcolumn = 'yes'
+GOpts.signcolumn = 'yes'
 
-g_keymap.set('i', '<TAB>',
+GKeymap.set('i', '<TAB>',
   'v:lua.TabCompletion()', { expr = true, noremap = true, silent = true }
 )
 
@@ -15,7 +15,7 @@ function _G.check_back_space()
     return col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') ~= nil
 end
 
-local keyset = g_keymap.set
+local keyset = GKeymap.set
 local opts = {silent = true, noremap = true, expr = true, replace_keycodes = false}
 
 keyset("i", "<TAB>", 'coc#pum#visible() ? coc#pum#next(1) : v:lua.check_back_space() ? "<TAB>" : coc#refresh()', opts)
@@ -29,14 +29,14 @@ keyset("i", "<c-space>", "coc#refresh()", {silent = true, expr = true})
 
 -- Use `[g` and `]g` to navigate diagnostics
 -- Use `:CocDiagnostics` to get all diagnostics of current buffer in location list
-keyset("n", "[g", "<Plug>(coc-diagnostic-prev)", {silent = true})
-keyset("n", "]g", "<Plug>(coc-diagnostic-next)", {silent = true})
+keyset("n", "[g", "<Plug>(coc-diagnostic-prev)", GQuickOpt(''))
+keyset("n", "]g", "<Plug>(coc-diagnostic-next)", GQuickOpt(''))
 
 -- GoTo code navigation
-keyset("n", "gd", "<Plug>(coc-definition)", {silent = true})
-keyset("n", "gy", "<Plug>(coc-type-definition)", {silent = true})
-keyset("n", "gi", "<Plug>(coc-implementation)", {silent = true})
-keyset("n", "gr", "<Plug>(coc-references)", {silent = true})
+keyset("n", "gd", "<Plug>(coc-definition)", GQuickOpt('[G]o to [D]efinition'))
+keyset("n", "gy", "<Plug>(coc-type-definition)", GQuickOpt('[G]o to t[Y]pe definition'))
+keyset("n", "gi", "<Plug>(coc-implementation)", GQuickOpt('[G]o to [I]mpletation'))
+keyset("n", "gr", "<Plug>(coc-references)", GQuickOpt('[G]o to [R]eferences'))
 
 
 -- Use K to show documentation in preview window
@@ -50,7 +50,7 @@ function _G.show_docs()
         vim.api.nvim_command('!' .. vim.o.keywordprg .. ' ' .. cw)
     end
 end
-keyset("n", "<Leader>k", '<CMD>lua _G.show_docs()<CR>', {silent = true})
+keyset("n", "<Leader>k", '<CMD>lua _G.show_docs()<CR>', GQuickOpt('[k] Show docs'))
 
 
 -- Highlight the symbol and its references on a CursorHold event(cursor is idle)
@@ -63,12 +63,12 @@ vim.api.nvim_create_autocmd("CursorHold", {
 
 
 -- Symbol renaming
-keyset("n", "<leader>rn", "<Plug>(coc-rename)", {silent = true})
+keyset("n", "<leader>rn", "<Plug>(coc-rename)", GQuickOpt('[R]e[N]ame'))
 
 
 -- Formatting selected code
-keyset("x", "<leader>f", "<Plug>(coc-format-selected)", {silent = true})
-keyset("n", "<leader>f", "<Plug>(coc-format-selected)", {silent = true})
+keyset("x", "<leader>f", "<Plug>(coc-format-selected)", GQuickOpt('[F]ormat selected code'))
+keyset("n", "<leader>f", "<Plug>(coc-format-selected)", GQuickOpt('[F]ormat selected code'))
 
 
 -- Setup formatexpr specified filetype(s)
@@ -90,36 +90,36 @@ vim.api.nvim_create_autocmd("User", {
 -- Apply codeAction to the selected region
 -- Example: `<leader>aap` for current paragraph
 local opts = {silent = true, nowait = true}
-keyset("x", "<leader>ca", "<Plug>(coc-codeaction-selected)", opts)
-keyset("n", "<leader>ca", "<Plug>(coc-codeaction-selected)", opts)
+keyset("x", "<leader>ca", "<Plug>(coc-codeaction-selected)", GQuickOpt('[C]ode [A]ction selected'))
+keyset("n", "<leader>ca", "<Plug>(coc-codeaction-selected)", GQuickOpt('[C]ode [A]ction selected'))
 
 -- Remap keys for apply code actions at the cursor position.
-keyset("n", "<leader>ac", "<Plug>(coc-codeaction-cursor)", opts)
+keyset("n", "<leader>ac", "<Plug>(coc-codeaction-cursor)", GQuickOpt('Code [A]ction [C]ursor'))
 -- Remap keys for apply source code actions for current file.
-keyset("n", "<leader>as", "<Plug>(coc-codeaction-source)", opts)
+keyset("n", "<leader>as", "<Plug>(coc-codeaction-source)", GQuickOpt('Code [A]ction [S]ource'))
 -- Apply the most preferred quickfix action on the current line.
-keyset("n", "<leader>qf", "<Plug>(coc-fix-current)", opts)
+keyset("n", "<leader>qf", "<Plug>(coc-fix-current)", GQuickOpt('Code [Q]ick [F]ix'))
 keyset("n", "<M-CR>", "<Plug>(coc-fix-current)", opts)
 
 -- Remap keys for apply refactor code actions.
-keyset("n", "<leader>re", "<Plug>(coc-codeaction-refactor)", { silent = true })
-keyset("x", "<leader>r", "<Plug>(coc-codeaction-refactor-selected)", { silent = true })
-keyset("n", "<leader>r", "<Plug>(coc-codeaction-refactor-selected)", { silent = true })
+keyset("n", "<leader>re", "<Plug>(coc-codeaction-refactor)", GQuickOpt('Code [R]efactor [E]'))
+keyset("x", "<leader>r", "<Plug>(coc-codeaction-refactor-selected)", GQuickOpt('Code [R]efactor selected'))
+keyset("n", "<leader>rs", "<Plug>(coc-codeaction-refactor-selected)", GQuickOpt('Code [R]efactor [S]elected'))
 
 -- Run the Code Lens actions on the current line
-keyset("n", "<leader>cl", "<Plug>(coc-codelens-action)", opts)
+keyset("n", "<leader>cl", "<Plug>(coc-codelens-action)", GQuickOpt('[C]ode [L]ens action'))
 
 
 -- Map function and class text objects
 -- NOTE: Requires 'textDocument.documentSymbol' support from the language server
-keyset("x", "<Leader>cif", "<Plug>(coc-funcobj-i)", opts)
-keyset("o", "<Leader>cif", "<Plug>(coc-funcobj-i)", opts)
-keyset("x", "<Leader>caf", "<Plug>(coc-funcobj-a)", opts)
-keyset("o", "<Leader>caf", "<Plug>(coc-funcobj-a)", opts)
-keyset("x", "<Leader>cic", "<Plug>(coc-classobj-i)", opts)
-keyset("o", "<Leader>cic", "<Plug>(coc-classobj-i)", opts)
-keyset("x", "<Leader>cac", "<Plug>(coc-classobj-a)", opts)
-keyset("o", "<Leader>cac", "<Plug>(coc-classobj-a)", opts)
+keyset("x", "<Leader>cif", "<Plug>(coc-funcobj-i)", GQuickOpt('[C]ode [I] [F]'))
+keyset("o", "<Leader>cif", "<Plug>(coc-funcobj-i)", GQuickOpt('[C]ode [I] [F]'))
+keyset("x", "<Leader>caf", "<Plug>(coc-funcobj-a)", GQuickOpt('[C]ode [A] [F]'))
+keyset("o", "<Leader>caf", "<Plug>(coc-funcobj-a)", GQuickOpt('[C]ode [A] [F]'))
+keyset("x", "<Leader>cic", "<Plug>(coc-classobj-i)", GQuickOpt('[C]ode [I] [C]'))
+keyset("o", "<Leader>cic", "<Plug>(coc-classobj-i)", GQuickOpt('[C]ode [I] [C]'))
+keyset("x", "<Leader>cac", "<Plug>(coc-classobj-a)", GQuickOpt('[C]ode [A] [C]'))
+keyset("o", "<Leader>cac", "<Plug>(coc-classobj-a)", GQuickOpt('[C]ode [A] [C]'))
 
 
 -- Remap <C-f> and <C-b> to scroll float windows/popups
@@ -160,19 +160,19 @@ vim.api.nvim_create_user_command("OR", "call CocActionAsync('runCommand', 'edito
 ---@diagnostic disable-next-line: redefined-local
 local opts = {silent = true, nowait = true}
 -- Show all diagnostics
-keyset("n", "<Leader>cla", ":<C-u>CocList diagnostics<cr>", opts)
+keyset("n", "<Leader>cla", ":<C-u>CocList diagnostics<cr>", GQuickOpt('[C]oc [L]isting [A]ll diagnostics'))
 -- Manage extensions
-keyset("n", "<Leader>cle", ":<C-u>CocList extensions<cr>", opts)
+keyset("n", "<Leader>cle", ":<C-u>CocList extensions<cr>", GQuickOpt('[C]oc [L]isting all [E]xtensions'))
 -- Show commands
-keyset("n", "<Leader>clc", ":<C-u>CocList commands<cr>", opts)
+keyset("n", "<Leader>clc", ":<C-u>CocList commands<cr>", GQuickOpt('[C]oc [L]isting all [C]ommands'))
 -- Find symbol of current document
-keyset("n", "<Leader>clf", ":<C-u>CocList outline<cr>", opts)
+keyset("n", "<Leader>clf", ":<C-u>CocList outline<cr>", GQuickOpt('[C]oc [L]ist [F]ind symbol of current document'))
 -- Search workspace symbols
-keyset("n", "<Leader>cls", ":<C-u>CocList -I symbols<cr>", opts)
+keyset("n", "<Leader>cls", ":<C-u>CocList -I symbols<cr>", GQuickOpt('[C]oc [L]ist [S]earch workspace symbols'))
 -- Do default action for next item
-keyset("n", "<Leader>cln", ":<C-u>CocNext<cr>", opts)
+keyset("n", "<Leader>cln", ":<C-u>CocNext<cr>", GQuickOpt('[C]oc [L]ist do [N]ext action'))
 -- Do default action for previous item
-keyset("n", "<Leader>clp", ":<C-u>CocPrev<cr>", opts)
+keyset("n", "<Leader>clp", ":<C-u>CocPrev<cr>", GQuickOpt('[C]oc [L]ist do [P]revious action'))
 -- Resume latest coc list
-keyset("n", "<Leader>clr", ":<C-u>CocListResume<cr>", opts)
+keyset("n", "<Leader>clr", ":<C-u>CocListResume<cr>", GQuickOpt('[C]oc [L]ist [R]esume lastes'))
 

@@ -10,7 +10,7 @@ if not vim.loop.fs_stat(lazypath) then
     lazypath,
   })
 end
-g_opt.rtp:prepend(lazypath)
+GOpts.rtp:prepend(lazypath)
 
 -- INSTALL PLUGINS
 
@@ -22,26 +22,8 @@ require("lazy").setup(
           'echasnovski/mini.nvim',
           config = function()
             -- Better Around/Inside textobjects
-            --
-            -- Examples:
-            --  - va)  - [V]isually select [A]round [)]paren
-            --  - yinq - [Y]ank [I]nside [N]ext [']quote
-            --  - ci'  - [C]hange [I]nside [']quote
             require('mini.ai').setup { n_lines = 500 }
-
-            -- Add/delete/replace surroundings (brackets, quotes, etc.)
-            --
-            -- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
-            -- - sd'   - [S]urround [D]elete [']quotes
-            -- - sr)'  - [S]urround [R]eplace [)] [']
             require('mini.surround').setup()
-
-            -- Simple and easy statusline.
-            --  You could remove this setup call if you don't like it,
-            --  and try some other statusline plugin
-
-            -- ... and there is more!
-            --  Check out: https://github.com/echasnovski/mini.nvim
           end,
         },
         --'tribela/vim-transparent',
@@ -51,7 +33,10 @@ require("lazy").setup(
         "jackguo380/vim-lsp-cxx-highlight",                                                                                                                                                                                                             -- Cpp hightligh
         "LunarWatcher/auto-pairs",                                                                                                                                                                                                                      -- Auto Pairs
         "preservim/nerdcommenter",                                                                                                                                                                                                                      -- Commenter of nerdTree
-        { "neoclide/coc.nvim", branch = "release" },                                                                                                                                                                                                    -- Language Server for faster code
+        {
+            "neoclide/coc.nvim",
+            branch = "release"
+        },                                                                                                                                                                                                    -- Language Server for faster code
         "rafcamlet/coc-nvim-lua",                                                                                                                                                                                                                       -- Lua server
         "lfv89/vim-interestingwords",                                                                                                                                                                                                                   -- Searching and highlight word with different color.
         "Xuyuanp/nerdtree-git-plugin",                                                                                                                                                                                                                  -- Git status for nerdTree
@@ -61,7 +46,14 @@ require("lazy").setup(
         "jreybert/vimagit",                                             -- Git status 
         "ryanoasis/vim-devicons",                                       -- Provide beauty icons
         "nvim-tree/nvim-web-devicons",                                  -- Other plugins for beauty icons
-        {'romgrk/barbar.nvim', dependencies = {'lewis6991/gitsigns.nvim', 'nvim-tree/nvim-web-devicons'}, init = function() vim.g.barbar_auto_setup = false end, opts = {}},                                                                            -- Manager buffer tab
+        {
+            'romgrk/barbar.nvim',
+            dependencies = {
+                'lewis6991/gitsigns.nvim',
+                'nvim-tree/nvim-web-devicons'
+            }, init = function() vim.g.barbar_auto_setup = false end,
+            opts = {}
+        },                                                                            -- Manager buffer tab
         {
             "folke/which-key.nvim",
             event = "VeryLazy",
@@ -72,19 +64,57 @@ require("lazy").setup(
         --"jinh0/eyeliner.nvim",
         --"puremourning/vimspector",
         "nvim-lua/plenary.nvim",
-        {'nvim-telescope/telescope.nvim', tag = '0.1.5', dependencies = { 'nvim-lua/plenary.nvim' }},                                                                                                                                                   -- Searching all files Like CRT-SHIFT-F
+        {
+            'nvim-telescope/telescope.nvim',
+            tag = '0.1.5',
+            dependencies = {
+                'nvim-lua/plenary.nvim',
+                {
+                    'nvim-telescope/telescope-fzf-native.nvim',
+                    build = 'make',
+                    cond = function () return vim.fn.executable 'make' == 1 end
+                },
+                'nvim-telescope/telescope-ui-select.nvim',
+            }
+        },                                                                                                                                                   -- Searching all files Like CRT-SHIFT-F
         --{'nvim-treesitter/nvim-treesitter'},
-        "williamboman/mason.nvim",                                                                                                                                                                                                                      -- 
+        {
+            "williamboman/mason.nvim",                                                                                                                                                                                                                      -- 
+            "williamboman/mason-lspconfig.nvim",
+            "neovim/nvim-lspconfig",                                                                                                                                                                                                                        -- 
+        },
         'nvim-treesitter/nvim-treesitter',
-        "williamboman/mason-lspconfig.nvim",
-        "neovim/nvim-lspconfig",                                                                                                                                                                                                                        -- 
-        {"iamcco/markdown-preview.nvim", cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" }, build = "cd app && yarn install", init = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }},              -- Live Markdown file
+        {
+            "iamcco/markdown-preview.nvim",
+             cmd = {
+                "MarkdownPreviewToggle",
+                "MarkdownPreview",
+                "MarkdownPreviewStop"
+            },
+            build = "cd app && yarn install",
+            init = function() vim.g.mkdp_filetypes = { "markdown" } end,
+            ft = { "markdown" }
+        },              -- Live Markdown file
         'OmniSharp/omnisharp-vim',                                                                                                                                                                                                                      -- Language server for CSharp
-        { 'barrett-ruth/live-server.nvim', build = 'yarn global add live-server', config = true },                                                                                                                                                       -- Live server for html
+        {
+            'barrett-ruth/live-server.nvim',
+            build = 'yarn global add live-server',
+            config = true 
+        },                                                                                                                                                       -- Live server for html
         'dense-analysis/ale',
-        { 'nicholasmata/nvim-dap-cs', dependencies = { 'mfussenegger/nvim-dap' } },
+        {
+            'nicholasmata/nvim-dap-cs',
+            dependencies = { 'mfussenegger/nvim-dap' } 
+        },
         'sheerun/vim-polyglot',
-        { 'utilyre/barbecue.nvim', name = "barbecue", version = "*", dependencies = { "SmiteshP/nvim-navic", "nvim-tree/nvim-web-devicons" } },
+        {
+            'utilyre/barbecue.nvim',
+            name = "barbecue",
+            version = "*",
+            dependencies = {
+                "SmiteshP/nvim-navic",
+                "nvim-tree/nvim-web-devicons" } 
+        },
         {
           "folke/flash.nvim",
           event = "VeryLazy",
@@ -98,10 +128,20 @@ require("lazy").setup(
           },
         },
         'rcarriga/nvim-notify',
-        {'akinsho/git-conflict.nvim', version = "*", config = true},
+        {
+            'akinsho/git-conflict.nvim',
+            version = "*",
+            config = true
+        },
 
-        { 'j-hui/fidget.nvim', opts = {} },
+        {
+            'j-hui/fidget.nvim',
+            opts = {}
+        },
 
-        { 'folke/neodev.nvim', opts = {} },
+        {
+          'folke/neodev.nvim',
+          opts = {}
+        },
     }
 )
