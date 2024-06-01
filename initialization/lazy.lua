@@ -39,11 +39,9 @@ require("lazy").setup(
         },                                                                                                                                                                                                    -- Language Server for faster code
         "rafcamlet/coc-nvim-lua",                                                                                                                                                                                                                       -- Lua server
         "lfv89/vim-interestingwords",                                                                                                                                                                                                                   -- Searching and highlight word with different color.
-        "Xuyuanp/nerdtree-git-plugin",                                                                                                                                                                                                                  -- Git status for nerdTree
         "voldikss/vim-floaterm",                                                                                                                                                                                                                        -- Float terminal
         --{"junegunn/fzf", build = "./install --bin"},
         --{"ibhagwan/fzf-lua", dependencies = { "nvim-tree/nvim-web-devicons" }, config = function() require("fzf-lua").setup({}) end},
-        "jreybert/vimagit",                                             -- Git status 
         "ryanoasis/vim-devicons",                                       -- Provide beauty icons
         "nvim-tree/nvim-web-devicons",                                  -- Other plugins for beauty icons
         {
@@ -128,11 +126,6 @@ require("lazy").setup(
           },
         },
         'rcarriga/nvim-notify',
-        {
-            'akinsho/git-conflict.nvim',
-            version = "*",
-            config = true
-        },
 
         {
             'j-hui/fidget.nvim',
