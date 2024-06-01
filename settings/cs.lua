@@ -1,15 +1,17 @@
-vim.api.nvim_exec([[
-  autocmd FileType cs nmap <buffer> gd <Plug>(omnisharp_go_to_definition)
-]], false)
 
-vim.api.nvim_exec([[
-  autocmd FileType cs nmap <buffer> <leader>rn <Plug>(omnisharp_rename)
-]], false)
+local lspconfig = require'lspconfig'
 
-vim.api.nvim_exec([[
-  autocmd FileType cs nmap <buffer> <leader>f :OmniSharpCodeFormart<CR>
-]], false)
+local cs_path = vim.fn.expand("~/AppData/Local/nvim-data/mason/packages/omnisharp/libexec/OmniSharp.dll")
 
-vim.api.nvim_exec([[
-  autocmd FileType cs vmap <buffer> <leader>f :OmniSharpCodeFormart<CR>
-]], false)
+lspconfig.omnisharp.setup{
+   capabilities = capabilities,
+   cmd = { "dotnet", cs_path },
+   root_dir = lspconfig.util.root_pattern(".git", ".sln", "*.csproj", "Assets", "ProjectSettings"),
+
+   settings = {
+      omnisharp = {
+         useModernNet = true,
+      }
+   }
+}
+

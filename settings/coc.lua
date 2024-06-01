@@ -33,10 +33,10 @@ keyset("n", "[g", "<Plug>(coc-diagnostic-prev)", GQuickOpt(''))
 keyset("n", "]g", "<Plug>(coc-diagnostic-next)", GQuickOpt(''))
 
 -- GoTo code navigation
-keyset("n", "gd", "<Plug>(coc-definition)", GQuickOpt('[G]o to [D]efinition'))
-keyset("n", "gy", "<Plug>(coc-type-definition)", GQuickOpt('[G]o to t[Y]pe definition'))
-keyset("n", "gi", "<Plug>(coc-implementation)", GQuickOpt('[G]o to [I]mpletation'))
-keyset("n", "gr", "<Plug>(coc-references)", GQuickOpt('[G]o to [R]eferences'))
+keyset("n", "gd", "<Plug>(coc-definition)", GQuickOpt('[G]oto [D]efinition'))
+keyset("n", "gy", "<Plug>(coc-type-definition)", GQuickOpt('[G]oto t[Y]pe definition'))
+keyset("n", "gi", "<Plug>(coc-implementation)", GQuickOpt('[G]oto [I]mpletation'))
+keyset("n", "gr", "<Plug>(coc-references)", GQuickOpt('[G]oto [R]eferences'))
 
 
 -- Use K to show documentation in preview window

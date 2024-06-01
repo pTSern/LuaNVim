@@ -7,10 +7,10 @@
         + [Normal] `]g` : Navigate next dianostics.
 
     - GoTo code navigation
-        + [Normal] `gd` : Go to the definition.
-        + [Normal] `gy` : Go to the type definition.
-        + [Normal] `gi` : Go to the implementation.
-        + [Normal] `gr` : Go to the references.
+        + [Normal] `gd` : Goto the definition.
+        + [Normal] `gy` : Goto the type definition.
+        + [Normal] `gi` : Goto the implementation.
+        + [Normal] `gr` : Goto the references.
 
     - Others
         + [Normal] `<L>k` : Show documentation in preview window. 

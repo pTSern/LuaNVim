@@ -147,21 +147,20 @@ map('n', '<Tab>k', ':w<CR><Cmd>BufferNext<CR>', GQuickOpt('[k] Next Buffer'))
 map('n', '<Tab>h', '<Cmd>BufferMovePrevious<CR>', GQuickOpt('[h] Move Buffer to Left'))
 map('n', '<Tab>l', '<Cmd>BufferMoveNext<CR>', GQuickOpt('[l] Move Buffer to Right'))
 -- Goto buffer in position...
-map('n', '\\1', '<Cmd>BufferGoto 1<CR>', GQuickOpt('Go to Buffer [1]'))
-map('n', '\\2', '<Cmd>BufferGoto 2<CR>', GQuickOpt('Go to Buffer [2]'))
-map('n', '\\3', '<Cmd>BufferGoto 3<CR>', GQuickOpt('Go to Buffer [3]'))
-map('n', '\\4', '<Cmd>BufferGoto 4<CR>', GQuickOpt('Go to Buffer [4]'))
-map('n', '\\5', '<Cmd>BufferGoto 5<CR>', GQuickOpt('Go to Buffer [5]'))
-map('n', '\\6', '<Cmd>BufferGoto 6<CR>', GQuickOpt('Go to Buffer [6]'))
-map('n', '\\7', '<Cmd>BufferGoto 7<CR>', GQuickOpt('Go to Buffer [7]'))
-map('n', '\\8', '<Cmd>BufferGoto 8<CR>', GQuickOpt('Go to Buffer [8]'))
-map('n', '\\9', '<Cmd>BufferGoto 9<CR>', GQuickOpt('Go to Buffer [9]'))
+map('n', '\\1', '<Cmd>BufferGoto 1<CR>', GQuickOpt('Goto Buffer [1]'))
+map('n', '\\2', '<Cmd>BufferGoto 2<CR>', GQuickOpt('Goto Buffer [2]'))
+map('n', '\\3', '<Cmd>BufferGoto 3<CR>', GQuickOpt('Goto Buffer [3]'))
+map('n', '\\4', '<Cmd>BufferGoto 4<CR>', GQuickOpt('Goto Buffer [4]'))
+map('n', '\\5', '<Cmd>BufferGoto 5<CR>', GQuickOpt('Goto Buffer [5]'))
+map('n', '\\6', '<Cmd>BufferGoto 6<CR>', GQuickOpt('Goto Buffer [6]'))
+map('n', '\\7', '<Cmd>BufferGoto 7<CR>', GQuickOpt('Goto Buffer [7]'))
+map('n', '\\8', '<Cmd>BufferGoto 8<CR>', GQuickOpt('Goto Buffer [8]'))
+map('n', '\\9', '<Cmd>BufferGoto 9<CR>', GQuickOpt('Goto Buffer [9]'))
 map('n', '\\0', '<Cmd>BufferLast<CR>', GQuickOpt('Last Buffer [0]'))
 
 -- Pin/unpin buffer
 map('n', '<Leader><Tab>', '<Cmd>BufferPin<CR>', GQuickOpt('[TAB] Pin this Buffer'))
 -- Close buffer
-map('n', '<Leader>d', '<Cmd>BufferClose<CR>', GQuickOpt('[D]elete this buffer'))
 -- Wipeout buffer
 --                 :BufferWipeout
 -- Close commands
@@ -171,7 +170,11 @@ map('n', '<Leader>d', '<Cmd>BufferClose<CR>', GQuickOpt('[D]elete this buffer'))
 --                 :BufferCloseBuffersLeft
 --                 :BufferCloseBuffersRight
 -- Magic buffer-picking mode
-map('n', '<C-p>', '<Cmd>BufferPick<CR>', GDfgConfig)
+map('n', '<Tab>d', '<Cmd>BufferDelete<CR>', GQuickOpt('Buffer [D]elete'))
+map('n', '<Tab>c', '<Cmd>BufferClose<CR>', GQuickOpt('Buffer [C]lose'))
+map('n', '<Tab>r', '<Cmd>BufferRestore<CR>', GQuickOpt('Buffer [R]estore'))
+map('n', '<Tab>bp', '<Cmd>BufferPick<CR>', GQuickOpt('[B]uffer [P]icking'))
+
 -- Sort automatically by...
 map('n', '<Tab>bn', '<Cmd>BufferOrderByBufferNumber<CR>', GQuickOpt('[B]uffer sort by [N]umber'))
 map('n', '<Tab>bd', '<Cmd>BufferOrderByDirectory<CR>', GQuickOpt('[B]uffer sort by [D]irectory'))

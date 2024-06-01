@@ -26,24 +26,4 @@ GKeymap.set('n', "<Leader>\\", function () tls.current_buffer_fuzzy_find(require
 GKeymap.set('n', "<Leader>fG", function () tls.live_grep { grep_open_files = true, prompt_title = 'Live Grep in Open Files' } end, { desc = '[F]ind Live [*G]rep in Open Files' })
 GKeymap.set('n', "<Leader>fv", function () tls.find_files { cwd = vim.fn.stdpath 'config' } end, { desc = '[F]ind Neo[V]im files'} )
 
-local plugin = 'Hello World'
-
-local notify = {
-    title = plugin,
-    on_open = function()
-        vim.notify("Attempting recovery.", vim.log.levels.WARN, { title = plugin })
-
-        local timer = vim.loop.new_timer()
-        timer:start(2000, 0, function()
-            vim.notify( { 'Fixing problem.', 'Plz wait...'}, "info", {
-                title = plugin,
-                timeout = 3000,
-                on_close = function ()
-                    vim.notify('Solved', nil, { title = plugin })
-                    vim.notify('Error code 0x0395AF', 1, { title = plugin })
-                end
-            })
-        end)
-    end
-}
 

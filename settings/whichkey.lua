@@ -102,7 +102,7 @@ wk.setup {
 
 wk.register {
   ['<leader>t'] = { name = '[T]abs Options', _ = 'which_key_ignore' },
-  ['<leader>/'] = { name = '[/] Quick Options', _ = 'which_key_ignore' },
+  ['<leader>/'] = { name = '[/] Commenter Options', _ = 'which_key_ignore' },
   ['<leader><leader>'] = { name = '[ ] More Options', _ = 'which_key_ignore' },
   ['<leader>a'] = { name = 'Code [A]ctions', _ = 'which_key_ignore' },
   ['<leader>b'] = { name = '[B]uffer Options', _ = 'which_key_ignore' },
@@ -111,5 +111,7 @@ wk.register {
   ['<leader>q'] = { name = '[Q]uick Options', _ = 'which_key_ignore' },
   ['<leader>s'] = { name = '[S]earch Options', _ = 'which_key_ignore' },
   ['<leader>v'] = { name = '[V]isual Mode Options', _ = 'which_key_ignore' },
+  ['<leader>f'] = { name = '[F]ind Options', _ = 'which_key_ignore' },
+  ['<leader><leader><leader>'] = { name = '[ ] Code Server Options', _ = 'which_key_ignore' },
 }
 

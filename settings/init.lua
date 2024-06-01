@@ -1,13 +1,16 @@
 local root = g_root .. 'settings/'
 
 dofile(root .. 'airline.lua')
-dofile(root .. 'coc.lua')
-dofile(root .. 'lsp.lua')
+
+--dofile(root .. 'coc.lua')
+dofile(root .. 'cmp.lua')
+
+
 --dofile(root .. 'transparent.lua')
 dofile(root .. 'barbar.lua')
 
 dofile(root .. 'cs.lua')
-dofile(root .. 'ale.lua')
+--dofile(root .. 'ale.lua')
 
 --dofile(root .. 'fzf.lua')
 dofile(root .. 'telescope.lua')
@@ -21,3 +24,6 @@ dofile(root .. 'md.lua')
 dofile(root .. 'live_server.lua')
 -- dofile(root .. 'onedark.lua')
 dofile(root .. 'catppuccin.lua')
+dofile(root .. 'lsp.lua')
+dofile(root .. 'ts.lua')
+

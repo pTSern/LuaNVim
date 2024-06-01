@@ -26,6 +26,32 @@ require("lazy").setup(
             require('mini.surround').setup()
           end,
         },
+        {
+            'hrsh7th/nvim-cmp',
+            event = 'InsertEnter',
+            dependencies = {
+                {
+                    'L3MON4D3/LuaSnip',
+                    build = (function()
+                      -- Build Step is needed for regex support in snippets.
+                      -- This step is not supported in many windows environments.
+                      -- Remove the below condition to re-enable on windows.
+                      if vim.fn.has 'win32' == 1 or vim.fn.executable 'make' == 0 then
+                        return
+                      end
+                      return 'make install_jsregexp'
+                    end)(),
+                    dependencies = {},
+                },
+                'saadparwaiz1/cmp_luasnip',
+
+                -- Adds other completion capabilities.
+                --  nvim-cmp does not ship with all sources by default. They are split
+                --  into multiple repos for maintenance purposes.
+                'hrsh7th/cmp-nvim-lsp',
+                'hrsh7th/cmp-path',
+            },
+        },
         --'tribela/vim-transparent',
         "preservim/nerdTree",                                                                                                                                                                                                                           -- File manager
         "vim-airline/vim-airline",                                                                                                                                                                                                                      -- Status bar
@@ -33,16 +59,14 @@ require("lazy").setup(
         "jackguo380/vim-lsp-cxx-highlight",                                                                                                                                                                                                             -- Cpp hightligh
         "LunarWatcher/auto-pairs",                                                                                                                                                                                                                      -- Auto Pairs
         "preservim/nerdcommenter",                                                                                                                                                                                                                      -- Commenter of nerdTree
-        {
-            "neoclide/coc.nvim",
-            branch = "release"
-        },                                                                                                                                                                                                    -- Language Server for faster code
-        "rafcamlet/coc-nvim-lua",                                                                                                                                                                                                                       -- Lua server
+        -- {
+        --     "neoclide/coc.nvim",
+        --     branch = "release"
+        -- },                                                                                                                                                                                                    -- Language Server for faster code
+        -- "rafcamlet/coc-nvim-lua",                                                                                                                                                                                                                       -- Lua server
         "lfv89/vim-interestingwords",                                                                                                                                                                                                                   -- Searching and highlight word with different color.
         "Xuyuanp/nerdtree-git-plugin",                                                                                                                                                                                                                  -- Git status for nerdTree
         "voldikss/vim-floaterm",                                                                                                                                                                                                                        -- Float terminal
-        --{"junegunn/fzf", build = "./install --bin"},
-        --{"ibhagwan/fzf-lua", dependencies = { "nvim-tree/nvim-web-devicons" }, config = function() require("fzf-lua").setup({}) end},
         "jreybert/vimagit",                                             -- Git status 
         "ryanoasis/vim-devicons",                                       -- Provide beauty icons
         "nvim-tree/nvim-web-devicons",                                  -- Other plugins for beauty icons
@@ -61,12 +85,11 @@ require("lazy").setup(
                 vim.o.timeout = true
                 vim.o.timeoutlen = 30
             end, opts = {} },                                                                                                                                                    -- Display key mapping helper
-        --"jinh0/eyeliner.nvim",
-        --"puremourning/vimspector",
         "nvim-lua/plenary.nvim",
         {
             'nvim-telescope/telescope.nvim',
-            tag = '0.1.5',
+            event = 'VimEnter',
+            branch = '0.1.x',
             dependencies = {
                 'nvim-lua/plenary.nvim',
                 {
@@ -77,13 +100,35 @@ require("lazy").setup(
                 'nvim-telescope/telescope-ui-select.nvim',
             }
         },                                                                                                                                                   -- Searching all files Like CRT-SHIFT-F
-        --{'nvim-treesitter/nvim-treesitter'},
         {
-            "williamboman/mason.nvim",                                                                                                                                                                                                                      -- 
-            "williamboman/mason-lspconfig.nvim",
-            "neovim/nvim-lspconfig",                                                                                                                                                                                                                        -- 
+            "neovim/nvim-lspconfig",
+            dependencies = {
+                { 'williamboman/mason.nvim', config = true }, -- NOTE: Must be loaded before dependants
+                "williamboman/mason-lspconfig.nvim",
+                'WhoIsSethDaniel/mason-tool-installer.nvim',
+                { 'j-hui/fidget.nvim', opts = {} },
+                { 'folke/neodev.nvim', opts = {} },
+            },
+            config = function()
+
+            end,
         },
-        'nvim-treesitter/nvim-treesitter',
+        {
+            'nvim-treesitter/nvim-treesitter',
+            build   = ":TSUpdate",
+            opts    = {
+                ensure_install  = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'vim', 'vimdoc', 'typescript', 'javascript', 'vue', 'css', 'cmake', 'cpp', 'c', 'c_sharp', 'json', 'comment'},
+                auto_install    = true,
+                highlight       = {
+                    enable          = true,
+                },
+                indent = { enable = true }
+            },
+            config = function(_, opts)
+                require('nvim-treesitter.install').prefer_git = true
+                require('nvim-treesitter.configs').setup(opts)
+            end
+        },
         {
             "iamcco/markdown-preview.nvim",
              cmd = {
@@ -95,13 +140,12 @@ require("lazy").setup(
             init = function() vim.g.mkdp_filetypes = { "markdown" } end,
             ft = { "markdown" }
         },              -- Live Markdown file
-        'OmniSharp/omnisharp-vim',                                                                                                                                                                                                                      -- Language server for CSharp
+            'OmniSharp/omnisharp-vim',                                                                                                                                                                                                                      -- Language server for CSharp
         {
             'barrett-ruth/live-server.nvim',
             build = 'yarn global add live-server',
             config = true 
         },                                                                                                                                                       -- Live server for html
-        'dense-analysis/ale',
         {
             'nicholasmata/nvim-dap-cs',
             dependencies = { 'mfussenegger/nvim-dap' } 
@@ -134,14 +178,36 @@ require("lazy").setup(
             config = true
         },
 
-        {
-            'j-hui/fidget.nvim',
-            opts = {}
+        { -- Autoformat
+          'stevearc/conform.nvim',
+          lazy = false,
+          keys = {
+            {
+              '<leader>f',
+              function()
+                require('conform').format { async = true, lsp_fallback = true }
+              end,
+              mode = '',
+              desc = '[F]ormat buffer',
+            },
+          },
+          opts = {
+            notify_on_error = false,
+            formatters_by_ft = {
+              lua = { 'stylua' },
+              -- Conform can also run multiple formatters sequentially
+              -- python = { "isort", "black" },
+              --
+              -- You can use a sub-list to tell conform to run *until* a formatter
+              -- is found.
+              javascript = { { "prettierd", "prettier" } },
+            },
+          },
         },
-
         {
-          'folke/neodev.nvim',
-          opts = {}
-        },
+            "pmizio/typescript-tools.nvim",
+            dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+            opts = {},
+        }
     }
 )
