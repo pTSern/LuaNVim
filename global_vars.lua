@@ -25,3 +25,7 @@ _G.qnmap = function(key, mechanic, desc)
 end
 
 
+_G.qvmap = function(key, mechanic, desc)
+    return GKeymap.set('v', key, mechanic, GQuickOpt(desc))
+end
+

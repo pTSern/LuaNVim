@@ -16,9 +16,15 @@ GOpts.rtp:prepend(lazypath)
 
 require("lazy").setup(
     {
-        { "catppuccin/nvim", name = "catppuccin" },                                                                                                                                                                                                     -- Main theme
+        --#region Theme
+        {
+            "catppuccin/nvim",
+            name = "catppuccin",
+        },
+        --#endregion
 
-        { -- Collection of various small independent plugins/modules
+        --#region Mini
+        {
           'echasnovski/mini.nvim',
           config = function()
             -- Better Around/Inside textobjects
@@ -26,6 +32,9 @@ require("lazy").setup(
             require('mini.surround').setup()
           end,
         },
+        --#endregion
+
+        --#region Auto Completion
         {
             'hrsh7th/nvim-cmp',
             event = 'InsertEnter',
@@ -52,24 +61,57 @@ require("lazy").setup(
                 'hrsh7th/cmp-path',
             },
         },
-        --'tribela/vim-transparent',
-        "preservim/nerdTree",                                                                                                                                                                                                                           -- File manager
+        --#endregion
+
+        --#region Transparent
+        {
+            --'tribela/vim-transparent',
+            'xiyaowong/transparent.nvim',
+            lazy = false
+        },
+        --#endregion
+
+        --#region Nerd Tree
+        {
+            "preservim/nerdTree",                                                                                                                                                                                                                           -- File manager
+        },
+        --#endregion
+
+        --#region Status line
         "vim-airline/vim-airline",                                                                                                                                                                                                                      -- Status bar
         "vim-airline/vim-airline-themes",                                                                                                                                                                                                               -- Theme for status bar
-        "jackguo380/vim-lsp-cxx-highlight",                                                                                                                                                                                                             -- Cpp hightligh
+        --#endregion
+
+        --#region Auto-pair code
         "LunarWatcher/auto-pairs",                                                                                                                                                                                                                      -- Auto Pairs
+        --#endregion
+
+        --#region Quick comment
         "preservim/nerdcommenter",                                                                                                                                                                                                                      -- Commenter of nerdTree
+        --#endregion
+
+        --#region Coc-vim (Now using LSP client instead)
         -- {
         --     "neoclide/coc.nvim",
         --     branch = "release"
         -- },                                                                                                                                                                                                    -- Language Server for faster code
         -- "rafcamlet/coc-nvim-lua",                                                                                                                                                                                                                       -- Lua server
+        --#endregion
+
+        --#region Highlight word
         "lfv89/vim-interestingwords",                                                                                                                                                                                                                   -- Searching and highlight word with different color.
-        "Xuyuanp/nerdtree-git-plugin",                                                                                                                                                                                                                  -- Git status for nerdTree
+        --#endregion
+
+        --#region Floating terminal
         "voldikss/vim-floaterm",                                                                                                                                                                                                                        -- Float terminal
-        "jreybert/vimagit",                                             -- Git status 
-        "ryanoasis/vim-devicons",                                       -- Provide beauty icons
+        --#endregion
+
+        --#region Web devicons
+        --"ryanoasis/vim-devicons",                                       -- Provide beauty icons
         "nvim-tree/nvim-web-devicons",                                  -- Other plugins for beauty icons
+        --#endregion
+
+        --#region Tab manager
         {
             'romgrk/barbar.nvim',
             dependencies = {
@@ -78,14 +120,24 @@ require("lazy").setup(
             }, init = function() vim.g.barbar_auto_setup = false end,
             opts = {}
         },                                                                            -- Manager buffer tab
+        --#endregion
+
+        --#region Show which key
         {
             "folke/which-key.nvim",
             event = "VeryLazy",
             init = function()
                 vim.o.timeout = true
                 vim.o.timeoutlen = 30
-            end, opts = {} },                                                                                                                                                    -- Display key mapping helper
+            end, opts = {}
+        },                                                                                                                                                    -- Display key mapping helper
+        --#endregion
+
+        --#region Support for Lua
         "nvim-lua/plenary.nvim",
+        --#endregion
+
+        --#region Better FZF 
         {
             'nvim-telescope/telescope.nvim',
             event = 'VimEnter',
@@ -100,19 +152,35 @@ require("lazy").setup(
                 'nvim-telescope/telescope-ui-select.nvim',
             }
         },                                                                                                                                                   -- Searching all files Like CRT-SHIFT-F
+        --#endregion
+
+        --#region LSP-Config
         {
             "neovim/nvim-lspconfig",
+            --lazy = false,
             dependencies = {
                 { 'williamboman/mason.nvim', config = true }, -- NOTE: Must be loaded before dependants
                 "williamboman/mason-lspconfig.nvim",
                 'WhoIsSethDaniel/mason-tool-installer.nvim',
                 { 'j-hui/fidget.nvim', opts = {} },
                 { 'folke/neodev.nvim', opts = {} },
+
+                --{ "ms-jpq/coq_nvim", branch = "coq" },
+                --{ "ms-jpq/coq.artifacts", branch = "artifacts" },
+                --{ "ms-jpq/coq.thirdparty", branch = "3p" },
             },
+            --init = function()
+            --    vim.g.coq_settings = {
+            --        auto_start = true
+            --    }
+            --end,
             config = function()
 
             end,
         },
+        --#endregion
+
+        --#region Paser generator tool
         {
             'nvim-treesitter/nvim-treesitter',
             build   = ":TSUpdate",
@@ -129,6 +197,9 @@ require("lazy").setup(
                 require('nvim-treesitter.configs').setup(opts)
             end
         },
+        --#endregion
+
+        --#region Markdown previewer
         {
             "iamcco/markdown-preview.nvim",
              cmd = {
@@ -139,17 +210,23 @@ require("lazy").setup(
             build = "cd app && yarn install",
             init = function() vim.g.mkdp_filetypes = { "markdown" } end,
             ft = { "markdown" }
-        },              -- Live Markdown file
-            'OmniSharp/omnisharp-vim',                                                                                                                                                                                                                      -- Language server for CSharp
-        {
-            'barrett-ruth/live-server.nvim',
-            build = 'yarn global add live-server',
-            config = true 
-        },                                                                                                                                                       -- Live server for html
-        {
-            'nicholasmata/nvim-dap-cs',
-            dependencies = { 'mfussenegger/nvim-dap' } 
         },
+
+        --#region CSharp
+        'OmniSharp/omnisharp-vim',                                                                                                                                                                                                                      -- Language server for CSharp
+        {
+            "iabdelkareem/csharp.nvim",
+            dependencies = {
+                "mfussenegger/nvim-dap",
+                "Tastyep/structlog.nvim",
+            },
+
+            config = function ()
+                require("mason").setup()
+                require("csharp").setup()
+            end
+        },
+        --#endregion
         'sheerun/vim-polyglot',
         {
             'utilyre/barbecue.nvim',
@@ -172,13 +249,8 @@ require("lazy").setup(
           },
         },
         'rcarriga/nvim-notify',
+        --#region Auto formating code
         {
-            'akinsho/git-conflict.nvim',
-            version = "*",
-            config = true
-        },
-
-        { -- Autoformat
           'stevearc/conform.nvim',
           lazy = false,
           keys = {
@@ -204,10 +276,70 @@ require("lazy").setup(
             },
           },
         },
+        --#endregion
+
+        --#region Typescript
         {
             "pmizio/typescript-tools.nvim",
             dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
             opts = {},
-        }
+        },
+        --#endregion
+
+        --#region GPT Model
+        --{
+        --    "Aaronik/GPTModels.nvim",
+        --    dependencies = {
+        --        "MunifTanjim/nui.nvim",
+        --        "nvim-telescope/telescope.nvim"
+        --    }
+        --},
+        --#endregion
+
+        --#region LSP-Saga
+        --{
+        --    'nvimdev/lspsaga.nvim',
+        --    config = function()
+        --        require('lspsaga').setup({})
+        --    end,
+        --},
+        --#endregion
+
+        --#region Git-Blame indicator when is the last commited, description and who
+        {
+            'f-person/git-blame.nvim'
+        },
+        --#endregion
+
+        --#region
+        {
+            'nvimdev/dashboard-nvim',
+            event = 'VimEnter',
+            config = function ()
+                require('dashboard').setup {
+
+                }
+            end
+        },
+        --#endregion
+
+        --#region Neogit provide git interface for easily contact with git
+        {
+            "NeogitOrg/neogit",
+            dependencies = {
+              "nvim-lua/plenary.nvim",         -- required
+              "sindrets/diffview.nvim",        -- optional - Diff integration
+              -- Only one of these is needed, not both.
+              "nvim-telescope/telescope.nvim", -- optional
+            },
+            config = true
+        },
+        --#endregion
+
+        --#region TMUX enhance workspace
+        --{
+        --    "aserowy/tmux.nvim",
+        --}
+        --#endregion
     }
 )
