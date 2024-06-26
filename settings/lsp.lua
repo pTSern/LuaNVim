@@ -53,11 +53,11 @@ vim.api.nvim_create_autocmd('LspAttach', {
           })
         end
 
-        if client and client.server_capabilities.inlayHintProvider and vim.lsp.inlay_hint then
-            map('<leader>th', function()
-              vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-            end, '[T]oggle Inlay [H]ints')
-        end
+        --if client and client.server_capabilities.inlayHintProvider and vim.lsp.inlay_hint then
+        --    qnmap('<leader>th', function()
+        --      vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+        --    end, '[T]oggle Inlay [H]ints')
+        --end
     end
 })
 
@@ -90,3 +90,113 @@ require('mason-lspconfig').setup {
 }
 require'lspconfig'.ast_grep.setup{}
 require'lspconfig'.astro.setup{}
+
+--#region DiagnosticSign
+
+vim.diagnostic.config(
+  {
+    virtual_text      = true,
+    signs             = true,
+    underline         = true,
+    update_in_insert  = true,
+    severity_sort     = false
+  }
+)
+
+local signs = { Error = "󰅚 ", Warn = "󰀪 ", Hint = "󰌶 ", Info = " " }
+for type, icon in pairs(signs) do
+  local hl = "DiagnosticSign" .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end
+
+--#endregion
+
+--#region Floating preview
+
+-- You will likely want to reduce updatetime which affects CursorHold
+-- note: this setting is global and should be set only once
+vim.o.updatetime = 250
+vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+  group = vim.api.nvim_create_augroup("float_diagnostic", { clear = true }),
+  callback = function ()
+    vim.diagnostic.open_float(nil, {focus=false})
+  end
+})
+
+--#endregion
+
+--#region Borders
+
+vim.cmd [[autocmd! ColorScheme * highlight NormalFloat guibg=#1f2335]]
+vim.cmd [[autocmd! ColorScheme * highlight FloatBorder guifg=white guibg=#1f2335]]
+
+local border = {
+      {"┏", "FloatBorder"},
+      {"━", "FloatBorder"},
+      {"┓", "FloatBorder"},
+      {"┃", "FloatBorder"},
+      {"┛", "FloatBorder"},
+      {"━", "FloatBorder"},
+      {"┗", "FloatBorder"},
+      {"┃", "FloatBorder"},
+}
+
+---- LSP settings (for overriding per client)
+--local handlers =  {
+--  ["textDocument/hover"] =  vim.lsp.with(vim.lsp.handlers.hover, {border = border}),
+--  ["textDocument/signatureHelp"] =  vim.lsp.with(vim.lsp.handlers.signature_help, {border = border }),
+--}
+
+-- Do not forget to use the on_attach function
+--require 'lspconfig'.tsserver.setup { handlers=handlers }
+
+-- To instead override globally
+local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
+function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
+  opts = opts or {}
+  opts.border = opts.border or border
+  return orig_util_open_floating_preview(contents, syntax, opts, ...)
+end
+
+--require 'lspconfig'.tsserver.setup {}
+
+--#endregion
+
+--#region completion Kinds
+
+local M = {}
+
+M.icons = {
+  Class = " ",
+  Color = " ",
+  Constant = " ",
+  Constructor = " ",
+  Enum = " ",
+  EnumMember = " ",
+  Field = "󰄶 ",
+  File = " ",
+  Folder = " ",
+  Function = " ",
+  Interface = "󰜰",
+  Keyword = "󰌆 ",
+  Method = "ƒ ",
+  Module = "󰏗 ",
+  Property = " ",
+  Snippet = "󰘍 ",
+  Struct = " ",
+  Text = " ",
+  Unit = " ",
+  Value = "󰎠 ",
+  Variable = " ",
+}
+
+function M.setup()
+  local kinds = vim.lsp.protocol.CompletionItemKind
+  for i, kind in ipairs(kinds) do
+    kinds[i] = M.icons[kind] or kind
+  end
+end
+
+return M
+
+--#endregion

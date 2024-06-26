@@ -21,6 +21,14 @@ require("transparent").setup({
                 "TelescopePromptBorder",
                 "SagaBorder",
                 "SagaNormal",
+
+                "WhichKey",
+                "WhichKeyNormal",
+                "WhichKeyBorder",
+
+                "Whichkey",
+                "WhichkeyNormal",
+                "WhichkeyBorder",
             },
             exclude_groups = {'CursorLine', 'CursorLineNr'}
         })
