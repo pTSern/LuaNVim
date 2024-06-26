@@ -27,11 +27,42 @@ cmp.setup {
         ['<C-Leader'] = cmp.mapping.complete {},
     },
 
-    sources = cmp.config.sources({
+    sources = cmp.config.sources(
+    {
         { name = 'nvim_lsp' },
         { name = 'luasnip' },
-    },  {
+        --{
+        --    name = 'dotenv',
+        --    option = {
+        --        path = '.',
+        --        load_shell = true,
+        --        item_kind = cmp.lsp.CompletionItemKind.Variable,
+        --        eval_on_confirm = false,
+        --        show_documentation = true,
+        --        show_content_on_docs = true,
+        --        documentation_kind = 'markdown',
+        --        dotenv_environment = '.*',
+        --        file_priority = function (a, b)
+        --            return a:upper() < b:upper()
+        --        end
+        --    }
+        --}
+    },
+    {
         { name = 'buffer' },
-    })
+    }),
+
+    sorting = {
+        comparators = {
+            cmp.config.compare.offset,
+            cmp.config.compare.exact,
+            cmp.config.compare.score,
+            require "cmp-under-comparator".under,
+            cmp.config.compare.kind,
+            cmp.config.compare.sort_text,
+            cmp.config.compare.length,
+            cmp.config.compare.order,
+        }
+    }
 }
 

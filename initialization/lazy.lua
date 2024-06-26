@@ -61,6 +61,12 @@ require("lazy").setup(
                 'hrsh7th/cmp-path',
             },
         },
+        {
+            "lukas-reineke/cmp-under-comparator"
+        },
+        --{
+        --    "SergioRibera/cmp-dotenv"
+        --},
         --#endregion
 
         --#region Transparent
