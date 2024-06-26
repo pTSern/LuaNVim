@@ -9,16 +9,19 @@ vim.api.nvim_create_autocmd('LspAttach', {
             vim.keymap.set('n', key, mechanic, { buffer = event.buf, desc = 'LSP: ' .. desc })
         end
 
+        local qsmap = function(k, m, d)
+            vim.keymap.set('n', k, ":w<CR><cmd> lua require('telescope.builtin')." .. m .. "()<CR>", { buffer = event.buf, desc = 'LSP: ' .. d })
+        end
+
         local tb = require('telescope.builtin')
         local vlb = vim.lsp.buf
 
-        qnmap('gd', tb.lsp_definitions, '[G]oto [D]efinition')
-        qnmap('gr', tb.lsp_references, '[G]oto [R]eferences')
-        qnmap('<C-g>', '<cmd>lua vim.lsp.buf.definition()<CR><C-w>T', '[G]oto [D]efinition')
-        qnmap('gi', tb.lsp_implementations, '[G]oto [I]mplement')
-        qnmap('gtd', tb.lsp_type_definitions, '[G]oto [T]ype [D]efinition')
-        qnmap('<leader>ds', tb.lsp_document_symbols, '[D]ocument [S]ymbols')
-        qnmap('<leader>hs', tb.lsp_dynamic_workspace_symbols, '[H] Workspace [S]ymbols')
+        qsmap('gd', "lsp_definitions", '[G]oto [D]efinition')
+        qsmap('gr', "lsp_references", '[G]oto [R]eferences')
+        qsmap('gi', "lsp_implementations", '[G]oto [I]mplement')
+        qsmap('gtd', "lsp_type_definitions", '[G]oto [T]ype [D]efinition')
+        qsmap('<leader>ds', "lsp_document_symbols", '[D]ocument [S]ymbols')
+        qsmap('<leader>hs', "lsp_dynamic_workspace_symbols", '[H] Workspace [S]ymbols')
         qnmap('<leader>rn', vlb.rename, '[R]e[n]ame')
         qnmap('<leader>ca', vlb.code_action, '[C]ode Action')
         qnmap('<M-CR>', vlb.code_action, '[C]ode Action')
