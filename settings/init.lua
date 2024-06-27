@@ -31,3 +31,5 @@ dofile(root .. 'dep_cmt_indicator.lua')
 --dofile(root .. 'GPTModel.lua')
 dofile(root .. 'git.lua')
 dofile(root .. 'tmux.lua')
+
+dofile(root .. 'projects.lua')

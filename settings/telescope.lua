@@ -1,8 +1,21 @@
+
+--GGlobal.rooter_cd_cmd = 'lcd'
+
 require('telescope').setup {
     extensions = {
         ['ui-select'] = {
             require('telescope.themes').get_dropdown(),
         },
+        --repo = {
+        --    list = {
+        --        fd_opts = {
+        --            '--no-ignore-vcs',
+        --        },
+        --        search_dirs = {
+        --            "~/my_projects"
+        --        }
+        --    }
+        --}
     },
 }
 
@@ -10,6 +23,8 @@ local tls = require('telescope.builtin')
 
 pcall(require('telescope').load_extension, 'fzf')
 pcall(require('telescope').load_extension, 'ui-select')
+pcall(require('telescope').load_extension, 'project')
+--require('telescope').extensions.project.project{}
 
 local qs = _G.qnmap
 
@@ -47,3 +62,6 @@ qs("<Leader>vc", function ()
         find_command = { 'rg', '--files', '--hidden', '--glob', '!.git' }
     }
 end, 'Find [V]im [C]onfig File')
+
+--require('telescope').load_extension'repo'
+
