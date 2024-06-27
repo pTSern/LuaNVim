@@ -156,8 +156,14 @@ require("lazy").setup(
                     cond = function () return vim.fn.executable 'make' == 1 end
                 },
                 'nvim-telescope/telescope-ui-select.nvim',
+                'nvim-telescope/telescope-project.nvim',
+                "nvim-telescope/telescope-file-browser.nvim"
             }
-        },                                                                                                                                                   -- Searching all files Like CRT-SHIFT-F
+        },
+        --{
+        --    "cljoly/telescope-repo.nvim"
+        --},
+        -- Searching all files Like CRT-SHIFT-F
         --#endregion
 
         --#region LSP-Config
@@ -294,6 +300,9 @@ require("lazy").setup(
 
         --#region GPT Model
         --{
+        --    "robitx/gp.nvim",
+        --},
+        --{
         --    "Aaronik/GPTModels.nvim",
         --    dependencies = {
         --        "MunifTanjim/nui.nvim",
@@ -346,6 +355,13 @@ require("lazy").setup(
         --{
         --    "aserowy/tmux.nvim",
         --}
+        --#endregion
+
+        --#region Project Manager
+        --{
+        --    "pluffie/neoproj",
+        --    cmd = { "ProjectOpen", "ProjectNew" },
+        --},
         --#endregion
     }
 )

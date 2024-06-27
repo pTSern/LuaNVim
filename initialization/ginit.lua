@@ -15,7 +15,7 @@ if _G.gui == 'neovide' then
 
 	GGlobal.neovide_no_idle = true
 	GGlobal.neovide_cursor_vfx_mode = 'railgun'
-	GGlobal.neovide_fullscreen = true
+	GGlobal.neovide_fullscreen = false
 
 elseif _G.gui == 'qt' then
 	_G.transparent(false)
