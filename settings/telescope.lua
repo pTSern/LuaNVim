@@ -51,6 +51,8 @@ qs("<Leader>gh", tls.git_stash, "[G]it stas[H]")
 qs("<Leader>gb", tls.git_branches, "[G]it [B]ranches")
 qs("<Leader>gf", tls.git_files,  '[G]it [F]iles' )
 
+qs("<Leader>pm", [[:Telescope project <CR>]],  '[P]roject [M]anager' )
+
 qs("<Leader>\\", function () tls.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {windblend = 10, preview = true}) end, '[\\] Fuzzily search in current buffer')
 qs("<Leader>fG", function () tls.live_grep { grep_open_files = true, prompt_title = 'Live Grep in Open Files' } end, '[F]ind Live [*G]rep in Open Files')
 qs("<Leader>fv", function () tls.find_files { cwd = vim.fn.stdpath 'config' } end, '[F]ind Neo[V]im files')

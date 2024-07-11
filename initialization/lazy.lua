@@ -21,6 +21,7 @@ require("lazy").setup(
             "catppuccin/nvim",
             name = "catppuccin",
         },
+        "NvChad/nvim-colorizer.lua",
         --#endregion
 
         --#region Mini

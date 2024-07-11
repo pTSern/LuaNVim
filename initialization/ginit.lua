@@ -13,9 +13,13 @@ if _G.gui == 'neovide' then
 	GGlobal.neovide_transparency = 0.90
 	GGlobal.neovide_show_border = true
 
+	local cursor_vfx_modes = { "railgun", "wireframe", "sonicboom", "pixiedust", "torpedo" }
+	local rand_cursor_vfx = cursor_vfx_modes[math.random(#cursor_vfx_modes)]
+
 	GGlobal.neovide_no_idle = true
-	GGlobal.neovide_cursor_vfx_mode = 'railgun'
+	GGlobal.neovide_cursor_vfx_mode = rand_cursor_vfx;
 	GGlobal.neovide_fullscreen = false
+	GGlobal.neovide_scroll_animation_length = 0.3
 
 elseif _G.gui == 'qt' then
 	_G.transparent(false)
