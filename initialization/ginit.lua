@@ -10,7 +10,7 @@ GCmd.colorscheme(_G.colorscheme)
 if _G.gui == 'neovide' then
 	_G.transparent(false)
 
-	GGlobal.neovide_transparency = 0.90
+	GGlobal.neovide_transparency = 0.80
 	GGlobal.neovide_show_border = true
 
 	local cursor_vfx_modes = { "railgun", "wireframe", "sonicboom", "pixiedust", "torpedo" }
