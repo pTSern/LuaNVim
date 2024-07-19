@@ -78,9 +78,21 @@ require("lazy").setup(
         },
         --#endregion
 
-        --#region Nerd Tree
+        --#region File manager
         {
-            "preservim/nerdTree",                                                                                                                                                                                                                           -- File manager
+            --"preservim/nerdTree",                                                                                                                                                                                                                           -- File manager
+            'ms-jpq/chadtree',
+            branch = 'chad',
+            build = 'python3 -m chadtree deps'
+
+        },
+        --#endregion
+
+        --#region Dianostics
+        {
+            "folke/trouble.nvim",
+            opts = {},
+            cmd = "Trouble"
         },
         --#endregion
 
@@ -105,8 +117,9 @@ require("lazy").setup(
         -- "rafcamlet/coc-nvim-lua",                                                                                                                                                                                                                       -- Lua server
         --#endregion
 
-        --#region Highlight word
-        "lfv89/vim-interestingwords",                                                                                                                                                                                                                   -- Searching and highlight word with different color.
+        --#region Searching
+        "lfv89/vim-interestingwords",
+        "nvim-pack/nvim-spectre",
         --#endregion
 
         --#region Floating terminal
@@ -247,7 +260,7 @@ require("lazy").setup(
             version = "*",
             dependencies = {
                 "SmiteshP/nvim-navic",
-                "nvim-tree/nvim-web-devicons" } 
+                "nvim-tree/nvim-web-devicons" }
         },
         {
           "folke/flash.nvim",
@@ -268,12 +281,12 @@ require("lazy").setup(
           lazy = false,
           keys = {
             {
-              '<leader>f',
+              '<leader>fb',
               function()
                 require('conform').format { async = true, lsp_fallback = true }
               end,
               mode = '',
-              desc = '[F]ormat buffer',
+              desc = '[F]ormat [B]uffer',
             },
           },
           opts = {
