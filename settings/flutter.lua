@@ -7,7 +7,7 @@ if flutter ~= nil then
         ui = {
             -- single | shadow
             border = 'rounded',
-            notification_style = 'native' | 'plugin'
+            notification_style = 'native'
         },
 
         decorations = {
@@ -30,7 +30,6 @@ if flutter ~= nil then
         },
 
         flutter_path = "%localappdata%\\js-frameworks\\flutter",
-        flutter_lookup_cmd = "%localappdata%\\js-frameworks\\flutter\\bin",
         root_patterns = { ".git", "pubspec.yaml" },
         fvm = false,
         widget_guides = {
@@ -52,13 +51,19 @@ if flutter ~= nil then
             auto_open = false
         },
 
-        name = "pTSern",
-        flavor = "pTSFlavor",
+        {
+            name = "pTSern",
+            flavor = "pTSFlavor",
 
-        target = 'lib/main_dev.dart',
-        device = 'pixel5pro',
-        dart_define = {  },
-        dart_define_from_file = 'config.json'
+            target = 'lib/main_dev.dart',
+            device = 'pixel5pro',
+            dart_define = {
+                IS_DEV = true
+            },
+            dart_define_from_file = 'config.json'
+        },
     } )
 
+    require('telescope').load_extension("flutter")
 end
+

@@ -33,3 +33,4 @@ dofile(root .. 'git.lua')
 dofile(root .. 'tmux.lua')
 
 dofile(root .. 'projects.lua')
+dofile(root .. 'flutter.lua')
