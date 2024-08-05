@@ -1,3 +1,4 @@
+if _G.target_cmp == 'cmp' then
 
 local cmp = require 'cmp'
 local ls = require 'luasnip'
@@ -6,7 +7,9 @@ ls.config.setup {}
 
 cmp.setup {
     snippet = {
-        expand = function(args) ls.lsp_expand(args.body) end,
+        expand = function(args)
+            ls.lsp_expand(args.body)
+        end
     },
 
     completion = { completeopt = 'menu, menuone, noinsert' },
@@ -66,3 +69,44 @@ cmp.setup {
     }
 }
 
+else
+
+    GGlobal.coq_settings = {
+        keymap = {
+            recommended = false
+        },
+
+      display = {
+        ghost_text = {
+          enabled = false,
+          context = {}
+        }
+      }
+    }
+
+    GGlobal.coq_settings.display.ghost_text.enabled = false
+    vim.cmd [[ COQnow -s ]]
+    function qki(key, mechanic, desc)
+      vim.api.nvim_set_keymap('i', key, mechanic, { expr = true, silent = true, desc = desc })
+    end
+
+    function qkn(key, mechanic, desc)
+      vim.api.nvim_set_keymap('i', key, mechanic, { expr = true, silent = true, desc = desc })
+    end
+
+    qki('<ESC>', [[ pumvisible() ? "\<C-e><ESC>" : "\<ESC>" ]], '')
+    qki('<C-c>', [[ pumvisible() ? "\<C-e><C-c>" : "\<C-c>" ]], '')
+    qki('<BS>', [[ pumvisible() ? "\<C-e><BS>" : "\<BS>"]], '')
+    qki('<CR>', [[ pumvisible() ? (complete_info().selected == -1 ? "\<C-e><CR>" : "\<C-y>") : "\<CR>"]], '')
+    qki('<TAB>', [[ pumvisible() ? "\<C-n>" : "\<Tab>"]], '')
+
+    qki('<C-j>', [[ pumvisible() ? "\<C-n>" : "\<Tab>"]], '')
+    qki('<C-k>', [[pumvisible() ? "\<C-p>" : "\<BS>"]], '')
+
+    vim.api.nvim_set_hl(0, 'COQMenuSel', {bg = '#555555', fg = '#ffffff'})
+    vim.api.nvim_set_hl(0, 'COQCompletion', {bg = '#333333', fg = '#ffffff'})
+    vim.api.nvim_set_hl(0, 'COQSnipSel', {bg = '#444444', fg = '#ffffff'})
+    vim.api.nvim_set_hl(0, 'COQSnip', {bg = '#333333', fg = '#ffffff'})
+    vim.api.nvim_set_hl(0, 'COQDoc', {bg = '#222222', fg = '#ffffff'})
+
+end

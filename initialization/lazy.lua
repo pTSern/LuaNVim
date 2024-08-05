@@ -10,6 +10,7 @@ if not vim.loop.fs_stat(lazypath) then
     lazypath,
   })
 end
+
 GOpts.rtp:prepend(lazypath)
 
 -- INSTALL PLUGINS
@@ -35,40 +36,7 @@ require("lazy").setup(
         },
         --#endregion
 
-        --#region Auto Completion
-        {
-            'hrsh7th/nvim-cmp',
-            event = 'InsertEnter',
-            dependencies = {
-                {
-                    'L3MON4D3/LuaSnip',
-                    build = (function()
-                      -- Build Step is needed for regex support in snippets.
-                      -- This step is not supported in many windows environments.
-                      -- Remove the below condition to re-enable on windows.
-                      if vim.fn.has 'win32' == 1 or vim.fn.executable 'make' == 0 then
-                        return
-                      end
-                      return 'make install_jsregexp'
-                    end)(),
-                    dependencies = {},
-                },
-                'saadparwaiz1/cmp_luasnip',
 
-                -- Adds other completion capabilities.
-                --  nvim-cmp does not ship with all sources by default. They are split
-                --  into multiple repos for maintenance purposes.
-                'hrsh7th/cmp-nvim-lsp',
-                'hrsh7th/cmp-path',
-            },
-        },
-        {
-            "lukas-reineke/cmp-under-comparator"
-        },
-        --{
-        --    "SergioRibera/cmp-dotenv"
-        --},
-        --#endregion
 
         --#region Transparent
         {
@@ -186,23 +154,73 @@ require("lazy").setup(
             --lazy = false,
             dependencies = {
                 { 'williamboman/mason.nvim', config = true }, -- NOTE: Must be loaded before dependants
+
                 "williamboman/mason-lspconfig.nvim",
                 'WhoIsSethDaniel/mason-tool-installer.nvim',
                 { 'j-hui/fidget.nvim', opts = {} },
                 { 'folke/neodev.nvim', opts = {} },
-
-                --{ "ms-jpq/coq_nvim", branch = "coq" },
-                --{ "ms-jpq/coq.artifacts", branch = "artifacts" },
-                --{ "ms-jpq/coq.thirdparty", branch = "3p" },
             },
-            --init = function()
-            --    vim.g.coq_settings = {
-            --        auto_start = true
-            --    }
-            --end,
-            config = function()
 
+            config = function()
             end,
+        },
+        --#endregion
+
+
+        --#region Auto Completion
+        --{
+        --    'ms-jpq/coq_nvim',
+        --    branch = 'coq',
+        --    run = ':COQdeps',
+
+        --    dependencies = {
+        --        "neovim/nvim-lspconfig",
+        --        { "ms-jpq/coq.artifacts", branch = "artifacts" },
+        --        { "ms-jpq/coq.thirdparty", branch = "3p" },
+        --    },
+
+        --    init = function()
+        --        vim.g.coq_settings = {
+        --            auto_start = true
+
+        --        }
+        --    end,
+        --    --config = function ()
+        --    --    require("coq").setup {
+
+        --    --    }
+        --    --end,
+
+        --},
+        {
+            'hrsh7th/nvim-cmp',
+            event = 'InsertEnter',
+            dependencies = {
+                {
+                    'L3MON4D3/LuaSnip',
+                    build = (function()
+                      -- Build Step is needed for regex support in snippets.
+                      -- This step is not supported in many windows environments.
+                      -- Remove the below condition to re-enable on windows.
+                      if vim.fn.has 'win32' == 1 or vim.fn.executable 'make' == 0 then
+                        return
+                      end
+                      return 'make install_jsregexp'
+                    end)(),
+                    dependencies = {},
+                },
+                'saadparwaiz1/cmp_luasnip',
+
+                -- Adds other completion capabilities.
+                --  nvim-cmp does not ship with all sources by default. They are split
+                --  into multiple repos for maintenance purposes.
+                'hrsh7th/cmp-nvim-lsp',
+                'hrsh7th/cmp-path',
+                'hrsh7th/cmp-buffer',
+            },
+        },
+        {
+            "lukas-reineke/cmp-under-comparator"
         },
         --#endregion
 
@@ -363,6 +381,7 @@ require("lazy").setup(
             },
             config = true
         },
+
         --#endregion
 
         --#region TMUX enhance workspace
@@ -377,5 +396,18 @@ require("lazy").setup(
         --    cmd = { "ProjectOpen", "ProjectNew" },
         --},
         --#endregion
+
+        --#region Flutter
+        {
+            'akinsho/flutter-tools.nvim',
+            lazy = false,
+            dependencies = {
+                'nvim-lua/plenary.nvim',
+                'stevearc/dressing.nvim'
+            },
+            config = true
+        }
+        --#endregion
     }
 )
+

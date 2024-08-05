@@ -3,7 +3,6 @@ vim.g.ale_linters = {
     javascript = {'flow-language-server'},
     typescript = {'eslint', 'tsserver', 'typecheck'}
 }
-}
 
 vim.b.ale_linters = {'cs', 'flow-language-server'}
 

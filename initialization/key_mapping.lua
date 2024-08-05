@@ -47,8 +47,6 @@ GKeymap.set("n", "<C-0>", ':exe "normal \\<C-W>=" <CR>', GDfgConfig)
 
 GKeymap.set("i", "<C-Up>", "<ESC>:m .-2<CR>==gi", GDfgConfig)
 GKeymap.set("i", "<C-Down>", "<ESC>:m .+1<CR>==gi", GDfgConfig)
-GKeymap.set("i", "<C-k>", "<ESC>:m .-2<CR>==gi", GDfgConfig)
-GKeymap.set("i", "<C-j>", "<ESC>:m .+1<CR>==gi", GDfgConfig)
 
 GKeymap.set("v", "<C-/>", "^<C-v>I//<ESC>", GDfgConfig)
 GKeymap.set("v", "<C-k>", ":m '>-2<CR>gv=gv", GDfgConfig)

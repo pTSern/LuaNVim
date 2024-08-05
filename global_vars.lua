@@ -23,6 +23,9 @@ _G.qnmap = function(key, mechanic, desc)
     return GKeymap.set('n', key, mechanic, GQuickOpt(desc))
 end
 
+_G.qimap = function(key, mechanic, desc)
+    return GKeymap.set('i', key, mechanic, GQuickOpt(desc))
+end
 
 _G.qvmap = function(key, mechanic, desc)
     return GKeymap.set('v', key, mechanic, GQuickOpt(desc))
@@ -48,3 +51,5 @@ _G.transparent = function(on)
     end
 end
 
+-- coq | cmp
+_G.target_cmp = 'cmp'

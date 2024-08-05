@@ -72,3 +72,9 @@ GKeymap.set('n', '<Leader><Leader>c', [[:lua toggle(pTS.cursor.column, function(
 GKeymap.set('n', '<Leader><Leader>l', [[:lua toggle(pTS.cursor.line, function() pTS.cursor.line = not pTS.cursor.line end, function() vim.wo.cursorline = false notify('Cursor line: OFF') end, function() vim.wo.cursorline = true notify('Cursor line: ON') end)<CR>]], GQuickOpt('[ ] Toggle cursor [L]ine'))
 GKeymap.set('n', '<Leader><Leader>w', [[:lua toggle(pTS.wrap, function() pTS.wrap = not pTS.wrap end, function() GOpts.wrap = false notify('Wrap line mode: OFF') end, function() GOpts.wrap = true notify('Wrap line mode: ON') end)<CR>]], GQuickOpt('[ ] Toggle [W]rap line mode'))
 
+_G.qnmap('<Leader>qg', '<ESC>ipublic<ESC>', '[Q]uick [G]lobal (public) key' )
+_G.qnmap('<Leader>qm', '<ESC>iprotected<ESC>', '[Q]uick [M]ember (protected) key' )
+_G.qnmap('<Leader>qp', '<ESC>iprivate<ESC>', '[Q]uick [P]rivate key' )
+
+_G.qnmap('<Leader><Leader>cp', '<ESC>i@property()<ESC>i', '[C]ocos Creator [P]roperty key' )
+

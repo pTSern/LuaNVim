@@ -119,19 +119,23 @@ wk.setup {
   },
 }
 
-wk.register {
-  ['<leader>t'] = { name = '[T]abs Options', _ = 'which_key_ignore' },
-  ['<leader>/'] = { name = '[/] Commenter Options', _ = 'which_key_ignore' },
-  ['<leader><leader>'] = { name = '[ ] More Options', _ = 'which_key_ignore' },
-  ['<leader>a'] = { name = 'Code [A]ctions', _ = 'which_key_ignore' },
-  ['<leader>b'] = { name = '[B]uffer Options', _ = 'which_key_ignore' },
-  ['<leader>c'] = { name = '[C]ode Options', _ = 'which_key_ignore' },
-  ['<leader>l'] = { name = '[L]ive Options', _ = 'which_key_ignore' },
-  ['<leader>q'] = { name = '[Q]uick Options', _ = 'which_key_ignore' },
-  ['<leader>s'] = { name = '[S]earch Options', _ = 'which_key_ignore' },
-  ['<leader>v'] = { name = '[V]isual Mode Options', _ = 'which_key_ignore' },
-  ['<leader>f'] = { name = '[F]ind Options', _ = 'which_key_ignore' },
-  ['<leader><leader><leader>'] = { name = '[ ] Code Server Options', _ = 'which_key_ignore' },
+function quick_wk(key, desc)
+  return { key, desc = desc, 'n' }
+end
+
+wk.add {
+  quick_wk('<leader>t', '[T]abs Options'),
+  quick_wk('<leader>/', '[/] Commenter Options'),
+  quick_wk('<leader><leader>', '[ ] More Options'),
+  quick_wk('<leader>a', 'Code [A]ctions'),
+  quick_wk('<leader>b', '[B]uffer Options'),
+  quick_wk('<leader>c', '[C]ode Options'),
+  quick_wk('<leader>l', '[L]ive Options'),
+  quick_wk('<leader>q', '[Q]uick Options'),
+  quick_wk('<leader>s', '[S]earch Options'),
+  quick_wk('<leader>v', '[V]isual Mode Options'),
+  quick_wk('<leader>f', '[F]ind Options'),
+  quick_wk('<leader><leader><leader>', '[ ] Code Server Options'),
 }
 
 if(_G.is_transparent) then
