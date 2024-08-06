@@ -403,9 +403,9 @@ require("lazy").setup(
             lazy = false,
             dependencies = {
                 'nvim-lua/plenary.nvim',
-                'stevearc/dressing.nvim'
+                'stevearc/dressing.nvim', -- optional for vim.ui.select
             },
-            config = true
+            config = true,
         }
         --#endregion
     }

@@ -29,11 +29,13 @@ if flutter ~= nil then
             end,
         },
 
-        flutter_path = "%localappdata%\\js-frameworks\\flutter",
+        --flutter_path = os.getenv("LOCALAPPDATA") .. "\\js-frameworks\\flutter",
+        --flutter_lookup_cmd = os.getenv("LOCALAPPDATA") .. "\\js-frameworks\\flutter",
+        --flutter_path = os.getenv("LOCALAPPDATA") .. "\\js-frameworks\\flutter\\",
         root_patterns = { ".git", "pubspec.yaml" },
         fvm = false,
         widget_guides = {
-            enabled = false,
+            enabled = true,
         },
         closing_tags = {
             highlight = 'ErrorMsg',
@@ -65,5 +67,6 @@ if flutter ~= nil then
     } )
 
     require('telescope').load_extension("flutter")
+
 end
 

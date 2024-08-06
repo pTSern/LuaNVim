@@ -1,5 +1,7 @@
-require'lspconfig'.pyright.setup{}
-require'lspconfig'.tsserver.setup{}
+local lspcfg = require('lspconfig')
+
+lspcfg.pyright.setup{}
+lspcfg.tsserver.setup{}
 
 vim.api.nvim_create_autocmd('LspAttach', {
     group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
@@ -64,7 +66,15 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
 
 local servers = {
-    lua_ls = { settings = { Lua = { completion = { callSnippet = 'Replace', }, }, }, },
+    lua_ls = {
+      settings = {
+        Lua = {
+          completion = {
+            callSnippet = 'Replace',
+          },
+        },
+      },
+    },
 }
 
 require('mason').setup()
@@ -75,26 +85,68 @@ vim.list_extend(ensure_installed, {
 })
 require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
-if _G.target_cmp == 'cmp' then
-  local capabilities = vim.lsp.protocol.make_client_capabilities()
-  capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
-  require('mason-lspconfig').setup {
-    handlers = {
-      function(server_name)
-        local server = servers[server_name] or {}
-        -- This handles overriding only values explicitly passed
-        -- by the server configuration above. Useful when disabling
-        -- certain features of an LSP (for example, turning off formatting for tsserver)
-        server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-        require('lspconfig')[server_name].setup(server)
-      end,
-    },
+require('mason-lspconfig').setup {
+  handlers = {
+    function(server_name)
+      local server = servers[server_name] or {}
+      -- This handles overriding only values explicitly passed
+      -- by the server configuration above. Useful when disabling
+      -- certain features of an LSP (for example, turning off formatting for tsserver)
+      server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
+      require('lspconfig')[server_name].setup(server)
+    end,
+  },
+}
+
+local dartExcludedFolders = {
+    vim.fn.expand("$LOCALAPPDATA/Pub/Cache"),
+    vim.fn.expand("$LOCALAPPDATA/js-frameworks/flutter/")
+}
+
+lspcfg.dcmls.setup {
+  capabilities = capabilities,
+  cmd = {
+    "dcm",
+    "start-server",
+  },
+  filetypes = { "dart", "yaml" },
+  settings = {
+    dart = {
+      analysisExcludedFolders = dartExcludedFolders,
+    }
   }
-end
+}
 
-require'lspconfig'.ast_grep.setup{}
-require'lspconfig'.astro.setup{}
+lspcfg.dartls.setup {
+  capabilities = capabilities,
+  --cmd = {
+  --  os.getenv("LOCALAPPDATA") .. "\\js-frameworks\\flutter\\bin\\dart.bat",
+  --  "language-server",
+  --  "--protocol=lsp"
+  --},
+  filetypes = { "dart" },
+  init_options = {
+    onlyAnalyzeProjectsWithOpenFiles = false,
+		suggestFromUnimportedLibraries = true,
+		closingLabels = true,
+		outline = false,
+		flutterOutline = false,
+  },
+  settings = {
+    dart = {
+      analysisExcludedFolders = dartExcludedFolders,
+			updateImportsOnRename = true,
+			completeFunctionCalls = true,
+			showTodos = true,
+    }
+  }
+}
+
+lspcfg.ast_grep.setup{}
+lspcfg.astro.setup{}
 
 --#region DiagnosticSign
 
