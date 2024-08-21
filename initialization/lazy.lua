@@ -22,18 +22,27 @@ require("lazy").setup(
             "catppuccin/nvim",
             name = "catppuccin",
         },
-        "NvChad/nvim-colorizer.lua",
-        --#endregion
+        {
+            "NvChad/nvim-colorizer.lua"
+        },
+        --Web devicons
+        --"ryanoasis/vim-devicons",                                       -- Provide beauty icons
+        {
+            "nvim-tree/nvim-web-devicons",                                  -- Other plugins for beauty icons
+        },
 
-        --#region Mini
         {
           'echasnovski/mini.nvim',
           config = function()
             -- Better Around/Inside textobjects
             require('mini.ai').setup { n_lines = 500 }
             require('mini.surround').setup()
+            require('mini.icons').setup()
           end,
         },
+        'echasnovski/mini.ai',
+        'echasnovski/mini.surround',
+        'echasnovski/mini.icons',
         --#endregion
 
 
@@ -94,10 +103,7 @@ require("lazy").setup(
         "voldikss/vim-floaterm",                                                                                                                                                                                                                        -- Float terminal
         --#endregion
 
-        --#region Web devicons
-        --"ryanoasis/vim-devicons",                                       -- Provide beauty icons
-        "nvim-tree/nvim-web-devicons",                                  -- Other plugins for beauty icons
-        --#endregion
+
 
         --#region Tab manager
         {
@@ -114,10 +120,97 @@ require("lazy").setup(
         {
             "folke/which-key.nvim",
             event = "VeryLazy",
-            init = function()
-                vim.o.timeout = true
-                vim.o.timeoutlen = 30
-            end, opts = {}
+            opts = {
+                plugins = {
+                  marks = true, -- shows a list of your marks on ' and `
+                  registers = true, -- shows your registers on " in NORMAL or <C-r> in INSERT mode
+                  -- the presets plugin, adds help for a bunch of default keybindings in Neovim
+                  -- No actual key bindings are created
+                  spelling = {
+                    enabled = true, -- enabling this will show WhichKey when pressing z= to select spelling suggestions
+                    suggestions = 20, -- how many suggestions should be shown in the list?
+                  },
+                  presets = {
+                    operators = true, -- adds help for operators like d, y, ...
+                    motions = true, -- adds help for motions
+                    text_objects = true, -- help for text objects triggered after entering an operator
+                    windows = true, -- default bindings on <c-w>
+                    nav = true, -- misc bindings to work with windows
+                    z = true, -- bindings for folds, spelling and others prefixed with z
+                    g = true, -- bindings for prefixed with g
+                  },
+                },
+
+                layout = {
+                  height = { min = 4, max = 25 }, -- min and max height of the columns
+                  width = { min = 20, max = 50 }, -- min and max width of the columns
+                  spacing = 3, -- spacing between columns
+                  align = "left", -- align columns left, center or right
+                },
+
+                sort = { "local", "order", "group", "alphanum", "mod" },
+
+                expand = 0,
+
+                replace = {
+                  key = {
+                    function(key)
+                      return require("which-key.view").format(key)
+                    end,
+                  },
+                  desc = {
+                    { "<Plug>%(?(.*)%)?", "%1" },
+                    { "^%+", "" },
+                    { "<[cC]md>", "" },
+                    { "<[cC][rR]>", "" },
+                    { "<[sS]ilent>", "" },
+                    { "^lua%s+", "" },
+                    { "^call%s+", "" },
+                    { "^:%s*", "" },
+                    { "<[lL]eader>", "␣"},
+                    { "<[sS]pace>", "␣"},
+                  },
+                },
+
+
+                show_help = true,
+                show_keys = true,
+
+                disable = {
+                  ft = {},
+                  bt = {},
+                },
+
+                debug = false,
+
+                keys = {
+                  scroll_down = "<c-j>", -- binding to scroll down inside the popup
+                  scroll_up = "<c-k>", -- binding to scroll up inside the popup
+                },
+                icons = {
+                  breadcrumb = " » ", -- symbol used in the command line area that shows your active key combo
+                  separator = "| ", -- symbol used between a key and it's label
+                  group = "➤ ", -- symbol prepended to a group
+                  ellipsis = "…",
+                  mappings = true,
+                  rules = {},
+                  colors = true,
+                  keys = {
+                    Up = "",
+                    Down = "",
+                    Left = "",
+                    Right = "",
+                    CR = "⏎",
+                    Esc = "X",
+                    ScrollWheelDown = "⬇️",
+                    ScrollWheelUp = "⬆️",
+                    BS = "⌫",
+                    Space = "␣",
+                    Tab = "⇥",
+                    NL = "@"
+                  },
+                },
+            }
         },                                                                                                                                                    -- Display key mapping helper
         --#endregion
 
@@ -352,12 +445,6 @@ require("lazy").setup(
         --},
         --#endregion
 
-        --#region Git-Blame indicator when is the last commited, description and who
-        {
-            'f-person/git-blame.nvim'
-        },
-        --#endregion
-
         --#region
         {
             'nvimdev/dashboard-nvim',
@@ -370,7 +457,8 @@ require("lazy").setup(
         },
         --#endregion
 
-        --#region Neogit provide git interface for easily contact with git
+        --#region Git
+        -- Neogit provide git interface for easily contact with git
         {
             "NeogitOrg/neogit",
             dependencies = {
@@ -382,6 +470,19 @@ require("lazy").setup(
             config = true
         },
 
+        -- Git-Blame indicator when is the last commited, description and who
+        {
+            'f-person/git-blame.nvim'
+        },
+
+        {
+            'akinsho/git-conflict.nvim',
+            version = "*",
+            config = true,
+            opts = {
+                default_mappings = false,
+            }
+        },
         --#endregion
 
         --#region TMUX enhance workspace

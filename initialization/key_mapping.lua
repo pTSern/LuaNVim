@@ -32,6 +32,8 @@ GKeymap.set("n", "<Leader>//", "i/**<CR>*/<ESC>0xko", GQuickOpt("[/][/] Quick co
 GKeymap.set("n", "<C-/>", "^i//<ESC>", GDfgConfig)
 GKeymap.set("n", "<Leader>bn", ":enew<CR>", GQuickOpt("[B]uffer [N]ew"))
 
+GKeymap.set("n", "gb", "`'", GQuickOpt("[G]o [B]ack"))
+
 GKeymap.set("n", "<M-Down>", "<C-w>p<C-e><C-w>p")
 GKeymap.set("n", "<M-Up>", "<C-w>p<C-y><C-w>p")
 GKeymap.set("i", "<M-Down>", "<Esc><C-w>p<C-e><C-w>pi")
