@@ -22,13 +22,43 @@ require("lazy").setup(
             "catppuccin/nvim",
             name = "catppuccin",
         },
+        --{
+        --    "NvChad/base46",
+        --    build = function()
+        --        --require('base46').loadd_all_highlights()
+        --    end
+        --},
+        --{
+        --    'NvChad/ui',
+        --    lazy = false,
+        --},
         {
-            "NvChad/nvim-colorizer.lua"
+            "NvChad/nvim-colorizer.lua",
+            event = 'User FilePost',
+            opts = {
+                user_default_options = { names = false },
+                file_types = {
+                    '*',
+                    "!lazy",
+                }
+            },
+            config = function(_, o)
+                require('colorizer').setup(o)
+
+                vim.defer_fn( function()
+                    require('colorizer').attach_to_buffer(0)
+                end, 0
+                )
+            end
         },
         --Web devicons
         --"ryanoasis/vim-devicons",                                       -- Provide beauty icons
         {
             "nvim-tree/nvim-web-devicons",                                  -- Other plugins for beauty icons
+            --opts = function()
+            --    dofile(GGlobal.base46_cache .. 'devicons')
+            --    return { override = require 'nvchad.icons.devicons' }
+            --end,
         },
 
         {
@@ -43,7 +73,27 @@ require("lazy").setup(
         'echasnovski/mini.ai',
         'echasnovski/mini.surround',
         'echasnovski/mini.icons',
+        'echasnovski/mini.deps',
+
+        {
+            'lukas-reineke/indent-blankline.nvim',
+            event = "User FilePost",
+            opts = {
+                indent = { char = "│", highlight = "IblChar" },
+                scope = { char = "│", highlight = "IblScopeChar" }
+            },
+            config = function(_, opts)
+                --dofile(GGlobal.base46_cache .. 'blankline')
+
+                local hook = require('ibl.hooks')
+                hook.register(hook.type.WHITESPACE, hook.builtin.hide_first_space_indent_level)
+                require('ibl').setup(opts)
+
+                --dofile(GGlobal.base46_cache .. 'blankline')
+            end
+        },
         --#endregion
+
 
 
 
@@ -109,7 +159,7 @@ require("lazy").setup(
         {
             'romgrk/barbar.nvim',
             dependencies = {
-                'lewis6991/gitsigns.nvim',
+
                 'nvim-tree/nvim-web-devicons'
             }, init = function() vim.g.barbar_auto_setup = false end,
             opts = {}
@@ -120,6 +170,10 @@ require("lazy").setup(
         {
             "folke/which-key.nvim",
             event = "VeryLazy",
+            --config = function(_, opts)
+            --    dofile(GGlobal.base46_cache .. 'whichkey')
+            --    require('which-key').setup(opts)
+            --end,
             opts = {
                 plugins = {
                   marks = true, -- shows a list of your marks on ' and `
@@ -167,8 +221,8 @@ require("lazy").setup(
                     { "^lua%s+", "" },
                     { "^call%s+", "" },
                     { "^:%s*", "" },
-                    { "<[lL]eader>", "␣"},
-                    { "<[sS]pace>", "␣"},
+                    { "<[lL]eader>", "'␣'"},
+                    { "<[sS]pace>", "'␣'"},
                   },
                 },
 
@@ -205,7 +259,7 @@ require("lazy").setup(
                     ScrollWheelDown = "⬇️",
                     ScrollWheelUp = "⬆️",
                     BS = "⌫",
-                    Space = "␣",
+                    Space = "'␣'",
                     Tab = "⇥",
                     NL = "@"
                   },
@@ -458,6 +512,13 @@ require("lazy").setup(
         --#endregion
 
         --#region Git
+        {
+            'lewis6991/gitsigns.nvim',
+            event = "User FilePost",
+            --opts = function()
+            --    return require('nvchad.configs.gitsigns')
+            --end,
+        },
         -- Neogit provide git interface for easily contact with git
         {
             "NeogitOrg/neogit",
@@ -507,6 +568,54 @@ require("lazy").setup(
                 'stevearc/dressing.nvim', -- optional for vim.ui.select
             },
             config = true,
+        },
+        --#endregion
+
+        --#region AI
+        {
+          "yetone/avante.nvim",
+          event = "VeryLazy",
+          lazy = false,
+          version = false, -- set this if you want to always pull the latest change
+          opts = {
+            -- add any opts here
+          },
+          -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
+          --build = "make",
+          build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false", -- for windows
+          dependencies = {
+            "stevearc/dressing.nvim",
+            "nvim-lua/plenary.nvim",
+            "MunifTanjim/nui.nvim",
+            --- The below dependencies are optional,
+            "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
+            --"zbirenbaum/copilot.lua", -- for providers='copilot'
+            {
+              -- support for image pasting
+              "HakonHarnes/img-clip.nvim",
+              event = "VeryLazy",
+              opts = {
+                -- recommended settings
+                default = {
+                  embed_image_as_base64 = false,
+                  prompt_for_file_name = false,
+                  drag_and_drop = {
+                    insert_mode = true,
+                  },
+                  -- required for Windows users
+                  use_absolute_path = true,
+                },
+              },
+            },
+            {
+              -- Make sure to set this up properly if you have lazy=true
+              'MeanderingProgrammer/render-markdown.nvim',
+              opts = {
+                file_types = { "markdown", "Avante" },
+              },
+              ft = { "markdown", "Avante" },
+            },
+          },
         }
         --#endregion
     }

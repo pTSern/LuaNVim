@@ -1,6 +1,21 @@
 
+--#region Globals
+
+--#endregion
+
+--#region Options
+
+GO.laststatus = 3
+GO.smartindent = true
+GO.tabstop = 4
+GO.softtabstop = 4
+GO.showmode = false
+
 GOpts.number = true
 GOpts.relativenumber = true
+GO.numberwidth = 2
+GO.ruler = false
+
 GOpts.shiftwidth = 4
 GOpts.expandtab = true
 GOpts.autoindent = true
@@ -11,8 +26,8 @@ GOpts.wildignore = '*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xls
 GOpts.cursorline = true
 GOpts.hidden = false
 GOpts.mouse = 'a'
-GOpts.showmode = false
 GOpts.undofile = true
+
 GOpts.scrolloff = 10
 
 GOpts.hlsearch = true
@@ -23,6 +38,8 @@ GOpts.smartcase = true
 
 GOpts.list = true
 GOpts.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+
+--#endregion
 
 GCmd('syntax enable')
 GCmd('filetype plugin indent on')

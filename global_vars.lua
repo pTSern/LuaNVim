@@ -3,6 +3,7 @@ GKeymap = vim.keymap
 GGlobal = vim.g
 GCmd = vim.cmd
 GWo = vim.wo
+GO = vim.o
 
 GDfgConfig = {
     noremap = true,

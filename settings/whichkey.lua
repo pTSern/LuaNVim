@@ -2,18 +2,26 @@ local wk = require('which-key')
 
 local window = _G.is_transparent and {
     border = "none",
-    position = "bottom",
     margin = { 1, 0, 1, 0 },
     padding = { 1, 2, 1, 2 },
-    winblend = 5,
+    wo = {
+      winblend = 5
+    },
     zindex = 1000,
+    no_overlap = true,
+    title = true,
+    title_pos = "center"
 } or {
+    no_overlap = true,
     border = "none",
-    position = "bottom",
     margin = { 1, 0, 1, 0 },
     padding = { 1, 2, 1, 2 },
-    winblend = 10,
+    wo = {
+      winblend = 10
+    },
     zindex = 1000,
+    title = true,
+    title_pos = "center"
 }
 wk.setup {
   ---@type false | "classic" | "modern" | "helix"
@@ -21,13 +29,13 @@ wk.setup {
 
   ---@type number | fun(ctx: { keys: string, mode: string, plugin?: string }):number
   delay = 0,
+  win = window,
 
   notify = true,
 
   triggers = {
     { "<auto>", mode = "nxsot" },
   },
-  win = window
 }
 
 local function quick_wk(key,desc)

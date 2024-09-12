@@ -311,13 +311,13 @@ neogit.setup {
 
 local gc = require('git-conflict')
 if gc ~= nil then
-  _G.qnmap('gco', '<Plug>(git-conflict-ours)', '🔨 [O]urs Take')
-  _G.qnmap('gct', '<Plug>(git-conflict-theirs)', '🔨 [T]heirs Take')
-  _G.qnmap('gcb', '<Plug>(git-conflict-both)', '🔨 [B]oth take')
-  _G.qnmap('gcp', '<Plug>(git-conflict-prev-conflict)', '🔨 [P]revious')
-  _G.qnmap('gcn', '<Plug>(git-conflict-next-conflict)', '🔨 [N]ext')
+  _G.qnmap('-o', '<Plug>(git-conflict-ours)', '🔨 [O]urs Take')
+  _G.qnmap('-t', '<Plug>(git-conflict-theirs)', '🔨 [T]heirs Take')
+  _G.qnmap('-b', '<Plug>(git-conflict-both)', '🔨 [B]oth take')
+  _G.qnmap('-p', '<Plug>(git-conflict-prev-conflict)', '🔨 [P]revious')
+  _G.qnmap('-n', '<Plug>(git-conflict-next-conflict)', '🔨 [N]ext')
 
-  _G.qnmap('gcj', '<Plug>(git-conflict-prev-conflict)', '🔨 [J] Previous')
-  _G.qnmap('gcl', '<Plug>(git-conflict-next-conflict)', '🔨 [L] Next')
+  _G.qnmap('-j', '<Plug>(git-conflict-prev-conflict)', '🔨 [J] Previous')
+  _G.qnmap('-l', '<Plug>(git-conflict-next-conflict)', '🔨 [L] Next')
 end
 

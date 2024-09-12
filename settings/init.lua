@@ -34,3 +34,6 @@ dofile(root .. 'tmux.lua')
 dofile(root .. 'projects.lua')
 dofile(root .. 'flutter.lua')
 dofile(root .. 'lsp.lua')
+
+dofile(root .. 'mini.lua')
+dofile(root .. 'aaai.lua')

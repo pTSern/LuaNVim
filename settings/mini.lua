@@ -1,0 +1,29 @@
+--local MiniDeps = require('mini.deps')
+--
+--local add, later, now = MiniDeps.add, MiniDeps.later, MiniDeps.now
+--
+--add({
+--  source = 'yetone/avante.nvim',
+--  monitor = 'main',
+--  depends = {
+--    'stevearc/dressing.nvim',
+--    'nvim-lua/plenary.nvim',
+--    'MunifTanjim/nui.nvim',
+--    'echasnovski/mini.icons'
+--  },
+--  hooks = { post_checkout = function() vim.cmd('AvanteBuild source=false') end }
+--})
+----- optional
+--add({ source = 'zbirenbaum/copilot.lua' })
+--add({ source = 'HakonHarnes/img-clip.nvim' })
+--add({ source = 'MeanderingProgrammer/render-markdown.nvim' })
+--
+--now(function() require('avante_lib').load() end)
+--later(function() require('render-markdown').setup({}) end)
+--later(function()
+--  require('img-clip').setup({}) -- config img-clip
+--  require("copilot").setup({}) -- setup copilot to your liking
+--  require("avante").setup({
+--
+--  }) -- config for avante.nvim
+--end)
