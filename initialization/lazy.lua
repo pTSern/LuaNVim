@@ -542,6 +542,13 @@ require("lazy").setup(
             config = true,
             opts = {
                 default_mappings = false,
+                default_commands = true,
+                disable_diagnostics = false,
+                list_opener = 'copen',
+                highlight = {
+                    incoming = 'DiffAdd',
+                    current = 'DiffText',
+                }
             }
         },
         --#endregion

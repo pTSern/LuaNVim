@@ -1,10 +1,13 @@
 --g_cmd[[highlight CursorColumn ctermbg=LightGray guibg=LightGray]]
 --g_opt.termguicolors = true
 
-vim.g.font = "Hack"
-vim.g.font_size = 12
-
 _G.colorscheme = "catppuccin-macchiato"
+
+_G.font = {
+	name = "JetBrainsMono Nerd Font",
+	size = 13
+}
+
 GCmd.colorscheme(_G.colorscheme)
 
 if _G.gui == 'neovide' then
@@ -34,4 +37,6 @@ end
 vim.api.nvim_command("highlight CursorColumn guibg=#353940")
 vim.api.nvim_command("highlight CursorLine guibg=#353940")
 
-GCmd("set guifont=" .. vim.g.font .. ":h" .. vim.g.font_size)
+vim.o.guifont = _G.font.name .. ":h" .. _G.font.size;
+
+--GCmd("set guifont=" .. _G.font.name .. ":h" .. _G.font.size)

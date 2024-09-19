@@ -2,6 +2,14 @@ local lspcfg = require('lspconfig')
 
 lspcfg.pyright.setup{}
 lspcfg.ts_ls.setup{}
+lspcfg.clangd.setup {
+  cmd = { 'clangd' },
+  filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'h' },
+  root_dir = lspcfg.util.root_pattern('.clangd', '.git', 'compile_commands.json'),
+  single_file_support = true,
+  on_attach = function (client, bufnr)
+  end
+}
 
 vim.api.nvim_create_autocmd('LspAttach', {
     group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),

@@ -311,13 +311,26 @@ neogit.setup {
 
 local gc = require('git-conflict')
 if gc ~= nil then
-  _G.qnmap('-o', '<Plug>(git-conflict-ours)', '🔨 [O]urs Take')
-  _G.qnmap('-t', '<Plug>(git-conflict-theirs)', '🔨 [T]heirs Take')
-  _G.qnmap('-b', '<Plug>(git-conflict-both)', '🔨 [B]oth take')
-  _G.qnmap('-p', '<Plug>(git-conflict-prev-conflict)', '🔨 [P]revious')
-  _G.qnmap('-n', '<Plug>(git-conflict-next-conflict)', '🔨 [N]ext')
+  _G.qnmap('-o', ':GitConflictChooseOurs<CR>', '🔨 [O]urs Take')
+  _G.qnmap('-t', ':GitConflictChooseTheirs<CR>', '🔨 [T]heirs Take')
+  _G.qnmap('-b', ':GitConflictChooseBoth<CR>', '🔨 [B]oth take')
+  _G.qnmap('-p', ':GitConflictPrevConflict<CR>', '🔨 [P]revious')
+  _G.qnmap('-n', ':GitConflictNextConflict<CR>', '🔨 [N]ext')
 
-  _G.qnmap('-j', '<Plug>(git-conflict-prev-conflict)', '🔨 [J] Previous')
-  _G.qnmap('-l', '<Plug>(git-conflict-next-conflict)', '🔨 [L] Next')
+  _G.qnmap('-j', ':GitConflictPrevConflict<CR>', '🔨 [J] Previous')
+  _G.qnmap('-l', ':GitConflictNextConflict<CR>', '🔨 [L] Next')
+
+  _G.qnmap('--', ':GitConflictListQf<CR>', '🔨 [-] List')
+    
+  vim.api.nvim_create_autocmd('User', {
+    pattern = 'GitConflictDetected',
+    callback = function()
+      vim.notify('Conflict detected in '..vim.fn.expand('<afile>'))
+      vim.keymap.set('n', '-w', function()
+        engage.conflict_buster()
+        create_buffer_local_mappings()
+      end)
+    end
+  })
 end
 
