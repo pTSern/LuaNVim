@@ -404,19 +404,26 @@ require("lazy").setup(
         },
 
         --#region CSharp
-        'OmniSharp/omnisharp-vim',                                                                                                                                                                                                                      -- Language server for CSharp
         {
-            "iabdelkareem/csharp.nvim",
-            dependencies = {
-                "mfussenegger/nvim-dap",
-                "Tastyep/structlog.nvim",
-            },
-
-            config = function ()
-                require("mason").setup()
-                require("csharp").setup()
-            end
+            "seblj/roslyn.nvim",
+            ft = "cs",
+            opts = {
+                -- your configuration comes here; leave empty for default settings
+            }
         },
+        --'OmniSharp/omnisharp-vim',                                                                                                                                                                                                                      -- Language server for CSharp
+        --{
+        --    "iabdelkareem/csharp.nvim",
+        --    dependencies = {
+        --        "mfussenegger/nvim-dap",
+        --        "Tastyep/structlog.nvim",
+        --    },
+
+        --    config = function ()
+        --        require("mason").setup()
+        --        require("csharp").setup()
+        --    end
+        --},
         --#endregion
         'sheerun/vim-polyglot',
         {
@@ -577,6 +584,16 @@ require("lazy").setup(
             config = true,
         },
         --#endregion
+
+        --{
+        --  'stevearc/oil.nvim',
+        --  ---@module 'oil'
+        --  ---@type oil.SetupOpts
+        --  opts = {},
+        --  -- Optional dependencies
+        --  dependencies = { { "echasnovski/mini.icons", opts = {} } },
+        --  -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
+        --},
 
         --#region AI
         {

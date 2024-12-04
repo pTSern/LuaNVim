@@ -17,17 +17,14 @@ local on_attach = function(client, bufnr)
    buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', GQuickOpt('OmniSharp: [G]oto [R]eferences'))
 
 end
-local pid = vim.fn.getpid()
-
-local omnisharp_bin = "/Users/Admin/AppData/Local/omnisharp-nvim/omnisharp-roslyn/OmniSharp.exe"
-
+--local pid = vim.fn.getpid()
+--
+--local omnisharp_bin = os.getenv("LOCALAPPDATA") .. "omnisharp-vim\\omnisharp-roslyn\\OmniSharp.exe"
+--
 lspconfig.omnisharp.setup {
-   on_attach = on_attach,
-   flags = {
-      debounce_text_changes = 150,
-   },
-   cmd = { omnisharp_bin, "--languageserver", "--hostPID", tostring(pid) },
-
+    on_attach = on_attach,
+    root_dir = require'lspconfig'.util.root_pattern(".git", "."),
 }
 
-
+vim.g.OmniSharp_server_use_mono = 1
+vim.g.OmniSharp_server_stdio = 1

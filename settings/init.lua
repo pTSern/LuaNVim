@@ -10,7 +10,7 @@ dofile(root .. 'cmp.lua')
 dofile(root .. 'transparent.lua')
 dofile(root .. 'barbar.lua')
 
-dofile(root .. 'cs.lua')
+--dofile(root .. 'cs.lua')
 --dofile(root .. 'ale.lua')
 
 --dofile(root .. 'fzf.lua')
@@ -37,3 +37,7 @@ dofile(root .. 'lsp.lua')
 
 dofile(root .. 'mini.lua')
 dofile(root .. 'aaai.lua')
+
+dofile(root .. 'oil.lua')
+
+dofile(root .. 'mason.lua')
