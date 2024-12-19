@@ -2,7 +2,8 @@ local wk = require('which-key')
 
 local window = _G.is_transparent and {
     border = "none",
-    margin = { 1, 0, 1, 0 },
+    height = 5,
+    margin = { 1, 2, 1, 0 },
     padding = { 1, 2, 1, 2 },
     wo = {
       winblend = 5
@@ -13,6 +14,7 @@ local window = _G.is_transparent and {
     title_pos = "center"
 } or {
     no_overlap = true,
+    height = 7,
     border = "none",
     margin = { 1, 0, 1, 0 },
     padding = { 1, 2, 1, 2 },

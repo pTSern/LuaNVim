@@ -405,6 +405,9 @@ require("lazy").setup(
 
         --#region CSharp
         {
+            "tris203/rzls.nvim"
+        },
+        {
             "seblj/roslyn.nvim",
             ft = "cs",
             opts = {
@@ -640,6 +643,14 @@ require("lazy").setup(
               ft = { "markdown", "Avante" },
             },
           },
+        },
+        --#endregion
+
+        --#region Key Displaying
+        {
+            "NStefan002/screenkey.nvim",
+            lazy = false,
+            version = "*", -- or branch = "dev", to use the latest commit
         }
         --#endregion
     }
