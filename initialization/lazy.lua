@@ -616,11 +616,11 @@ require("lazy").setup(
             'folke/edgy.nvim',
             event = "VeryLazy",
             opts = function(_, opts)
-                opts.right = opts.right or {}
-                table.insert(opts.right, {
+                opts.top = opts.top or {}
+                table.insert(opts.top, {
                     ft = 'copilot-chat',
                     title = " ︻┳デpTSCopilot]═—— ",
-                    size = { width = 0.40 }
+                    size = { width = 0.95, height = 0.85 }
                 })
 
                 opts.animate = {
