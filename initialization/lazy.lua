@@ -75,6 +75,8 @@ require("lazy").setup(
         'echasnovski/mini.icons',
         'echasnovski/mini.deps',
 
+
+
         {
             'lukas-reineke/indent-blankline.nvim',
             event = "User FilePost",
@@ -588,71 +590,60 @@ require("lazy").setup(
         },
         --#endregion
 
-        --{
-        --  'stevearc/oil.nvim',
-        --  ---@module 'oil'
-        --  ---@type oil.SetupOpts
-        --  opts = {},
-        --  -- Optional dependencies
-        --  dependencies = { { "echasnovski/mini.icons", opts = {} } },
-        --  -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
-        --},
-
         --#region AI
         {
-          "yetone/avante.nvim",
-          event = "VeryLazy",
-          lazy = false,
-          version = false, -- set this if you want to always pull the latest change
-          opts = {
-            -- add any opts here
-          },
-          -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
-          --build = "make",
-          build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false", -- for windows
-          dependencies = {
-            "stevearc/dressing.nvim",
-            "nvim-lua/plenary.nvim",
-            "MunifTanjim/nui.nvim",
-            --- The below dependencies are optional,
-            "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
-            --"zbirenbaum/copilot.lua", -- for providers='copilot'
-            {
-              -- support for image pasting
-              "HakonHarnes/img-clip.nvim",
-              event = "VeryLazy",
-              opts = {
-                -- recommended settings
-                default = {
-                  embed_image_as_base64 = false,
-                  prompt_for_file_name = false,
-                  drag_and_drop = {
-                    insert_mode = true,
-                  },
-                  -- required for Windows users
-                  use_absolute_path = true,
-                },
-              },
-            },
-            {
-              -- Make sure to set this up properly if you have lazy=true
-              'MeanderingProgrammer/render-markdown.nvim',
-              opts = {
-                file_types = { "markdown", "Avante" },
-              },
-              ft = { "markdown", "Avante" },
-            },
-          },
+            'github/copilot.vim'
         },
-        --#endregion
+        {
+            "CopilotC-Nvim/CopilotChat.nvim",
+        },
 
         --#region Key Displaying
         {
             "NStefan002/screenkey.nvim",
             lazy = false,
             version = "*", -- or branch = "dev", to use the latest commit
-        }
+        },
         --#endregion
+        {
+            'barrett-ruth/live-server.nvim',
+            build = 'pnpm add -g live-server',
+            cmd = { 'LiveServerStart', 'LiveServerStop' },
+            config = true
+        },
+
+        {
+            'folke/edgy.nvim',
+            event = "VeryLazy",
+            opts = function(_, opts)
+                opts.right = opts.right or {}
+                table.insert(opts.right, {
+                    ft = 'copilot-chat',
+                    title = " ︻┳デpTSCopilot]═—— ",
+                    size = { width = 0.40 }
+                })
+
+                opts.animate = {
+                  enabled = true,
+                  fps = 100, -- frames per second
+                  cps = 120, -- cells per second
+                  on_begin = function()
+                    vim.g.minianimate_disable = true
+                  end,
+                  on_end = function()
+                    vim.g.minianimate_disable = false
+                  end,
+                  -- Spinner for pinned views that are loading.
+                  -- if you have noice.nvim installed, you can use any spinner from it, like:
+                  -- spinner = require("noice.util.spinners").spinners.circleFull,
+                  spinner = {
+                    frames = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" },
+                    interval = 80,
+                  },
+                }
+
+            end,
+        },
     }
 )
 

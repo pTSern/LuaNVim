@@ -48,7 +48,7 @@ wk.add( {
   quick_wk('<leader>t', '[T]abs Options'),
   quick_wk('<leader>/', '[/] Commenter Options'),
   quick_wk('<leader><leader>', '[ ] More Options'),
-  quick_wk('<leader>a', 'Code [A]ctions'),
+  quick_wk('<leader>a', '[A]I Help'),
   quick_wk('<leader>b', '[B]uffer Options'),
   quick_wk('<leader>c', '[C]ode Options'),
   quick_wk('<leader>l', '[L]ive Options'),

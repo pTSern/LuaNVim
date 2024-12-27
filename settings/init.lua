@@ -35,7 +35,7 @@ dofile(root .. 'flutter.lua')
 dofile(root .. 'lsp.lua')
 
 dofile(root .. 'mini.lua')
-dofile(root .. 'aaai.lua')
+--dofile(root .. 'aaai.lua')
 
 dofile(root .. 'oil.lua')
 
@@ -46,3 +46,4 @@ dofile(root .. 'cs.lua')
 dofile(root .. 'codesnap.lua')
 
 dofile(root .. 'keys.lua')
+dofile(root .. 'copilot.lua')

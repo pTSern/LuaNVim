@@ -32,6 +32,10 @@ _G.qvmap = function(key, mechanic, desc)
     return GKeymap.set('v', key, mechanic, GQuickOpt(desc))
 end
 
+_G.qxmap = function(key, mechanic, desc)
+    return GKeymap.set('x', key, mechanic, GQuickOpt(desc))
+end
+
 _G.gui = "default"
 
 if vim.g.neovide then
