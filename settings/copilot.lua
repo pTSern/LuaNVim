@@ -10,16 +10,16 @@ vim.keymap.set('i', '<C-TAB>', _mec, _opt)
 
 -- ︻┳デ═—
 require('CopilotChat').setup {
-  --window = {
-  --  layout = "float", -- "vertical" | "horizontal" | "float"
-  --  width = 0.5,
-  --  height = 1,
-  --  col = vim.o.columns - math.floor(vim.o.columns * 0.5),
-  --  relative = "win", -- "editor" | "cursor" | "win"
-  --  border = "single", -- "none" | "single" | "double" | "shadow"
-  --  title = " ︻┳デpTSCopilot]═—— ",
-  --  zindex = 50,
-  --},
+  window = {
+    layout = "float", -- "vertical" | "horizontal" | "float"
+    width = 0.95,
+    height = 0.85,
+    relative = "win", -- "editor" | "cursor" | "win"
+    border = "single", -- "none" | "single" | "double" | "shadow"
+    title = " ︻┳デpTSCopilot]═—— ",
+    zindex = 50,
+    row = 1
+  },
 
   question_header = '⫎ pTSern ', -- Header to use for user questions
   answer_header = '⫎ Copilot ', -- Header to use for AI answers

@@ -4,6 +4,7 @@ require('mason').setup {
     'github:mason-org/mason-registry',
     'github:crashdummyy/mason-registry',
   },
+
 }
 
 

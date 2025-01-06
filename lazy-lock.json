@@ -1,6 +1,7 @@
 {
   "CopilotChat.nvim": { "branch": "main", "commit": "2ebe591cff06018e265263e71e1dbc4c5aa8281e" },
   "LuaSnip": { "branch": "master", "commit": "45db5addf8d0a201e1cf247cae4cdce605ad3768" },
+  "ale": { "branch": "master", "commit": "0551602b198ca50650f9853d23fd970f3655842a" },
   "auto-pairs": { "branch": "master", "commit": "2c18fa6ba7388a54faf799a6271cb9d992d33951" },
   "barbar.nvim": { "branch": "master", "commit": "c20691d686addb0d6ea87896d186c082324b01f8" },
   "barbecue": { "branch": "main", "commit": "cd7e7da622d68136e13721865b4d919efd6325ed" },

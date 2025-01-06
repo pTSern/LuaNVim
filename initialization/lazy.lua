@@ -313,6 +313,7 @@ require("lazy").setup(
             config = function()
             end,
         },
+
         --#endregion
 
 
@@ -612,38 +613,38 @@ require("lazy").setup(
             config = true
         },
 
-        {
-            'folke/edgy.nvim',
-            event = "VeryLazy",
-            opts = function(_, opts)
-                opts.top = opts.top or {}
-                table.insert(opts.top, {
-                    ft = 'copilot-chat',
-                    title = " ︻┳デpTSCopilot]═—— ",
-                    size = { width = 0.95, height = 0.85 }
-                })
+        --{
+        --    'folke/edgy.nvim',
+        --    event = "VeryLazy",
+        --    opts = function(_, opts)
+        --        opts.top = opts.top or {}
+        --        table.insert(opts.top, {
+        --            ft = 'copilot-chat',
+        --            title = " ︻┳デpTSCopilot]═—— ",
+        --            size = { width = 0.95, height = 0.85 }
+        --        })
 
-                opts.animate = {
-                  enabled = true,
-                  fps = 100, -- frames per second
-                  cps = 120, -- cells per second
-                  on_begin = function()
-                    vim.g.minianimate_disable = true
-                  end,
-                  on_end = function()
-                    vim.g.minianimate_disable = false
-                  end,
-                  -- Spinner for pinned views that are loading.
-                  -- if you have noice.nvim installed, you can use any spinner from it, like:
-                  -- spinner = require("noice.util.spinners").spinners.circleFull,
-                  spinner = {
-                    frames = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" },
-                    interval = 80,
-                  },
-                }
+        --        opts.animate = {
+        --          enabled = true,
+        --          fps = 100, -- frames per second
+        --          cps = 120, -- cells per second
+        --          on_begin = function()
+        --            vim.g.minianimate_disable = true
+        --          end,
+        --          on_end = function()
+        --            vim.g.minianimate_disable = false
+        --          end,
+        --          -- Spinner for pinned views that are loading.
+        --          -- if you have noice.nvim installed, you can use any spinner from it, like:
+        --          -- spinner = require("noice.util.spinners").spinners.circleFull,
+        --          spinner = {
+        --            frames = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" },
+        --            interval = 80,
+        --          },
+        --        }
 
-            end,
-        },
+        --    end,
+        --},
     }
 )
 

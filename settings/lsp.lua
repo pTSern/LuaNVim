@@ -1,7 +1,21 @@
 local lspcfg = require('lspconfig')
 
 lspcfg.pyright.setup{}
-lspcfg.ts_ls.setup{}
+
+local root = g_root .. 'settings/lsp/'
+dofile(root .. 'deno.lua')
+
+lspcfg.ts_ls.setup{
+  root_dir = lspcfg.util.root_pattern('package.json', 'tsconfig.json', '.git'),
+  single_file_support = false,
+
+  on_attach = function(client, bufnr)
+    if lspcfg.util.root_pattern("deno.json", "deno.jsonc")(vim.fn.getcwd()) then
+        client.stop()
+    end
+  end
+}
+
 lspcfg.clangd.setup {
   cmd = { 'clangd' },
   filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'h' },
