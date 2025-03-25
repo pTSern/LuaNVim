@@ -4,7 +4,7 @@
 _G.colorscheme = "catppuccin-macchiato"
 
 _G.font = {
-	name = "JetBrainsMono Nerd Font",
+	name = "Hack Nerd Font",
 	size = 13
 }
 
