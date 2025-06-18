@@ -112,7 +112,7 @@ require("lazy").setup(
             --"preservim/nerdTree",                                                                                                                                                                                                                           -- File manager
             'ms-jpq/chadtree',
             branch = 'chad',
-            build = 'python3 -m chadtree deps'
+            build = 'python3 -m chadtree deps',
 
         },
         --#endregion
@@ -331,18 +331,15 @@ require("lazy").setup(
         --#region LSP-Config
         {
             "neovim/nvim-lspconfig",
-            --lazy = false,
             dependencies = {
-                { 'williamboman/mason.nvim', config = true }, -- NOTE: Must be loaded before dependants
-
+                'williamboman/mason.nvim', -- NOTE: Must be loaded before dependants
                 "williamboman/mason-lspconfig.nvim",
                 'WhoIsSethDaniel/mason-tool-installer.nvim',
-                { 'j-hui/fidget.nvim', opts = {} },
-                { 'folke/neodev.nvim', opts = {} },
+                'j-hui/fidget.nvim',
+                'folke/neodev.nvim',
             },
-
-            config = function()
-            end,
+            config = function ()
+            end
         },
 
         --#endregion

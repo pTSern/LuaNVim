@@ -25,9 +25,9 @@ local keymap = vim.keymap
 --                 Unknown   = '?',
 --                 }
 --
+--require('chadtree').Deps();
 
 keymap.set('n', '<M-1>', ':CHADopen<CR>', { silent = true })
 keymap.set('n', '<F1>', ':CHADopen<CR>', { silent = true })
 keymap.set('x', '<F1>', '<ESC>:CHADopen<CR>', { silent = true })
 keymap.set('i', '<F1>', '<ESC>:CHADopen<CR>', { silent = true })
-

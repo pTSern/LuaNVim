@@ -1,29 +1,27 @@
-local lspcfg = require('lspconfig')
-
-lspcfg.pyright.setup{}
+vim.lsp.enable('pyright')
 
 local root = g_root .. 'settings/lsp/'
 dofile(root .. 'deno.lua')
 
-lspcfg.ts_ls.setup{
-  root_dir = lspcfg.util.root_pattern('package.json', 'tsconfig.json', '.git'),
-  single_file_support = false,
+--vim.lsp.config('ts_ls', {
+--  root_dir = vim.lsp.util.root_pattern('package.json', 'tsconfig.json', '.git'),
+--  single_file_support = false,
+--
+--  on_attach = function(client, bufnr)
+--    if lspcfg.util.root_pattern("deno.json", "deno.jsonc")(vim.fn.getcwd()) then
+--        client.stop()
+--    end
+--  end
+--})
 
-  on_attach = function(client, bufnr)
-    if lspcfg.util.root_pattern("deno.json", "deno.jsonc")(vim.fn.getcwd()) then
-        client.stop()
-    end
-  end
-}
-
-lspcfg.clangd.setup {
-  cmd = { 'clangd' },
-  filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'h' },
-  root_dir = lspcfg.util.root_pattern('.clangd', '.git', 'compile_commands.json'),
-  single_file_support = true,
-  on_attach = function (client, bufnr)
-  end
-}
+--vim.lsp.config('clangd', {
+--  cmd = { 'clangd' },
+--  filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'h' },
+--  root_dir = lspcfg.util.root_pattern('.clangd', '.git', 'compile_commands.json'),
+--  single_file_support = true,
+--  on_attach = function (client, bufnr)
+--  end
+--})
 
 vim.api.nvim_create_autocmd('LspAttach', {
     group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
@@ -85,8 +83,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end
 })
 
-
-
 local servers = {
     lua_ls = {
       settings = {
@@ -114,63 +110,77 @@ require('mason-lspconfig').setup {
   handlers = {
     function(server_name)
       if server_name ~= 'tsserver' then
-        local server = servers[server_name] or {}
+        -- local server = servers[server_name] or {}
         -- This handles overriding only values explicitly passed
         -- by the server configuration above. Useful when disabling
         -- certain features of an LSP (for example, turning off formatting for tsserver)
-        server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-        require('lspconfig')[server_name].setup(server)
+        -- server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
+        require('lspconfig')[server_name].setup {}
       end
     end,
   },
 }
 
-local dartExcludedFolders = {
-    vim.fn.expand("$LOCALAPPDATA/Pub/Cache"),
-    vim.fn.expand("$LOCALAPPDATA/js-frameworks/flutter/")
-}
+--require('mason-lspconfig').setup_handlers {
+--    function(server_name)
+--      require('lspconfig')[server_name].setup {}
+--    end,
+--    ["basedpyright"] = function()
+--        require("lspconfig").basedpyright.setup {
+--            settings = {
+--                python = {
+--                    pythonPath = "./venv/bin/python",
+--                },
+--            }
+--        }
+--    end,
+--}
+--local dartExcludedFolders = {
+--    vim.fn.expand("$LOCALAPPDATA/Pub/Cache"),
+--    vim.fn.expand("$LOCALAPPDATA/js-frameworks/flutter/")
+--}
 
-lspcfg.dcmls.setup {
-  capabilities = capabilities,
-  cmd = {
-    "dcm",
-    "start-server",
-  },
-  filetypes = { "dart", "yaml" },
-  settings = {
-    dart = {
-      analysisExcludedFolders = dartExcludedFolders,
-    }
-  }
-}
-
-lspcfg.dartls.setup {
-  capabilities = capabilities,
-  --cmd = {
-  --  os.getenv("LOCALAPPDATA") .. "\\js-frameworks\\flutter\\bin\\dart.bat",
-  --  "language-server",
-  --  "--protocol=lsp"
-  --},
-  filetypes = { "dart" },
-  init_options = {
-    onlyAnalyzeProjectsWithOpenFiles = false,
-		suggestFromUnimportedLibraries = true,
-		closingLabels = true,
-		outline = false,
-		flutterOutline = false,
-  },
-  settings = {
-    dart = {
-      analysisExcludedFolders = dartExcludedFolders,
-			updateImportsOnRename = true,
-			completeFunctionCalls = true,
-			showTodos = true,
-    }
-  }
-}
-
-lspcfg.ast_grep.setup{}
-lspcfg.astro.setup{}
+--vim.lsp.config('dcmls', {
+--  capabilities = capabilities,
+--  cmd = {
+--    "dcm",
+--    "start-server",
+--  },
+--  filetypes = { "dart", "yaml" },
+--  settings = {
+--    dart = {
+--      analysisExcludedFolders = dartExcludedFolders,
+--    }
+--  }
+--})
+--
+--vim.lsp.config('dartls', {
+--  capabilities = capabilities,
+--  --cmd = {
+--  --  os.getenv("LOCALAPPDATA") .. "\\js-frameworks\\flutter\\bin\\dart.bat",
+--  --  "language-server",
+--  --  "--protocol=lsp"
+--  --},
+--  filetypes = { "dart" },
+--  init_options = {
+--    onlyAnalyzeProjectsWithOpenFiles = false,
+--		suggestFromUnimportedLibraries = true,
+--		closingLabels = true,
+--		outline = false,
+--		flutterOutline = false,
+--  },
+--  settings = {
+--    dart = {
+--      analysisExcludedFolders = dartExcludedFolders,
+--			updateImportsOnRename = true,
+--			completeFunctionCalls = true,
+--			showTodos = true,
+--    }
+--  }
+--})
+--
+--vim.lsp.config('ast_grep', {})
+--vim.lsp.config('astro', {})
 
 --#region DiagnosticSign
 
