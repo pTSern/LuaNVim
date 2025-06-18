@@ -14,14 +14,14 @@ dofile(root .. 'deno.lua')
 --  end
 --})
 
---vim.lsp.config('clangd', {
---  cmd = { 'clangd' },
---  filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'h' },
---  root_dir = lspcfg.util.root_pattern('.clangd', '.git', 'compile_commands.json'),
---  single_file_support = true,
---  on_attach = function (client, bufnr)
---  end
---})
+vim.lsp.config('clangd', {
+  cmd = { 'clangd' },
+  filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'h' },
+  --root_dir = lspcfg.util.root_pattern('.clangd', '.git', 'compile_commands.json'),
+  single_file_support = true,
+  on_attach = function (client, bufnr)
+  end
+})
 
 vim.api.nvim_create_autocmd('LspAttach', {
     group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
@@ -115,7 +115,7 @@ require('mason-lspconfig').setup {
         -- by the server configuration above. Useful when disabling
         -- certain features of an LSP (for example, turning off formatting for tsserver)
         -- server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-        require('lspconfig')[server_name].setup {}
+        vim.lsp.config(server_name, {})
       end
     end,
   },

@@ -406,6 +406,7 @@ require("lazy").setup(
         --#region Paser generator tool
         {
             'nvim-treesitter/nvim-treesitter',
+            branch = 'main',
             build   = ":TSUpdate",
             opts    = {
                 ensure_install  = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'vim', 'vimdoc', 'typescript', 'javascript', 'vue', 'css', 'cmake', 'cpp', 'c', 'c_sharp', 'json', 'comment'},

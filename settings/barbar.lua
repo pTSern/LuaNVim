@@ -57,7 +57,7 @@ require'barbar'.setup {
     filetype = {
       -- Sets the icon's highlight group.
       -- If false, will use nvim-web-devicons colors
-      custom_colors = true,
+      custom_colors = false,
 
       -- Requires `nvim-web-devicons` if `true`
       enabled = true,
@@ -136,6 +136,7 @@ require'barbar'.setup {
 
 local map = GKeymap.set
 
+
 -- Move to previous/next
 map('n', '<Tab>\\', "<C-w><C-w>", GQuickOpt('[\\] Switching bar'))
 map('n', '<Tab>j', ':w<CR><Cmd>BufferPrevious<CR>', GQuickOpt('[j] Previous Buffer'))
@@ -186,3 +187,6 @@ map('n', '<Tab>bw', '<Cmd>BufferOrderByWindowNumber<CR>', GQuickOpt('[B]uffer so
 -- :BarbarDisable - very bad command, should never be used
 --
 
+vim.api.nvim_set_hl(0, "BufferCurrent",     { fg = "#5cff7a", bg = "NONE", bold = false })
+vim.api.nvim_set_hl(0, "BufferInactive",    { fg = "#888888", bg = "NONE", italic = true })
+vim.api.nvim_set_hl(0, "BufferVisible",     { fg = "#aaaaaa", bg = "NONE" })
