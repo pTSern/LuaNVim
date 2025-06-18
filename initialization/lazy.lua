@@ -126,8 +126,14 @@ require("lazy").setup(
         --#endregion
 
         --#region Status line
-        "vim-airline/vim-airline",                                                                                                                                                                                                                      -- Status bar
-        "vim-airline/vim-airline-themes",                                                                                                                                                                                                               -- Theme for status bar
+        --"vim-airline/vim-airline",                                                                                                                                                                                                                      -- Status bar
+        --"vim-airline/vim-airline-themes",                                                                                                                                                                                                               -- Theme for status bar
+        {
+            "nvim-lualine/lualine.nvim",
+            dependencies = {
+                "nvim-tree/nvim-web-devicons",
+            }
+        },
         --#endregion
 
         --#region Auto-pair code
@@ -136,6 +142,27 @@ require("lazy").setup(
 
         --#region Quick comment
         "preservim/nerdcommenter",                                                                                                                                                                                                                      -- Commenter of nerdTree
+        --#endregion
+
+        --#region Todo
+        {
+            "SyedAsimShah1/quick-todo.nvim",
+            config = function()
+                require("quick-todo").setup(
+                    {
+                        keys = {
+                            open = "<leader>td"
+                        },
+                        window = {
+                            height = 0.75,
+                            width = 0.95,
+                            windblend = 1,
+                            border = "rounded",
+                        }
+                    }
+                )
+            end
+        },
         --#endregion
 
         --#region Coc-vim (Now using LSP client instead)
@@ -153,9 +180,13 @@ require("lazy").setup(
 
         --#region Floating terminal
         "voldikss/vim-floaterm",                                                                                                                                                                                                                        -- Float terminal
+        --{
+        --    "nvzone/floaterm",
+        --    dependencies = "nvzone/volt",
+        --    cmd = "FloatermToggle",
+        --    opts = {},
+        --},
         --#endregion
-
-
 
         --#region Tab manager
         {
@@ -367,6 +398,7 @@ require("lazy").setup(
                 'hrsh7th/cmp-nvim-lsp',
                 'hrsh7th/cmp-path',
                 'hrsh7th/cmp-buffer',
+                "hrsh7th/cmp-cmdline",
             },
         },
         {
