@@ -1,7 +1,7 @@
 
 -------------------------------------------------
 
-g_root = vim.fn.expand("~/AppData/Local/nvim/")
+g_root = vim.fn.expand("~/.config/nvim/")
 
 dofile(g_root .. 'global_vars.lua')
 
