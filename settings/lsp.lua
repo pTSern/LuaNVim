@@ -240,7 +240,7 @@ local border = {
 
 -- Do not forget to use the on_attach function
 --require 'lspconfig'.tsserver.setup { handlers=handlers }
-
+vim.lsp.config('tsserver', { enabled = false })
 -- To instead override globally
 local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
 function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)

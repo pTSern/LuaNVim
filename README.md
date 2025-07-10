@@ -8,6 +8,12 @@
                         [__|                                                      
 ```
 ---
+- Dependcies:
+    + NVIM: `v0.11.2`
+    + LuaJIT: `2.1.1741730670`
+    + Python3: `3.x` [ For ChadTree ]
+    + Neovide: `any` [ Optional, for GUI ]
+
 - Core Nvim config code lang: [Lua](https://www.lua.org/)
 
 - Neovim setup powered by [💤 Lazy](https://github.com/folke/lazy.nvim)
