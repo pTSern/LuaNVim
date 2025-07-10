@@ -187,6 +187,6 @@ map('n', '<Tab>bw', '<Cmd>BufferOrderByWindowNumber<CR>', GQuickOpt('[B]uffer so
 -- :BarbarDisable - very bad command, should never be used
 --
 
-vim.api.nvim_set_hl(0, "BufferCurrent",     { fg = "#5cff7a", bg = "NONE", bold = false })
+vim.api.nvim_set_hl(0, "BufferCurrent",     { fg = "#c44fff", bg = "NONE", bold = false })
 vim.api.nvim_set_hl(0, "BufferInactive",    { fg = "#888888", bg = "NONE", italic = true })
 vim.api.nvim_set_hl(0, "BufferVisible",     { fg = "#aaaaaa", bg = "NONE" })
