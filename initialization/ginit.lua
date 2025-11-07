@@ -30,7 +30,7 @@ elseif _G.gui == 'qt' then
 		vim.cmd("GuiTabline 0")
 	end
 else
-	_G.transparent(true)
+	_G.transparent(false)
 end
 
 
