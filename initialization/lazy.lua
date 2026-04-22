@@ -415,7 +415,8 @@ require("lazy").setup(
                 auto_install    = true,
                 sync_install    = false,
                 highlight       = {
-                    enable          = true,
+                    enable      = true,
+                    additional_vim_regex_highlighting = false,
                 },
                 -- Use native/filetype indentation; Treesitter indent can break newline indent in some setups.
                 indent = { enable = false }
