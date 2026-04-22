@@ -9,7 +9,7 @@
 ```
 ---
 - Dependcies:
-    + NVIM: `v0.11.2`
+    + NVIM: `v0.12`
     + LuaJIT: `2.1.1741730670`
     + Python3: `3.x` [ For ChadTree ]
     + Neovide: `any` [ Optional, for GUI ]
@@ -46,6 +46,8 @@
         * Avante: [Avante](https://github.com/yetone/avante.nvim)
 - Required:
 	+ Nerdfont: [JetBrains Nerd Font](https://objects.githubusercontent.com/github-production-release-asset-2e65be/27574418/c73b35fc-92bd-4850-a79a-ccb86b8069c9?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=releaseassetproduction%2F20240919%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240919T024133Z&X-Amz-Expires=300&X-Amz-Signature=4b4085b29d0547312074ea1dbfed4445dfca949a675533673d717c9e00a78edd&X-Amz-SignedHeaders=host&actor_id=130627040&key_id=0&repo_id=27574418&response-content-disposition=attachment%3B%20filename%3DJetBrainsMono.zip&response-content-type=application%2Foctet-stream)
+	+ [ripgrep](https://github.com/burntsushi/ripgrep#installation)
+	+ [fd](https://github.com/sharkdp/fd)
 	
 - Key Mapping:
     + ~~[FZF](wiki/fzf.md)~~ (Using `Telescope` instead)

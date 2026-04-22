@@ -1,27 +1,22 @@
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
+
+-- Set global defaults for all LSP servers
+vim.lsp.config('*', {
+  capabilities = capabilities,
+})
+
 vim.lsp.enable('pyright')
 
 local root = g_root .. 'settings/lsp/'
 dofile(root .. 'deno.lua')
 
---vim.lsp.config('ts_ls', {
---  root_dir = vim.lsp.util.root_pattern('package.json', 'tsconfig.json', '.git'),
---  single_file_support = false,
---
---  on_attach = function(client, bufnr)
---    if lspcfg.util.root_pattern("deno.json", "deno.jsonc")(vim.fn.getcwd()) then
---        client.stop()
---    end
---  end
---})
-
 vim.lsp.config('clangd', {
   cmd = { 'clangd' },
   filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'h' },
-  --root_dir = lspcfg.util.root_pattern('.clangd', '.git', 'compile_commands.json'),
   single_file_support = true,
-  on_attach = function (client, bufnr)
-  end
 })
+vim.lsp.enable('clangd')
 
 vim.api.nvim_create_autocmd('LspAttach', {
     group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
@@ -42,12 +37,12 @@ vim.api.nvim_create_autocmd('LspAttach', {
         qsmap('gr', "lsp_references", '[G]oto [R]eferences')
         qsmap('gi', "lsp_implementations", '[G]oto [I]mplement')
         qsmap('gtd', "lsp_type_definitions", '[G]oto [T]ype [D]efinition')
-        qsmap('<leader>ds', "lsp_document_symbols", '[D]ocument [S]ymbols')
-        qsmap('<leader>hs', "lsp_dynamic_workspace_symbols", '[H] Workspace [S]ymbols')
-        qnmap('<leader>rn', vlb.rename, '[R]e[n]ame')
-        qnmap('<leader>ca', vlb.code_action, '[C]ode Action')
+        qsmap('<Leader>ds', "lsp_document_symbols", '[D]ocument [S]ymbols')
+        qsmap('<Leader>hs', "lsp_dynamic_workspace_symbols", '[H] Workspace [S]ymbols')
+        qnmap('<Leader>rn', vlb.rename, '[R]e[n]ame')
+        qnmap('<Leader>ca', vlb.code_action, '[C]ode Action')
         qnmap('<M-CR>', vlb.code_action, '[C]ode Action')
-        qnmap('<leader>ch', vlb.hover, '[C]ode [H]over')
+        qnmap('<Leader>ch', vlb.hover, '[C]ode [H]over')
         qnmap('K', vlb.hover, '[*K]ode hover')
         qnmap('gD', vlb.declaration, '[G]oto [*D]eclaration')
 
@@ -110,12 +105,9 @@ require('mason-lspconfig').setup {
   handlers = {
     function(server_name)
       if server_name ~= 'tsserver' then
-        -- local server = servers[server_name] or {}
-        -- This handles overriding only values explicitly passed
-        -- by the server configuration above. Useful when disabling
-        -- certain features of an LSP (for example, turning off formatting for tsserver)
-        -- server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-        vim.lsp.config(server_name, {})
+        local server_opts = servers[server_name] or {}
+        vim.lsp.config(server_name, server_opts)
+        vim.lsp.enable(server_name)
       end
     end,
   },

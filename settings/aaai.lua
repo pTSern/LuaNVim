@@ -138,14 +138,14 @@ You are an excellent programming expert.
       insert = "<C-s>",
     },
     -- NOTE: The following will be safely set by avante.nvim
-    ask = "<leader>aa",
-    edit = "<leader>ae",
-    refresh = "<leader>ar",
+    ask = "<Leader>aa",
+    edit = "<Leader>ae",
+    refresh = "<Leader>ar",
     toggle = {
-      default = "<leader>at",
-      debug = "<leader>ad",
-      hint = "<leader>ah",
-      suggestion = "<leader>as",
+      default = "<Leader>at",
+      debug = "<Leader>ad",
+      hint = "<Leader>ah",
+      suggestion = "<Leader>as",
     },
   },
   windows = {

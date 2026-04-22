@@ -58,3 +58,24 @@ end
 
 -- coq | cmp
 _G.target_cmp = 'cmp'
+
+-- Fix for Neovim 0.11/0.12 treesitter bug where nil nodes are passed to predicates
+if vim.treesitter.get_node_text then
+    local old_get_node_text = vim.treesitter.get_node_text
+    vim.treesitter.get_node_text = function(node, source, opts)
+        if not node then
+            return ""
+        end
+        return old_get_node_text(node, source, opts)
+    end
+end
+
+if vim.treesitter.get_range then
+    local old_get_range = vim.treesitter.get_range
+    vim.treesitter.get_range = function(node, source, metadata)
+        if not node then
+            return 0, 0, 0, 0
+        end
+        return old_get_range(node, source, metadata)
+    end
+end

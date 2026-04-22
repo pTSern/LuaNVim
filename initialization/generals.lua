@@ -19,6 +19,10 @@ GO.ruler = false
 GOpts.shiftwidth = 4
 GOpts.expandtab = true
 GOpts.autoindent = true
+GOpts.copyindent = true
+GOpts.preserveindent = true
+GOpts.smarttab = true
+vim.opt.smartindent = true;
 GOpts.clipboard='unnamedplus'
 GOpts.wrap = false
 GOpts.wildmenu = true
@@ -35,6 +39,7 @@ GOpts.incsearch = true
 
 GOpts.ignorecase = true
 GOpts.smartcase = true
+GOpts.formatoptions:append({ 'r', 'o' })
 
 GOpts.list = true
 GOpts.listchars = { tab = '» ', trail = '·', nbsp = '␣' }

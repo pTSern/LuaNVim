@@ -44,7 +44,13 @@ cmp.setup {
         ['<C-b>'] = cmp.mapping.scroll_docs(-4),
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
         ['<C-y>'] = cmp.mapping.confirm { select = true },
-        ['<CR>'] = cmp.mapping.confirm { select = true },
+        ['<CR>'] = cmp.mapping(function(fallback)
+            if cmp.visible() and cmp.get_selected_entry() then
+                cmp.confirm({ select = false })
+            else
+                fallback()
+            end
+        end, { 'i', 's' }),
         ['<C-l>'] = cmp.mapping( function () if ls.expand_or_locally_jumpable() then ls.expand_or_jump() end end, { 'i', 's' }),
         ['<C-h>'] = cmp.mapping( function () if ls.locally_jumpable(-1) then ls.jump(-1) end end, { 'i', 's' }),
 
