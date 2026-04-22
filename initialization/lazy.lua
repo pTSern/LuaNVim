@@ -308,8 +308,7 @@ require("lazy").setup(
         --#region Better FZF 
         {
             'nvim-telescope/telescope.nvim',
-            event = 'VimEnter',
-            branch = '0.1.x',
+            version = "*",
             dependencies = {
                 'nvim-lua/plenary.nvim',
                 {
@@ -319,9 +318,12 @@ require("lazy").setup(
                 },
                 'nvim-telescope/telescope-ui-select.nvim',
                 'nvim-telescope/telescope-project.nvim',
-                "nvim-telescope/telescope-file-browser.nvim"
+                "nvim-telescope/telescope-file-browser.nvim",
             }
         },
+		{
+			'andrew-george/telescope-themes'
+		},
         --{
         --    "cljoly/telescope-repo.nvim"
         --},
@@ -409,8 +411,9 @@ require("lazy").setup(
             branch = 'master',
             build   = ":TSUpdate",
             opts    = {
-                ensure_install  = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'vim', 'vimdoc', 'typescript', 'javascript', 'vue', 'css', 'cmake', 'cpp', 'c', 'c_sharp', 'json', 'comment'},
+                ensure_installed  = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'vim', 'vimdoc', 'typescript', 'javascript', 'vue', 'css', 'cmake', 'cpp', 'c', 'c_sharp', 'json', 'comment', 'markdown', 'markdown_inline' },
                 auto_install    = true,
+                sync_install    = false,
                 highlight       = {
                     enable          = true,
                 },

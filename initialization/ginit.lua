@@ -8,8 +8,6 @@ _G.font = {
 	size = 13
 }
 
-GCmd.colorscheme(_G.colorscheme)
-
 if _G.gui == 'neovide' then
 	_G.transparent(false)
 
@@ -24,19 +22,22 @@ if _G.gui == 'neovide' then
 	GGlobal.neovide_fullscreen = false
 	GGlobal.neovide_scroll_animation_length = 0.3
 
+	vim.o.guifont = _G.font.name .. ":h" .. _G.font.size;
+
 elseif _G.gui == 'qt' then
 	_G.transparent(false)
 	if vim.fn.exists(":GuiTabline") == 2 then
 		vim.cmd("GuiTabline 0")
 	end
+	vim.opt.guifont = _G.font.name .. ":h" .. _G.font.size;
 else
 	_G.transparent(true)
+	vim.opt.guifont = _G.font.name .. ":h" .. _G.font.size;
 end
 
+GCmd.colorscheme(_G.colorscheme)
 
 vim.api.nvim_command("highlight CursorColumn guibg=#353940")
 vim.api.nvim_command("highlight CursorLine guibg=#353940")
-
-vim.o.guifont = _G.font.name .. ":h" .. _G.font.size;
 
 --GCmd("set guifont=" .. _G.font.name .. ":h" .. _G.font.size)
