@@ -7,51 +7,72 @@
                          | ;.__/ |_____|   \______.'    \_/    [___][___||__||__] 
                         [__|                                                      
 ```
----
-- Dependcies:
-    + NVIM: `v0.12`
-    + LuaJIT: `2.1.1741730670`
-    + Python3: `3.x` [ For ChadTree ]
-    + Neovide: `any` [ Optional, for GUI ]
 
-- Core Nvim config code lang: [Lua](https://www.lua.org/)
+# pTS Neovim Configuration
 
-- Neovim setup powered by [💤 Lazy](https://github.com/folke/lazy.nvim)
-- Core:
-    + File Manager:
-        * Fuzzy Finder: [Telescope](https://github.com/nvim-telescope/telescope.nvim)
-        * Side Tab Tree:
-            - Module: [ChadTree](https://github.com/ms-jpq/chadtree)
-            - Depend: [Python3]()
-        * Multi-Projects: [Projects](https://github.com/nvim-telescope/telescope-project.nvim)
-        * Fast Traveling: [Flash](https://github.com/folke/flash.nvim)
-    + IDE Core System:
-        * Highlighting & Analysis: [Tree-sitter](https://github.com/nvim-treesitter/nvim-treesitter)
-        * Auto-completion: [Nvim-CMP](https://github.com/hrsh7th/nvim-cmp)
-        * LSP: [LspConfig](https://github.com/neovim/nvim-lspconfig)
-        * LSP Installer: [Mason](https://github.com/williamboman/mason.nvim)
-        * Quick Comment: [NerdCommenter](https://github.com/preservim/nerdcommenter)
-        * Quick Format: [Conform](https://github.com/stevearc/conform.nvim)
-        * Auto Pair: [Auto-Pairs](https://github.com/LunarWatcher/auto-pairs)
-        * Sub-System:
-            - C-Sharp: [OmniSharp](https://github.com/OmniSharp/omnisharp-vim)
-            - TypeScript: [TypeScript](https://github.com/pmizio/typescript-tools.nvim)
-            - Lua: [LuaSnip](https://github.com/L3MON4D3/LuaSnip)
-            - Markdown Previewer: [Markdown](https://github.com/iamcco/markdown-preview.nvim)
-            - Flutter: [Flutter](https://github.com/akinsho/flutter-tools.nvim)
-    + UI:
-        * Starter Dashboard: [Dashboard](https://github.com/nvimdev/dashboard-nvim)
-        * Icons: [DevIcons](https://github.com/nvim-tree/nvim-web-devicons)
-    + AI:
-        * Avante: [Avante](https://github.com/yetone/avante.nvim)
-- Required:
-	+ Nerdfont: [JetBrains Nerd Font](https://objects.githubusercontent.com/github-production-release-asset-2e65be/27574418/c73b35fc-92bd-4850-a79a-ccb86b8069c9?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=releaseassetproduction%2F20240919%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240919T024133Z&X-Amz-Expires=300&X-Amz-Signature=4b4085b29d0547312074ea1dbfed4445dfca949a675533673d717c9e00a78edd&X-Amz-SignedHeaders=host&actor_id=130627040&key_id=0&repo_id=27574418&response-content-disposition=attachment%3B%20filename%3DJetBrainsMono.zip&response-content-type=application%2Foctet-stream)
-	+ [ripgrep](https://github.com/burntsushi/ripgrep#installation)
-	+ [fd](https://github.com/sharkdp/fd)
-	
-- Key Mapping:
-    + ~~[FZF](wiki/fzf.md)~~ (Using `Telescope` instead)
-    + ~~[COC](wiki/coc.md)~~ (Using `LSP` instead)
-    + [Nvim CheatSheet](wiki/cheatsheet.md)
-    + [General Key Mapping](wiki/wiki.md)
+A modular, high-performance, and aesthetically pleasing Neovim configuration built for modern software engineering. This setup transforms Neovim into a powerful, IDE-like environment while maintaining the speed and flexibility of a terminal-based editor.
+
 ---
+
+## ✨ Features at a Glance
+
+- **⚡ Blazing Fast:** Powered by [Lazy.nvim](https://github.com/folke/lazy.nvim) for optimized plugin loading.
+- **🛠️ Robust IDE Features:** Native LSP support with auto-completion, diagnostics, and advanced code navigation.
+- **🤖 AI-Integrated:** Built-in support for GitHub Copilot, Copilot Chat, and Avante for intelligent coding assistance.
+- **🎨 Modern Aesthetics:** Beautifully themed with **Catppuccin**, featuring a polished UI with a custom dashboard and statusline.
+- **🔍 Advanced Navigation:** Fuzzy find anything with **Telescope**, browse files with **CHADTree**, and jump around code instantly with **Flash**.
+- **📦 Multi-Language Ready:** Optimized configurations for C# (Roslyn/OmniSharp), TypeScript, Flutter, Lua, and Markdown.
+
+---
+
+## 🛠️ Core Stack
+
+### 🧩 IDE Features
+- **LSP Support:** [LspConfig](https://github.com/neovim/nvim-lspconfig) managed via [Mason](https://github.com/williamboman/mason.nvim).
+- **Completion:** [Nvim-CMP](https://github.com/hrsh7th/nvim-cmp) for smooth, snippet-aware autocompletion.
+- **Syntax:** [Tree-sitter](https://github.com/nvim-treesitter/nvim-treesitter) for advanced highlighting and structural understanding.
+- **Formatting:** [Conform.nvim](https://github.com/stevearc/conform.nvim) for lightning-fast buffer formatting.
+
+### 🧭 Navigation & Productivity
+- **Fuzzy Finder:** [Telescope](https://github.com/nvim-telescope/telescope.nvim) (files, grep, git, symbols).
+- **File Explorer:** [CHADTree](https://github.com/ms-jpq/chadtree) — a fast, feature-rich alternative to NERDTree.
+- **Movement:** [Flash.nvim](https://github.com/folke/flash.nvim) for rapid, intuitive cursor jumping.
+- **Project Management:** [Telescope Projects](https://github.com/nvim-telescope/telescope-project.nvim) to switch workspaces instantly.
+
+### 💄 UI & Aesthetics
+- **Theme:** [Catppuccin](https://github.com/catppuccin/nvim) (Mocha variant).
+- **Statusline:** [Lualine](https://github.com/nvim-lualine/lualine.nvim) for a clean, informative bottom bar.
+- **Tabs:** [Barbar.nvim](https://github.com/romgrk/barbar.nvim) for sleek, interactive buffer tabs.
+- **Dashboard:** [Dashboard-nvim](https://github.com/nvimdev/dashboard-nvim) for a beautiful start screen.
+
+---
+
+## 🖥️ System Requirements
+
+- **Neovim:** `v0.12+` (highly recommended for the latest features)
+- **Runtime:** [LuaJIT](https://luajit.org/)
+- **External Dependencies:**
+    - **Python 3:** Required for CHADTree.
+    - **ripgrep (`rg`):** Required for fast searching in Telescope.
+    - **fd:** Required for fast file finding.
+    - **Nerd Font:** [JetBrainsMono Nerd Font](https://www.nerdfonts.com/font-downloads) (or any Nerd Font) is required for icons.
+
+---
+
+## ⌨️ Getting Started
+
+To learn about the customized keybindings and how to navigate this configuration efficiently, please refer to our detailed guides:
+
+- **[📖 Comprehensive Key Bindings Guide](KEY_BINDS.md)** - *Start here!*
+- **[📝 Nvim CheatSheet](wiki/cheatsheet.md)**
+- **[🌐 General Wiki](wiki/wiki.md)**
+
+### Quick Commands
+- `<Leader>ff` - Find files
+- `<Leader>fg` - Live grep (search text)
+- `<Alt-1>` - Toggle File Explorer
+- `<Leader>fb` - Format current buffer
+
+---
+
+*This configuration is continuously evolving. Check the `settings/` directory to explore individual plugin configurations.*

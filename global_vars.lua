@@ -4,6 +4,8 @@ GGlobal = vim.g
 GCmd = vim.cmd
 GWo = vim.wo
 GO = vim.o
+LSP = vim.lsp
+API = vim.api
 
 GDfgConfig = {
     noremap = true,

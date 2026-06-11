@@ -74,9 +74,6 @@ require("lazy").setup(
         'echasnovski/mini.surround',
         'echasnovski/mini.icons',
         'echasnovski/mini.deps',
-
-
-
         {
             'lukas-reineke/indent-blankline.nvim',
             event = "User FilePost",
@@ -94,8 +91,11 @@ require("lazy").setup(
                 --dofile(GGlobal.base46_cache .. 'blankline')
             end
         },
+        {
+            'kevinhwang91/nvim-ufo',
+            dependencies = 'kevinhwang91/promise-async',
+        },
         --#endregion
-
 
 
 
@@ -308,7 +308,8 @@ require("lazy").setup(
         --#region Better FZF 
         {
             'nvim-telescope/telescope.nvim',
-            version = "*",
+            event = 'VimEnter',
+            branch = '0.1.x',
             dependencies = {
                 'nvim-lua/plenary.nvim',
                 {
@@ -318,12 +319,9 @@ require("lazy").setup(
                 },
                 'nvim-telescope/telescope-ui-select.nvim',
                 'nvim-telescope/telescope-project.nvim',
-                "nvim-telescope/telescope-file-browser.nvim",
+                "nvim-telescope/telescope-file-browser.nvim"
             }
         },
-		{
-			'andrew-george/telescope-themes'
-		},
         --{
         --    "cljoly/telescope-repo.nvim"
         --},
@@ -411,12 +409,10 @@ require("lazy").setup(
             branch = 'master',
             build   = ":TSUpdate",
             opts    = {
-                ensure_installed  = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'vim', 'vimdoc', 'typescript', 'javascript', 'vue', 'css', 'cmake', 'cpp', 'c', 'c_sharp', 'json', 'comment', 'markdown', 'markdown_inline' },
+                ensure_install  = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'vim', 'vimdoc', 'typescript', 'javascript', 'vue', 'css', 'cmake', 'cpp', 'c', 'c_sharp', 'json', 'comment'},
                 auto_install    = true,
-                sync_install    = false,
                 highlight       = {
-                    enable      = true,
-                    additional_vim_regex_highlighting = false,
+                    enable          = true,
                 },
                 -- Use native/filetype indentation; Treesitter indent can break newline indent in some setups.
                 indent = { enable = false }

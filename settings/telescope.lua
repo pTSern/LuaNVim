@@ -1,29 +1,50 @@
 
+--GGlobal.rooter_cd_cmd = 'lcd'
+
 local root = g_root .. 'settings/'
+local telescope = require('telescope')
 local actions = require('telescope.actions')
 local themes = require('telescope.themes')
 
 local function _qdefvert(opt)
     opt = opt or {}
 
-    local show_preview = true
-    if opt.previewer ~= nil then show_preview = opt.previewer end
+    if opt.previewer == nil then opt.previewer = true end
+    if opt.mirror == nil then opt.mirror = false end
+
+    opt.height = opt.height or 0.9
+    opt.width = opt.width or 0.85
+    opt.mode = opt.mode or "insert"
+    opt.layout = opt.layout or "vertical"
+    opt.sorting = opt.sorting or "descending"
+    opt.position = opt.position or "bottom"
+    opt.theme = opt.theme or "ivy"
+
+    opt.percent = opt.percent or {
+        preview = 0.65,
+        results = 0.35,
+    }
+
+    opt.path_display = opt.path_display or { "smart" }
 
     return {
-        initial_mode = opt.mode or "insert",
-        previewer = show_preview,
-        layout_strategy = opt.layout or "vertical",
-        sorting_strategy = opt.sorting or "descending",
+        initial_mode = opt.mode,
+        previewer = opt.previewer,
+        layout_strategy = opt.layout,
+        sorting_strategy = opt.sorting,
         prompt_title = opt.title,
-        theme = opt.theme or "dropdown",
-        mirror = opt.mirror ~= nil and opt.mirror or true,
+        theme = opt.theme,
+        path_display = opt.path_display,
 
         layout_config = {
-            width = opt.width or 0.85,
-            height = opt.height or 0.9,
+            width = opt.width,
+            height = opt.height,
             vertical = {
-                preview_height = opt.percent and opt.percent.preview or 0.65,
-                prompt_position = opt.position or "bottom",
+                preview_height = opt.height * opt.percent.preview,
+                results_height = opt.height * opt.percent.results,
+
+                mirror = opt.mirror,
+                prompt_position = opt.position,
             }
         }
     }
@@ -63,7 +84,15 @@ require('telescope').setup {
             }
         },
 
-        -- ripgrep
+        -- External tools
+        find_command = {
+            'fd',
+            '--type', 'f',
+            '--strip-cwd-prefix',
+            '--hidden',
+            '--exclude', '.git',
+            '--follow',
+        },
         vimgrep_arguments = {
             'rg',
             '--color=never',
@@ -72,17 +101,37 @@ require('telescope').setup {
             '--line-number',
             '--column',
             '--smart-case',
+            '--hidden',
+            '--glob', '!.git/*',
+            '--follow',
+            '--pcre2',
         },
     },
 
     pickers = {
-        current_buffer_fuzzy_find = _qdefvert{ height = 0.75, previewer = false, title = "[ Search ]" },
-        find_files = _qdefvert{ height = 0.9, title = "[ Find Files ]", percent = { preview = 0.65, results = 0.35 }, mirror = true },
-        find_buffers = _qdefvert{ height = 0.5, previewer = true, title = "[ Buffers ]" , percent = { preview = 0.5, results = 0.5 }},
-        diagnostics = _qdefvert{ height = 0.9, previewer = true, title = "[ Diagnostics ]" , percent = { preview = 0.6, results = 0.4 }, mirror = true },
-        live_grep = {
-            initial_mode = "insert",
-            theme = "ivy",
+        current_buffer_fuzzy_find = _qdefvert{
+            height = 0.75,
+            previewer = false,
+            title = "[ Search ]",
+            theme = "dropdown",
+        },
+        find_files = _qdefvert{
+            title = "[ Find Files ]",
+        },
+        find_buffers = _qdefvert{
+            height = 0.5,
+            previewer = false,
+            title = "[ Buffers ]",
+        },
+        diagnostics = _qdefvert{
+            title = "[ Diagnostics ]",
+        },
+        live_grep = _qdefvert{
+            title = "[ Live Grep ]",
+        },
+        marks = _qdefvert{
+            height = 0.75,
+            title = "[ Marks ]",
         },
     },
 
@@ -99,14 +148,13 @@ require('telescope').setup {
     },
 }
 
-pcall(require('telescope').load_extension, 'fzf')
-pcall(require('telescope').load_extension, 'fzy_native')
-pcall(require('telescope').load_extension, 'ui-select')
-pcall(require('telescope').load_extension, 'project')
-pcall(require('telescope').load_extension, 'telescope-themes')
+pcall(telescope.load_extension, 'fzf')
+pcall(telescope.load_extension, 'ui-select')
+pcall(telescope.load_extension, 'project')
+pcall(telescope.load_extension, 'file_browser')
 
 dofile(root .. '_telescope.project.lua')
 dofile(root .. '_telescope.keymap.lua')
-
+--require('telescope').extensions.project.project{}
 
 
