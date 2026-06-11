@@ -49,17 +49,52 @@ A modular, high-performance, and aesthetically pleasing Neovim configuration bui
 
 ## 🖥️ System Requirements
 
-- **Neovim:** `v0.12+` (highly recommended for the latest features)
+- **Neovim:** `v0.12+` (highly recommended)
 - **Runtime:** [LuaJIT](https://luajit.org/)
-- **External Dependencies:**
-    - **Python 3:** Required for CHADTree.
-    - **ripgrep (`rg`):** Required for fast searching in Telescope.
-    - **fd:** Required for fast file finding.
-    - **Nerd Font:** [JetBrainsMono Nerd Font](https://www.nerdfonts.com/font-downloads) (or any Nerd Font) is required for icons.
+- **Nerd Font:** [JetBrainsMono Nerd Font](https://www.nerdfonts.com/font-downloads) is required for icons.
+
+### 🛠️ Required External Tools
+These tools are used to supercharge Neovim's performance (finding files, searching text, sorting):
+
+| Tool | Purpose | Use Case |
+| :--- | :--- | :--- |
+| **`ripgrep` (`rg`)** | Ultra-fast search | Telescope Grep, Spectre |
+| **`fd`** | Fast file finder | Telescope Find Files |
+| **`fzf`** | Fuzzy finder | Telescope sorting, FZF integration |
+| **`cmake`** | Build tool | Compiling `fzf-native` for max speed |
+| **`git`** | Version control | Plugin management, Git features |
+| **`Python 3`** | Scripting | Required for CHADTree |
+
+### 📦 Optional (Enhanced Experience)
+- `bat`: Syntax highlighting for Telescope previews.
+- `delta`: Better git diffs.
+- `jq`: JSON processing.
+- `tokei`: Code statistics.
+- `xh`: HTTP client for API testing.
 
 ---
 
-## ⌨️ Getting Started
+## 🚀 Installation & Setup
+
+### 1. Automated Setup (Windows)
+We provide a script to automatically install all required terminal tools via [Chocolatey](https://chocolatey.org/).
+
+1. Open the project folder.
+2. Right-click `install_tools.bat` and select **"Run as Administrator"**.
+3. The script will install Chocolatey (if missing) and all the tools listed above.
+4. Restart your terminal.
+
+### 2. Manual Installation
+If you prefer manual setup, ensure the tools in the table above are in your system `PATH`.
+
+### 3. Clone the Config
+```bash
+git clone https://github.com/your-repo/nvim.git %USERPROFILE%\AppData\Local\nvim
+```
+
+---
+
+## ⌨️ Key Bindings
 
 To learn about the customized keybindings and how to navigate this configuration efficiently, please refer to our detailed guides:
 
