@@ -11,7 +11,6 @@
 # pTS Neovim Configuration
 
 A modular, high-performance, and aesthetically pleasing Neovim configuration built for modern software engineering. This setup transforms Neovim into a powerful, IDE-like environment while maintaining the speed and flexibility of a terminal-based editor.
-
 ---
 
 ## ✨ Features at a Glance
@@ -21,6 +20,7 @@ A modular, high-performance, and aesthetically pleasing Neovim configuration bui
 - **🤖 AI-Integrated:** Built-in support for GitHub Copilot, Copilot Chat, and Avante for intelligent coding assistance.
 - **🎨 Modern Aesthetics:** Beautifully themed with **Catppuccin**, featuring a polished UI with a custom dashboard and statusline.
 - **🔍 Advanced Navigation:** Fuzzy find anything with **Telescope**, browse files with **CHADTree**, and jump around code instantly with **Flash**.
+- **🚀 Multitasking Ready:** Session management and a powerful, multi-terminal workflow built for high productivity.
 - **📦 Multi-Language Ready:** Optimized configurations for C# (Roslyn/OmniSharp), TypeScript, Flutter, Lua, and Markdown.
 
 ---
@@ -35,9 +35,10 @@ A modular, high-performance, and aesthetically pleasing Neovim configuration bui
 
 ### 🧭 Navigation & Productivity
 - **Fuzzy Finder:** [Telescope](https://github.com/nvim-telescope/telescope.nvim) (files, grep, git, symbols).
-- **File Explorer:** [CHADTree](https://github.com/ms-jpq/chadtree) — a fast, feature-rich alternative to NERDTree.
+- **File Explorer:** [CHADTree](https://github.com/ms-jpq/chadtree).
+- **Session:** [Persistence.nvim](https://github.com/folke/persistence.nvim) to auto-save and restore your workspace.
+- **Terminal:** [ToggleTerm.nvim](https://github.com/akinsho/toggleterm.nvim) with multi-instance support and mode indicators.
 - **Movement:** [Flash.nvim](https://github.com/folke/flash.nvim) for rapid, intuitive cursor jumping.
-- **Project Management:** [Telescope Projects](https://github.com/nvim-telescope/telescope-project.nvim) to switch workspaces instantly.
 
 ### 💄 UI & Aesthetics
 - **Theme:** [Catppuccin](https://github.com/catppuccin/nvim) (Mocha variant).
@@ -58,7 +59,7 @@ These tools are used to supercharge Neovim's performance (finding files, searchi
 
 | Tool | Purpose | Use Case |
 | :--- | :--- | :--- |
-| **`ripgrep` (`rg`)** | Ultra-fast search | Telescope Grep, Spectre |
+| **`ripgrep` (`rg`)** | Ultra-fast search | Telescope Grep |
 | **`fd`** | Fast file finder | Telescope Find Files |
 | **`fzf`** | Fuzzy finder | Telescope sorting, FZF integration |
 | **`cmake`** | Build tool | Compiling `fzf-native` for max speed |

@@ -57,5 +57,6 @@ GKeymap.set("v", "<C-j>", ":m '>+1<CR>gv=gv", GDfgConfig)
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagnostic message" })
 
-vim.keymap.set("n", "<leader>sf", vim.diagnostic.open_float, { desc = "[S]how [F]loating diagnostic error messages" })
-vim.keymap.set("n", "<leader>qf", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uick [F]ix list" })
+GKeymap.set("n", "<leader>sf", vim.diagnostic.open_float, { desc = "[S]how [F]loating diagnostic error messages" })
+GKeymap.set("n", "<leader>qf", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uick [F]ix list" })
+

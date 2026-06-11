@@ -28,7 +28,7 @@ GOpts.wrap = false
 GOpts.wildmenu = true
 GOpts.wildignore = '*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx'
 GOpts.cursorline = true
-GOpts.hidden = false
+GOpts.hidden = true
 GOpts.mouse = 'a'
 GOpts.undofile = true
 

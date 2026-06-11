@@ -175,17 +175,21 @@ require("lazy").setup(
 
         --#region Searching
         "lfv89/vim-interestingwords",
-        "nvim-pack/nvim-spectre",
         --#endregion
 
-        --#region Floating terminal
-        "voldikss/vim-floaterm",                                                                                                                                                                                                                        -- Float terminal
-        --{
-        --    "nvzone/floaterm",
-        --    dependencies = "nvzone/volt",
-        --    cmd = "FloatermToggle",
-        --    opts = {},
-        --},
+        --#region Multitasking
+        {
+            "folke/persistence.nvim",
+            event = "BufReadPre", -- this will only start session saving when an actual file is opened
+            opts = {
+                -- add any custom options here
+            }
+        },
+        {
+            'akinsho/toggleterm.nvim',
+            version = "*",
+            config = true
+        },
         --#endregion
 
         --#region Tab manager

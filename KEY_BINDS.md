@@ -111,7 +111,10 @@ Keybindings can behave differently depending on which "mode" Neovim is in:
 | Normal | `[Leader]pm / fp`| Project Manager | Telescope |
 | Normal | `[Alt-1] / [F1]`| Toggle CHADTree (File Explorer) | CHADTree |
 | Normal | `[Leader]/...` | Various NERDCommenter actions | NERDCommenter |
-| Normal | `[F8]` | Toggle Floating Terminal | Floaterm |
+| Normal/Terminal | `[F8]` | Toggle Floating Terminal | ToggleTerm |
+| Terminal | `[C-t]` | Create New Terminal | ToggleTerm |
+| Terminal | `[Tab]` | Next Terminal | ToggleTerm |
+| Terminal | `[S-Tab]` | Previous Terminal | ToggleTerm |
 | Normal | `[Alt-k]` | Highlight word under cursor | InterestingWords |
 | Normal | `[Alt-K]` | Clear all highlights | InterestingWords |
 | Normal | `[Alt-h / l]` | Jump between highlighted words | InterestingWords |
