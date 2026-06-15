@@ -633,6 +633,9 @@ require("lazy").setup(
         {
             "CopilotC-Nvim/CopilotChat.nvim",
         },
+        {
+            "pTSern/gemini-popup.nvim",
+        },
 
         --#region Key Displaying
         {
