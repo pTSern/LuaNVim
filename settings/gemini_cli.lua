@@ -1,2 +1,3 @@
 -- Setup the plugin with defaults
-require('gemini-popup').setup({})
+require('gemini-popup').setup({
+})
