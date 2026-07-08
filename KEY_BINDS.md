@@ -115,10 +115,13 @@ Keybindings can behave differently depending on which "mode" Neovim is in:
 | Terminal | `[C-t]` | Create New Terminal | ToggleTerm |
 | Terminal | `[Tab]` | Next Terminal | ToggleTerm |
 | Terminal | `[S-Tab]` | Previous Terminal | ToggleTerm |
+| Terminal | `[Shift-Right/Left]`| Switch to next/previous terminal buffer | ToggleTerm |
+| Terminal | `[Ctrl-h/j/k/l]`| Move window focus out of terminal | ToggleTerm |
+| Normal/Insert/Terminal | `[Ctrl-Shift-T]`| Toggle exclusive shell terminal | ToggleTerm |
 | Normal | `[Leader]am`| Toggle Antigravity (agy) CLI popup | AGY |
 | Normal | `[Leader]an`| New Antigravity (agy) session at path | AGY |
 | Normal | `[Leader]ak`| Kill the current Antigravity session | AGY |
-| Normal | `[Alt-k]` | Highlight word under cursor | InterestingWords |
+| Normal/Visual | `[Alt-k]` | Highlight word under cursor | InterestingWords |
 | Normal | `[Alt-K]` | Clear all highlights | InterestingWords |
 | Normal | `[Alt-h / l]` | Jump between highlighted words | InterestingWords |
 | Normal | `[Leader]lss / q`| Start / Stop Live Server | LiveServer |
@@ -141,11 +144,15 @@ Keybindings can behave differently depending on which "mode" Neovim is in:
 | Normal | `[Leader][Tab]` | Pin/Unpin Buffer | Barbar |
 | Normal | `[Tab]d / c` | Delete / Close Buffer | Barbar |
 | Insert | `[Ctrl-Tab]` | Accept Copilot suggestion | Copilot |
+| Insert | `[Ctrl-j] / [Ctrl-k]`| Select next/previous autocomplete item | Autocomplete (cmp) |
+| Insert | `[Ctrl-b] / [Ctrl-f]`| Scroll documentation inside completion popup | Autocomplete (cmp) |
+| Insert | `[Ctrl-y]` | Confirm autocomplete selection | Autocomplete (cmp) |
+| Insert | `[Ctrl-l] / [Ctrl-h]`| Snippet expand or jump forward/backward | Autocomplete (cmp) |
 | Normal | `[F2]` | Copilot Chat Quick Prompt | CopilotChat |
 | Normal | `[Leader]aa` | Open Copilot Chat window | CopilotChat |
 | Normal | `gd / gr / gi` | Go to Definition / References / Impl | LSP |
 | Normal | `[Leader]rn` | Rename symbol | LSP |
-| Normal | `[Leader]ca` | Code Action | LSP |
+| Normal | `[Leader]ca / [Alt-Enter]`| Code Action | LSP |
 | Normal | `K` | Hover Documentation | LSP |
 | Normal | `[Ctrl-Right]` | Flash Jump | Flash.nvim |
 | Normal | `[Ctrl-Left]` | Flash Treesitter Jump | Flash.nvim |
