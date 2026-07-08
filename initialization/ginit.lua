@@ -25,15 +25,16 @@ if _G.gui == 'neovide' then
 	GGlobal.neovide_fullscreen = false
 	GGlobal.neovide_scroll_animation_length = 0.3
 
+
+
 elseif _G.gui == 'qt' then
 	_G.transparent(false)
 	if vim.fn.exists(":GuiTabline") == 2 then
 		vim.cmd("GuiTabline 0")
 	end
 else
-	_G.transparent(true)
+	_G.transparent(false)
 end
-
 
 vim.api.nvim_command("highlight CursorColumn guibg=#353940")
 vim.api.nvim_command("highlight CursorLine guibg=#353940")
