@@ -34,7 +34,7 @@ This is a modular and highly customized Neovim configuration powered by Lua and 
 ### Navigation & Search
 - **Fuzzy Finder:** `<Leader>sf` (diagnostics), and other Telescope commands.
 - **File Explorer:** `ChadTree` is the primary file manager.
-- **Fast Travel:** Use `Flash.nvim` with mappings like `M-right`.
+- **Fast Travel:** Use `Flash.nvim` with mappings like `C-right` (and `C-left` for Treesitter).
 
 ### IDE Features
 - **Formatting:** `<Leader>fb` (Format Buffer) using `conform.nvim`.

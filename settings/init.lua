@@ -51,6 +51,6 @@ dofile(root .. 'copilot.lua')
 
 dofile(root .. 'ufo.lua')
 
-dofile(root .. 'gemini_cli.lua')
+dofile(root .. 'agy_cli.lua')
 
 dofile(root .. 'scroller.lua')

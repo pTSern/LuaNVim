@@ -115,6 +115,9 @@ Keybindings can behave differently depending on which "mode" Neovim is in:
 | Terminal | `[C-t]` | Create New Terminal | ToggleTerm |
 | Terminal | `[Tab]` | Next Terminal | ToggleTerm |
 | Terminal | `[S-Tab]` | Previous Terminal | ToggleTerm |
+| Normal | `[Leader]am`| Toggle Antigravity (agy) CLI popup | AGY |
+| Normal | `[Leader]an`| New Antigravity (agy) session at path | AGY |
+| Normal | `[Leader]ak`| Kill the current Antigravity session | AGY |
 | Normal | `[Alt-k]` | Highlight word under cursor | InterestingWords |
 | Normal | `[Alt-K]` | Clear all highlights | InterestingWords |
 | Normal | `[Alt-h / l]` | Jump between highlighted words | InterestingWords |
@@ -144,8 +147,8 @@ Keybindings can behave differently depending on which "mode" Neovim is in:
 | Normal | `[Leader]rn` | Rename symbol | LSP |
 | Normal | `[Leader]ca` | Code Action | LSP |
 | Normal | `K` | Hover Documentation | LSP |
-| Normal | `[Alt-Right]` | Flash Jump | Flash.nvim |
-| Normal | `>` | Flash Treesitter Jump | Flash.nvim |
+| Normal | `[Ctrl-Right]` | Flash Jump | Flash.nvim |
+| Normal | `[Ctrl-Left]` | Flash Treesitter Jump | Flash.nvim |
 
 ## Notes
 

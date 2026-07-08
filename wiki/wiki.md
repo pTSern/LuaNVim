@@ -32,8 +32,10 @@
 |          | `[Leader]tv`          | `:vs[CR][C-w][C-w]`                          | Open and jump to the file in a new buffer, verically split window      |
 |          | `[Leader]ts`          | `[C-w][C-w]`                                 | Switch windows                                                         |
 |          | `[Leader]tq`          | `[C-w][C-q]`                                 | Quit the current window                                                |
-| -------- | ----------------      | -----------------------                      | -----------------------------                                          |
 | Terminal | `[Leader][Leader]t`   | `:ter[CR]`                                   | Open a terminal window                                                 |
+|          | `[Leader]am`          | `:AgyPopup` (or toggle)                      | Toggle Antigravity (agy) CLI popup window                               |
+|          | `[Leader]an`          | `new agy path input`                         | Open a new Antigravity (agy) session at path                           |
+|          | `[Leader]ak`          | `kill agy session`                           | Kill the current Antigravity (agy) session                             |
 | -------- | ----------------      | -----------------------                      | -----------------------------                                          |
 | Help     | `[Leader]?coc`        | `:call ShowWiki('coc')[CR][CR]`              | Open `Coc` plugin wiki. Press `[ESC]` to exit                          |
 |          | `[Leader]?fzf`        | `:call ShowWiki('fzf')[CR][CR]`              | Open `Fuzzy` plugin wiki. Press `[ESC]` to exit                        |
