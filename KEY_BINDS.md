@@ -124,6 +124,10 @@ Keybindings can behave differently depending on which "mode" Neovim is in:
 | Normal | `[Leader][Leader]l`| Toggle Cursor Line | UI |
 | Normal | `[Leader][Leader]w`| Toggle Line Wrap | UI |
 | Normal | `[Leader]qg/m/p` | Insert `public`/`protected`/`private` | Coding |
+| Normal | `[Leader][Leader]cp`| Insert `@property()` decorator | Coding (Cocos Creator) |
+| Normal | `[Leader]fa` | Create Cocos Creator Component via popup | Coding (Cocos Creator) |
+| Insert | `[Ctrl-CR]` / `[Ctrl-Enter]`| Create Cocos Creator Component via popup | Coding (Cocos Creator) |
+| Normal | `[Leader]ri` | Rename word under cursor via popup (using search/substitute) | Refactor / Rename |
 | Normal | `zR / zM` | Open all / Close all folds | UFO |
 | Normal | `[Leader]gp` | Neogit Popup | Neogit |
 | Normal | `-o / -t` | Git Conflict: Choose Ours / Theirs | GitConflict |

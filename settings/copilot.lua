@@ -20,7 +20,7 @@ require('CopilotChat').setup {
     zindex = 50,
     row = 1
   },
-  model = "claude-3.7-sonnet",
+  model = "auto",
 
   question_header = '⫎ pTSern ', -- Header to use for user questions
   answer_header = '⫎ Copilot ', -- Header to use for AI answers

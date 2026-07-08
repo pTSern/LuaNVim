@@ -51,6 +51,11 @@ require("lazy").setup(
                 )
             end
         },
+        -- smothy scroll
+        {
+            "karb94/neoscroll.nvim",
+            opts = {}
+        },
         --Web devicons
         --"ryanoasis/vim-devicons",                                       -- Provide beauty icons
         {

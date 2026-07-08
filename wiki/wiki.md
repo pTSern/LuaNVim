@@ -41,9 +41,13 @@
 |          | `[Leader]?wiki`       | `:call ShowWiki('wiki')[CR][CR]`             | Open this                                                              |
 |          | `[Loader]??`          | `:map[CR]`                                   | Show all key mapping                                                   |
 | -------- | ----------------      | -----------------------                      | -----------------------------                                          |
-| Func     | `[Leader]fc`          | `:call ToggleCursorColumn()[CR]`             | Toggle the cursor column                                               |
-|          | `[Leader]fl`          | `:call ToggleCursorLine()[CR]`               | Toggle the cursor line                                                 |
-|          | `[Leader]fw`          | `:call ToggleWrapMode()[CR]`                 | Toggle wrap line mode                                                  |
+| Func     | `[Leader][Leader]c`   | `Toggle cursor column`                       | Toggle the cursor column                                               |
+|          | `[Leader][Leader]l`   | `Toggle cursor line`                         | Toggle the cursor line                                                 |
+|          | `[Leader][Leader]w`   | `Toggle wrap line mode`                      | Toggle wrap line mode                                                  |
+|          | `[Leader]qg/qm/qp`    | `Insert public/protected/private`            | Quick Coding shortcuts for Access Modifiers                            |
+|          | `[Leader][Leader]cp`  | `Insert @property()`                         | Cocos Creator property decorator                                       |
+|          | `[Leader]fa`          | `insert_cocos_component`                     | Create Cocos Creator Component via popup                               |
+|          | `[Leader]ri`          | `rename_word_popup`                          | Rename word under cursor via popup                                     |
 |          |                       |                                              |                                                                        |
 
 # Visual
