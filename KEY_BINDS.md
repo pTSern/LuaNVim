@@ -110,7 +110,8 @@ Keybindings can behave differently depending on which "mode" Neovim is in:
 | Normal | `[Leader]vc` | Search config files with `rg` | Telescope |
 | Normal | `[Leader]pm / fp`| Project Manager | Telescope |
 | Normal | `[Alt-1] / [F1]`| Toggle CHADTree (File Explorer) | CHADTree |
-| Normal | `z` | Zip / Unzip selected item(s) (inside CHADTree) | CHADTree |
+| Normal | `z` | Zip selected item(s) (inside CHADTree) | CHADTree |
+| Normal | `Z` | Unzip selected zip file(s) (inside CHADTree) | CHADTree |
 | Normal | `[Leader]/...` | Various NERDCommenter actions | NERDCommenter |
 | Normal/Terminal | `[F8]` | Toggle Floating Terminal | ToggleTerm |
 | Terminal | `[C-t]` | Create New Terminal | ToggleTerm |
