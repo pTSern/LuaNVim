@@ -40,6 +40,14 @@ GKeymap.set("i", "<M-Down>", "<Esc><C-w>p<C-e><C-w>pi")
 GKeymap.set("i", "<M-Up>", "<Esc><C-w>p<C-y><C-w>pi")
 GKeymap.set("n", "<Leader>ef", "<CMD>:echo expand('%:p')<CR>", GQuickOpt('[E]cho current [F]ile path'))
 
+-- Map F3 in all modes to show the relative path of the current file (:echo @%)
+local f3_cmd = "<Cmd>echo expand('%')<CR>"
+GKeymap.set("n", "<F3>", f3_cmd, GQuickOpt("Echo relative file path"))
+GKeymap.set("i", "<F3>", f3_cmd, GQuickOpt("Echo relative file path"))
+GKeymap.set("v", "<F3>", f3_cmd, GQuickOpt("Echo relative file path"))
+GKeymap.set("t", "<F3>", "<C-\\><C-n>" .. f3_cmd .. "i", GQuickOpt("Echo relative file path"))
+
+
 --g_keymap.set('n', '<C-->', ":let g:font_size = (g:font_size - 1)<CR>:let &guifont = g:font.':h'.g:font_size <CR>:echo g:font_size<CR>")
 --g_keymap.set('n', '<C-=>', ":let g:font_size = (g:font_size + 1)<CR>:let &guifont = g:font.':h'.g:font_size <CR>:echo g:font_size<CR>")
 

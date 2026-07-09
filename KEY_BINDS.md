@@ -75,6 +75,7 @@ Keybindings can behave differently depending on which "mode" Neovim is in:
 | Normal | `[Alt-Up/Down]` | Scroll **other** window without leaving current | Multi-window |
 | Insert | `[Alt-Up/Down]` | Scroll **other** window (stay in Insert) | Multi-window |
 | Normal | `[Leader]ef` | Echo absolute path of current file | File Ops |
+| Normal/Insert/Visual/Terminal | `[F3]` | Echo relative path of current file (`:echo @%`) | File Ops |
 | Normal | `[Ctrl-=/-]` | Increase/Decrease window width | Windows |
 | Normal | `[Ctrl-0]` | Equalize window widths | Windows |
 | Normal | `[d / ]d` | Previous / Next Diagnostic | LSP |
