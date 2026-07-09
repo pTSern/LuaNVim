@@ -24,7 +24,8 @@ local function chadtree_zip_unzip()
 
     local paths = {}
     for p in raw_paths:gmatch("[^\r\n]+") do
-        table.insert(paths, p:gsub('\\', '/'))
+        local normalized = p:gsub('\\', '/')
+        table.insert(paths, normalized)
     end
 
     if #paths == 0 then return end
