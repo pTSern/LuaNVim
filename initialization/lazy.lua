@@ -432,20 +432,6 @@ require("lazy").setup(
             end
         },
         --#endregion
-
-        --#region Markdown previewer
-        {
-            "iamcco/markdown-preview.nvim",
-             cmd = {
-                "MarkdownPreviewToggle",
-                "MarkdownPreview",
-                "MarkdownPreviewStop"
-            },
-            build = "cd app && yarn install",
-            init = function() vim.g.mkdp_filetypes = { "markdown" } end,
-            ft = { "markdown" }
-        },
-
         --#region CSharp
         {
             "tris203/rzls.nvim"

@@ -130,7 +130,6 @@ Keybindings can behave differently depending on which "mode" Neovim is in:
 | Normal | `[Alt-K]` | Clear all highlights | InterestingWords |
 | Normal | `[Alt-h / l]` | Jump between highlighted words | InterestingWords |
 | Normal | `[Leader]lss / q`| Start / Stop Live Server | LiveServer |
-| Normal | `[Leader]lm...` | Markdown Preview actions | Markdown |
 | Normal | `[Leader][Leader]c`| Toggle Cursor Column | UI |
 | Normal | `[Leader][Leader]l`| Toggle Cursor Line | UI |
 | Normal | `[Leader][Leader]w`| Toggle Line Wrap | UI |
