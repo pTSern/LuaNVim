@@ -228,6 +228,19 @@ GKeymap.set("n", "<F8>", "<cmd>ToggleTerm<CR>", GDfgConfig)
 GKeymap.set("i", "<F8>", "<esc><cmd>ToggleTerm<CR>", GDfgConfig)
 GKeymap.set("t", "<F8>", [[<C-\><C-n><cmd>ToggleTerm<CR>]], GDfgConfig)
 
+GKeymap.set("n", "<S-F8>", open_new_terminal, GDfgConfig)
+GKeymap.set("i", "<S-F8>", open_new_terminal, GDfgConfig)
+GKeymap.set("t", "<S-F8>", open_new_terminal, GDfgConfig)
+
+GKeymap.set("n", "<C-F8>", kill_current_terminal, GDfgConfig)
+GKeymap.set("i", "<C-F8>", kill_current_terminal, GDfgConfig)
+GKeymap.set("t", "<C-F8>", kill_current_terminal, GDfgConfig)
+
+GKeymap.set("n", "<M-F8>", function() goto_term_relative(1, nil) end, GDfgConfig)
+GKeymap.set("i", "<M-F8>", function() goto_term_relative(1, 'i') end, GDfgConfig)
+GKeymap.set("t", "<M-F8>", function() goto_term_relative(1, 'i') end, GDfgConfig)
+
+
 -- Exclusive Terminal Keybind (Ctrl+Shift+T)
 GKeymap.set({"n", "i", "t"}, "<C-S-T>", "<cmd>lua _G.exclusive_terminal_toggle()<CR>", GQuickOpt("Toggle [Exclusive] Shell"))
 

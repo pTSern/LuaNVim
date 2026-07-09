@@ -74,8 +74,7 @@ Keybindings can behave differently depending on which "mode" Neovim is in:
 | Normal | `gb` | Jump back to previous context mark | Navigation |
 | Normal | `[Alt-Up/Down]` | Scroll **other** window without leaving current | Multi-window |
 | Insert | `[Alt-Up/Down]` | Scroll **other** window (stay in Insert) | Multi-window |
-| Normal | `[Leader]ef` | Echo absolute path of current file | File Ops |
-| Normal/Insert/Visual/Terminal | `[F3]` | Echo relative path of current file (`:echo @%`) | File Ops |
+| Normal/Insert/Visual/Terminal | `[F3]` | Echo the absolute path of current file (`:echo expand('%:p')`) | File Ops |
 | Normal | `[Ctrl-=/-]` | Increase/Decrease window width | Windows |
 | Normal | `[Ctrl-0]` | Equalize window widths | Windows |
 | Normal | `[d / ]d` | Previous / Next Diagnostic | LSP |
@@ -121,6 +120,9 @@ Keybindings can behave differently depending on which "mode" Neovim is in:
 | Terminal | `[Shift-Right/Left]`| Switch to next/previous terminal buffer | ToggleTerm |
 | Terminal | `[Ctrl-h/j/k/l]`| Move window focus out of terminal | ToggleTerm |
 | Normal/Insert/Terminal | `[Ctrl-Shift-T]`| Toggle exclusive shell terminal | ToggleTerm |
+| Normal/Insert/Terminal | `[Shift-F8]` | Create and open new terminal | ToggleTerm |
+| Normal/Insert/Terminal | `[Ctrl-F8]` | Destroy current terminal | ToggleTerm |
+| Normal/Insert/Terminal | `[Alt-F8]` | Switch to next (right) terminal | ToggleTerm |
 | Normal | `[Leader]am`| Toggle Antigravity (agy) CLI popup | AGY |
 | Normal | `[Leader]an`| New Antigravity (agy) session at path | AGY |
 | Normal | `[Leader]ak`| Kill the current Antigravity session | AGY |
