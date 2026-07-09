@@ -38,10 +38,9 @@ GKeymap.set("n", "<M-Down>", "<C-w>p<C-e><C-w>p")
 GKeymap.set("n", "<M-Up>", "<C-w>p<C-y><C-w>p")
 GKeymap.set("i", "<M-Down>", "<Esc><C-w>p<C-e><C-w>pi")
 GKeymap.set("i", "<M-Up>", "<Esc><C-w>p<C-y><C-w>pi")
-GKeymap.set("n", "<Leader>ef", "<CMD>:echo expand('%:p')<CR>", GQuickOpt('[E]cho current [F]ile path'))
 
 -- Map F3 in all modes to show the relative path of the current file (:echo @%)
-local f3_cmd = "<Cmd>echo expand('%')<CR>"
+local f3_cmd = "<CMD>:echo expand('%:p')<CR>"
 GKeymap.set("n", "<F3>", f3_cmd, GQuickOpt("Echo relative file path"))
 GKeymap.set("i", "<F3>", f3_cmd, GQuickOpt("Echo relative file path"))
 GKeymap.set("v", "<F3>", f3_cmd, GQuickOpt("Echo relative file path"))
@@ -67,4 +66,20 @@ vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagn
 
 GKeymap.set("n", "<leader>sf", vim.diagnostic.open_float, { desc = "[S]how [F]loating diagnostic error messages" })
 GKeymap.set("n", "<leader>qf", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uick [F]ix list" })
+
+if vim.fn.executable("leaf") == 1 then
+    GKeymap.set("n", "<Leader>mw", function()
+        if vim.bo.filetype ~= "markdown" then
+            vim.notify("Not a markdown file!", vim.log.levels.WARN)
+            return
+        end
+        local filepath = vim.fn.expand("%:p")
+        if filepath == "" then
+            vim.notify("Current buffer has no file path!", vim.log.levels.WARN)
+            return
+        end
+        vim.cmd("enew")
+        vim.fn.termopen({ "leaf", "--watch", filepath })
+    end, GQuickOpt("[M]arkdown [W]atch (leaf)"))
+end
 

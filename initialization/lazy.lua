@@ -432,6 +432,60 @@ require("lazy").setup(
             end
         },
         --#endregion
+
+        --$region markdown
+        --{
+        --    "3rd/image.nvim",
+        --    dependencies = {
+        --        {
+        --            "vhyrro/luarocks.nvim",
+        --            priority = 1000,
+        --            config = true
+        --        }
+        --    },
+        --    opts = {
+        --        backend = "kitty",
+        --        max_width = 100,
+        --        max_height = 16,
+        --        intergrations = {
+        --            markdown = {
+        --                enabled = true,
+        --                clear_in_insert_mode = false,
+        --                download_remote_images = true,
+        --                only_render_image_at_cursor = false,
+        --                filetypes = { "markdown", "vimwiki" }
+        --            }
+        --        }
+        --    }
+        --},
+        --{
+        --    "3rd/diagram.nvim",
+        --    dependencies = { "3rd/image.nvim" },
+        --    opts = {
+        --        renderer_options = {
+        --            mermaid = {
+        --                background = nil,
+        --                theme = "dark"
+        --            }
+        --        }
+        --    }
+        --},
+        {
+            'MeanderingProgrammer/render-markdown.nvim',
+            dependencies = {
+                'nvim-treesitter/nvim-treesitter',
+                'nvim-mini/mini.nvim' ,
+                'nvim-mini/mini.icons',
+                'nvim-tree/nvim-web-devicons'
+            },
+            ---@module 'render-markdown'
+            ---@type render.md.UserConfig
+            opts = {
+                anti_conceal = { enabled = true }
+            },
+        },
+        --#endregion
+
         --#region CSharp
         {
             "tris203/rzls.nvim"

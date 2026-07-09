@@ -75,6 +75,7 @@ Keybindings can behave differently depending on which "mode" Neovim is in:
 | Normal | `[Alt-Up/Down]` | Scroll **other** window without leaving current | Multi-window |
 | Insert | `[Alt-Up/Down]` | Scroll **other** window (stay in Insert) | Multi-window |
 | Normal/Insert/Visual/Terminal | `[F3]` | Echo the absolute path of current file (`:echo expand('%:p')`) | File Ops |
+| Normal | `[Leader]mw` | Preview Markdown file in a terminal using `leaf --watch` (if installed) | File Ops / Preview |
 | Normal | `[Ctrl-=/-]` | Increase/Decrease window width | Windows |
 | Normal | `[Ctrl-0]` | Equalize window widths | Windows |
 | Normal | `[d / ]d` | Previous / Next Diagnostic | LSP |
