@@ -148,6 +148,7 @@ Keybindings can behave differently depending on which "mode" Neovim is in:
 | Normal | `\0` | Jump to Last Buffer | Barbar |
 | Normal | `[Leader][Tab]` | Pin/Unpin Buffer | Barbar |
 | Normal | `[Tab]d / c` | Delete / Close Buffer | Barbar |
+| Normal | `\c` | Close all buffers but the current one | Barbar |
 | Insert | `[Ctrl-Tab]` | Accept Copilot suggestion | Copilot |
 | Insert | `[Ctrl-j] / [Ctrl-k]`| Select next/previous autocomplete item | Autocomplete (cmp) |
 | Insert | `[Ctrl-b] / [Ctrl-f]`| Scroll documentation inside completion popup | Autocomplete (cmp) |

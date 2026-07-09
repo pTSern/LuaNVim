@@ -162,10 +162,10 @@ map('n', '\\0', '<Cmd>BufferLast<CR>', GQuickOpt('Last Buffer [0]'))
 -- Pin/unpin buffer
 map('n', '<Leader><Tab>', '<Cmd>BufferPin<CR>', GQuickOpt('[TAB] Pin this Buffer'))
 -- Close buffer
+map('n', '\\c', '<Cmd>BufferCloseAllButCurrent<CR>', GQuickOpt('Buffer Close All But Current'))
 -- Wipeout buffer
 --                 :BufferWipeout
 -- Close commands
---                 :BufferCloseAllButCurrent
 --                 :BufferCloseAllButPinned
 --                 :BufferCloseAllButCurrentOrPinned
 --                 :BufferCloseBuffersLeft
