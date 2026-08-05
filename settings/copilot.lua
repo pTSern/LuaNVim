@@ -122,7 +122,7 @@ qkn('<Leader>aq', quick_ask, "[A]sk [Q]ick Copilot");
 qkn('<Leader>ap', telescope, "[A]ction [P]rompt Telescope")
 qkx('<Leader>ai', [[:CopilotChatInline<CR>]], "[A]ction [I]nline")
 qkn('<Leader>aa', [[:CopilotChatOpen<CR>]], "[A]ction [A]sk Copilot")
-qkx('<Leader>av', [[:CopilotChatVisual<CR>]], "[A]ction [V]isual ")
+--qkx('<Leader>av', [[:CopilotChatVisual<CR>]], "[A]ction [V]isual ")
 qkn('<Leader>ao', [[:CopilotChatOptimize<CR>]], "[A]ction [O]ptime")
 qkn('<Leader>am', [[:CopilotChatModels<CR>]], "[A]ction [M]odels Changing")
 

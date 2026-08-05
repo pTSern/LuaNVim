@@ -13,6 +13,60 @@ end
 
 GOpts.rtp:prepend(lazypath)
 
+-- Helper function to expand Windows/Unix paths safely
+local function expand_path(rel_path)
+  local path = vim.fn.expand(rel_path)
+  if vim.fn.filereadable(path) == 1 then
+    return path
+  end
+  -- Windows USERPROFILE fallback
+  local user_profile = os.getenv("USERPROFILE")
+  if user_profile then
+    local win_path = user_profile .. rel_path:gsub("^~", ""):gsub("/", "\\")
+    if vim.fn.filereadable(win_path) == 1 then
+      return win_path
+    end
+  end
+  return nil
+end
+
+-- 1. Read auth.json
+local function get_codex_auth()
+  local path = expand_path("~/.codex/auth.json")
+  if not path then return {} end
+
+  local file = io.open(path, "r")
+  if not file then return {} end
+
+  local content = file:read("*a")
+  file:close()
+
+  local ok, data = pcall(vim.json.decode, content)
+  return ok and type(data) == "table" and data or {}
+end
+
+-- 2. Extract base_url from config.toml
+local function get_codex_config()
+  local path = expand_path("~/.codex/config.toml")
+  if not path then return {} end
+
+  local file = io.open(path, "r")
+  if not file then return {} end
+
+  local content = file:read("*a")
+  file:close()
+
+  local config = {}
+  -- Matches: base_url = "http..." or base_url = 'http...' or base_url = `http...`
+  local base_url = content:match('base_url%s*=%s*["`\']?([^"`\'%s\n]+)["`\']?')
+  if base_url then
+    -- Strip trailing slash if present to avoid double slashes in URLs
+    config.base_url = base_url:gsub("/+$", "")
+  end
+
+  return config
+end
+
 -- INSTALL PLUGINS
 
 require("lazy").setup(
@@ -435,6 +489,13 @@ require("lazy").setup(
 
         --$region markdown
         --{
+        --    'adelarsq/image_preview.nvim',
+        --    event = 'VeryLazy',
+        --    config = function()
+        --        require("image_preview").setup()
+        --    end
+        --},
+        --{
         --    "3rd/image.nvim",
         --    dependencies = {
         --        {
@@ -445,8 +506,8 @@ require("lazy").setup(
         --    },
         --    opts = {
         --        backend = "kitty",
-        --        max_width = 100,
-        --        max_height = 16,
+        --        max_width = nil,
+        --        max_height = nil,
         --        intergrations = {
         --            markdown = {
         --                enabled = true,
@@ -681,7 +742,56 @@ require("lazy").setup(
         {
             "pTSern/gemini-popup.nvim",
         },
+        {
+            "yetone/avante.nvim",
+            event = "VeryLazy",
+            version = false, -- Never set this value to "*"! Never!
+            opts = function ()
+                local auth = get_codex_auth()
+                local config = get_codex_config()
 
+                local api_key = auth.OPENAI_API_KEY
+                local endpoint = config.base_url or "https://api.openai.com/v1"
+
+                if api_key ~= "" then
+                    vim.env.OPENAI_API_KEY = api_key
+                end
+
+                return {
+                    provider = "openai",
+                    providers = {
+                        openai = {
+                            endpoint = endpoint,
+                            model = config.model,
+                            timeout = 30000,
+                        }
+                    },
+              }
+            end,
+            build = "powershell -ExecutionPolicy Bypass -File Build.ps1",
+            dependencies = {
+                "nvim-lua/plenary.nvim",
+                "MunifTanjim/nui.nvim",
+                --- The below dependencies are optional,
+                "nvim-mini/mini.pick", -- for file_selector provider mini.pick
+                "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
+                "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
+                "ibhagwan/fzf-lua", -- for file_selector provider fzf
+                "stevearc/dressing.nvim", -- for input provider dressing
+                "folke/snacks.nvim", -- for input provider snacks
+                "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
+            },
+        },
+        {
+            "ravitemer/mcphub.nvim",
+            dependencies = {
+                "nvim-lua/plenary.nvim",
+            },
+            build = "npm install -g mcp-hub@latest",
+            config = function()
+                require("mcphub").setup()
+            end,
+        },
         --#region Key Displaying
         {
             "NStefan002/screenkey.nvim",

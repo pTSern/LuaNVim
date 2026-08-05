@@ -53,3 +53,6 @@ dofile(root .. 'ufo.lua')
 dofile(root .. 'agy_cli.lua')
 
 dofile(root .. 'scroller.lua')
+
+dofile(root .. 'mcp.lua')
+dofile(root .. 'avante.lua')

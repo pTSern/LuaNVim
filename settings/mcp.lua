@@ -1,0 +1,29 @@
+
+--require("codecompanion").setup({
+--    opts = {
+--        log_level = "DEBUG", -- or "TRACE"
+--    },
+--    strategies = {
+--        chat = {
+--            adapter = "codex"
+--        },
+--        inline = {
+--            adapter = "codex"
+--        }
+--    },
+--    adapters = {
+--        acp = {
+--            codex = function ()
+--                return require('codecompanion.adapters').extend('codex', {
+--                        defaults = {
+--                            auth_method = 'api-key'
+--                        }
+--                    })
+--            end
+--        }
+--    }
+--})
+--
+--require('mcphub').setup {
+--    port = 3000
+--}

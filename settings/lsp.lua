@@ -12,7 +12,10 @@ local root = g_root .. 'settings/lsp/'
 dofile(root .. 'deno.lua')
 
 LSP.config('clangd', {
-  cmd = { 'clangd' },
+  cmd = { 
+    'clangd',
+    '--query-driver=C:/ProgramData/mingw64/mingw64/bin/g++*,C:/ProgramData/mingw64/mingw64/bin/gcc*'
+  },
   filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'h' },
   single_file_support = true,
 })
