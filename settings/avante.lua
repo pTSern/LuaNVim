@@ -4,7 +4,7 @@ local qkn = _G.qnmap
 require('avante').setup {
     windows = {
         wrap = true,
-        width = 90,
+        width = 75,
         input = {
             prefix = "> ",
             height = 13,
