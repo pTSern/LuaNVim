@@ -10,54 +10,46 @@ local function _qdefvert(opt)
     opt = opt or {}
 
     if opt.previewer == nil then opt.previewer = true end
-    if opt.mirror == nil then opt.mirror = false end
-
-    opt.height = opt.height or 0.9
-    opt.width = opt.width or 0.85
     opt.mode = opt.mode or "insert"
-    opt.layout = opt.layout or "vertical"
     opt.sorting = opt.sorting or "descending"
-    opt.position = opt.position or "bottom"
-    opt.theme = opt.theme or "ivy"
-
-    opt.percent = opt.percent or {
-        preview = 0.65,
-        results = 0.35,
-    }
-
-    opt.path_display = opt.path_display or { "smart" }
+    opt.path_display = opt.path_display or { "truncate" }
+    local _height = opt.height or 0.95
 
     return {
         initial_mode = opt.mode,
         previewer = opt.previewer,
-        layout_strategy = opt.layout,
         sorting_strategy = opt.sorting,
         prompt_title = opt.title,
-        theme = opt.theme,
         path_display = opt.path_display,
 
+        layout_strategy = "vertical",
         layout_config = {
-            width = opt.width,
-            height = opt.height,
-            vertical = {
-                preview_height = opt.height * opt.percent.preview,
-                results_height = opt.height * opt.percent.results,
-
-                mirror = opt.mirror,
-                prompt_position = opt.position,
-            }
+            width = opt.width or 0.85,
+            height = _height,
+            preview_height = opt.preview_height or 0.5,
+            prompt_position = "bottom",
+            mirror = false,
         }
     }
 end
 
 require('telescope').setup {
     defaults = {
+        previewer = true,
+        layout_strategy = "vertical",
+        layout_config = {
+            width = 0.85,
+            height = 0.95,
+            preview_height = 0.5,
+            prompt_position = "bottom",
+            mirror = false,
+        },
+        sorting_strategy = "descending",
+
         -- UI
         prompt_prefix = " ",
         selection_caret = " ",
         color_devicons = true,
-
-        -- Layout
 
         -- Behavior
         file_ignore_patterns = {
@@ -110,34 +102,34 @@ require('telescope').setup {
 
     pickers = {
         current_buffer_fuzzy_find = _qdefvert{
-            height = 0.75,
-            previewer = false,
+            previewer = true,
             title = "[ Search ]",
-            theme = "dropdown",
         },
         find_files = _qdefvert{
+            previewer = true,
             title = "[ Find Files ]",
         },
         find_buffers = _qdefvert{
-            height = 0.5,
-            previewer = false,
+            previewer = true,
             title = "[ Buffers ]",
         },
         diagnostics = _qdefvert{
+            previewer = true,
             title = "[ Diagnostics ]",
         },
         live_grep = _qdefvert{
+            previewer = true,
             title = "[ Live Grep ]",
         },
         marks = _qdefvert{
-            height = 0.75,
+            previewer = true,
             title = "[ Marks ]",
         },
     },
 
     extensions = {
         ['ui-select'] = {
-            themes.get_dropdown(),
+            _qdefvert{ previewer = true },
         },
         fzf = {
             fuzzy = true,                    -- false will only do exact matching

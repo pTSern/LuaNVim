@@ -5,6 +5,7 @@ local themes = require('telescope.themes')
 
 qs("<Leader>ff", tls.find_files, "[F]ind [F]iles")
 qs("<Leader>fg", tls.live_grep, "[F]ind [L]ive Grep")
+qs("<Leader>fl", function() tls.live_grep({ additional_args = function() return { "-uuu" } end }) end, "[F]ind [L]ive Grep (Unfiltered -uuu)")
 --qs("<Leader>fb", tls.buffers(themes.get_dropdown{ previewer = false, layout_config = { width = 0.75 } }), "[F]ind existing [B]uffers")
 qs("<Leader>fb", tls.buffers, "[F]ind existing [B]uffers");
 
