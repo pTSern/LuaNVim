@@ -56,3 +56,4 @@ dofile(root .. 'scroller.lua')
 
 dofile(root .. 'mcp.lua')
 dofile(root .. 'avante.lua')
+dofile(root .. 'cocos.lua')

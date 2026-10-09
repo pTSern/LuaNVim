@@ -273,6 +273,6 @@ end
 
 _G.qnmap('<Leader>ri', rename_word_popup, 'Rename word under cursor via popup')
 
-_G.qnmap('<leader>fa', insert_cocos_component, 'Create Cocos Creator Component')
+_G.qnmap('<leader>qa', insert_cocos_component, 'Create Cocos Creator Component')
 _G.qimap('<C-CR>', insert_cocos_component, 'Create Cocos Creator Component')
 _G.qimap('<C-Enter>', insert_cocos_component, 'Create Cocos Creator Component')
