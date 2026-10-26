@@ -12,3 +12,5 @@ New
 .proj/
 .proj
 mcp.json
+.agent/
+.temps/
