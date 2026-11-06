@@ -548,16 +548,16 @@ require("lazy").setup(
         --#endregion
 
         --#region CSharp
-        {
-            "tris203/rzls.nvim"
-        },
-        {
-            "seblj/roslyn.nvim",
-            ft = "cs",
-            opts = {
-                -- your configuration comes here; leave empty for default settings
-            }
-        },
+        --{
+        --    "tris203/rzls.nvim"
+        --},
+        --{
+        --    "seblj/roslyn.nvim",
+        --    ft = "cs",
+        --    opts = {
+        --        -- your configuration comes here; leave empty for default settings
+        --    }
+        --},
         --'OmniSharp/omnisharp-vim',                                                                                                                                                                                                                      -- Language server for CSharp
         --{
         --    "iabdelkareem/csharp.nvim",
@@ -865,6 +865,43 @@ require("lazy").setup(
 
         --    end,
         --},
+
+        --region Unity
+        {
+          "seblyng/roslyn.nvim",
+          commit = "f2ec6ee6384c3b611ddc817b9e78b20cd0334bbb",
+          ft = { "cs", "razor" },
+          dependencies = {
+            "hrsh7th/nvim-cmp",
+          },
+          opts = {
+            broad_search = true,
+            filewatching = "auto",
+            lock_target = false,
+            choose_target = function(targets)
+              for _, target in ipairs(targets) do
+                if string.match(target, "%.sln$") then
+                  return target
+                end
+              end
+              return targets[1]
+            end,
+          },
+          init = function()
+            local exe = vim.fs.joinpath(vim.fn.stdpath("data"), "mason", "packages", "roslyn", "libexec", "roslyn-language-server.exe")
+            if vim.fn.executable(exe) == 1 then
+              vim.lsp.config("roslyn", {
+                cmd = {
+                  exe,
+                  "--logLevel=Information",
+                  "--extensionLogDirectory=" .. vim.fs.dirname(vim.lsp.log.get_filename()),
+                  "--stdio",
+                },
+              })
+            end
+          end,
+        }
+        --endregion
     }
 )
 

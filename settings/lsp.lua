@@ -6,7 +6,7 @@ LSP.config('*', {
   capabilities = capabilities,
 })
 
-LSP.enable('pyright')
+--LSP.enable('pyright')
 
 local root = g_root .. 'settings/lsp/'
 dofile(root .. 'deno.lua')

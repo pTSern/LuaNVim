@@ -1,3 +1,14 @@
+-- Ensure modern Nerd Font v3 icon for C# in ChadTree artifact.json (replaces broken U+F81A glyph)
+local chad_artifact = vim.fs.joinpath(vim.fn.stdpath("data"), "lazy", "chadtree", "artifacts", "artifact.json")
+if vim.fn.filereadable(chad_artifact) == 1 then
+  local content = vim.fn.readfile(chad_artifact)
+  local joined = table.concat(content, "\n")
+  if joined:find('"\\.cs": "\\uf81a"') or joined:find('"\\.cs": ""') then
+    joined = joined:gsub('"\\.cs": "[^"]*"', '"\\.cs": "󰌛"')
+    vim.fn.writefile(vim.split(joined, "\n"), chad_artifact)
+  end
+end
+
 local keymap = vim.keymap
 
 keymap.set('n', '<M-1>', ':CHADopen<CR>', { silent = true })

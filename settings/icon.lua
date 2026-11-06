@@ -28,6 +28,21 @@ require'nvim-web-devicons'.setup {
     icon = "",
     color = "#81e043",
     name = "Log"
+  },
+  ["cs"] = {
+    icon = "󰌛",
+    color = "#596706",
+    name = "Cs"
+  },
+  ["csproj"] = {
+    icon = "󰌛",
+    color = "#512BD4",
+    name = "Csproj"
+  },
+  ["slnx"] = {
+    icon = "",
+    color = "#854CC7",
+    name = "Slnx"
   }
  };
  -- same as `override` but specifically for operating system
